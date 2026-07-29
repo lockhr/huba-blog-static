@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/images/icons/哈士奇.png" />
+    <link rel="preload" as="image" href="/images/wallpaper-20260717.png" fetchpriority="high" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="小白的个人博客 — 记录白阿姨的前端/后端学习、生活碎片与心情日记" />
+    <meta name="theme-color" content="#1a1512" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:title" content="胡巴的博客" />
+    <meta property="og:description" content="记录前端/后端学习、生活碎片与心情日记" />
+    <meta property="og:type" content="website" />
+    <title>小白的博客</title>
+    <!-- 在页面渲染前立即设背景 -->
+    <script>
+      (function(){
+        var src='/images/wallpaper-20260717.png';
+        localStorage.setItem('bgImage', src);
+        document.documentElement.style.setProperty('--bg-image',"url('"+src+"')");
+        // 预加载图片
+        var link=document.createElement('link');
+        link.rel='preload';link.as='image';link.href=src;
+        document.head.appendChild(link);
+      })();
+    </script>
+    <style>
+      /* ====== 关键背景层 — JS 加载前就有，杜绝空白期 ====== */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background: var(--bg-image, url('/images/wallpaper-20260717.png')) no-repeat center center;
+        background-size: cover;
+        background-color: #1a1512;
+        pointer-events: none;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.16) 0%,
+          rgba(0, 0, 0, 0.08) 30%,
+          rgba(0, 0, 0, 0.04) 60%,
+          rgba(0, 0, 0, 0.12) 100%
+        );
+        pointer-events: none;
+      }
+
+      /* ====== Welcome — 深色底 + 绿/蓝微光，统一项目色调 ====== */
+      #apple-welcome {
+        position: fixed; inset: 0; z-index: 99999;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 36px;
+        background:
+          radial-gradient(ellipse 700px 450px at 25% 20%, rgba(52, 199, 89, 0.10) 0%, transparent 55%),
+          radial-gradient(ellipse 500px 350px at 70% 60%, rgba(59, 130, 246, 0.08) 0%, transparent 55%),
+          radial-gradient(ellipse 600px 400px at 50% 80%, rgba(52, 199, 89, 0.06) 0%, transparent 60%),
+          #1a1512;
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+        overflow: hidden;
+      }
+      /* 模糊壁纸 — JS 加载用户背景图后设 --welcome-bg */
+      #apple-welcome::before {
+        content: ""; position: absolute;
+        inset: -60px; z-index: -1;
+        background: var(--welcome-bg, none) center/cover no-repeat;
+        filter: blur(20px);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        pointer-events: none;
+      }
+      #apple-welcome.bg-loaded::before { opacity: 1; }
+      /* 暗角 */
+      #apple-welcome::after {
+        content: ""; position: absolute; inset: 0; z-index: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.16) 100%);
+        pointer-events: none;
+      }
+      #apple-welcome h1 {
+        position: relative; z-index: 2;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+          "PingFang SC", "Helvetica Neue", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+        font-size: clamp(3.5rem, 10vw, 7rem);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        background: linear-gradient(
+          180deg,
+          rgba(255,255,255,0.9) 0%,
+          rgba(255,255,255,0.55) 35%,
+          rgba(255,255,255,0.35) 60%,
+          rgba(255,255,255,0.55) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 1px 3px rgba(255,255,255,0.25);
+        animation: glassFloat 5s ease-in-out infinite;
+        transition: opacity 0.4s ease;
+        will-change: opacity;
+      }
+      @keyframes glassFloat {
+        0%, 100% { transform: translateY(0); }
+        25%      { transform: translateY(-10px); }
+        50%      { transform: translateY(-4px); }
+        75%      { transform: translateY(-8px); }
+      }
+      #apple-welcome h1.fade {
+        opacity: 0;
+      }
+
+      /* 玻璃按钮 — iOS 26 纯透明 */
+      #welcome-btn {
+        position: relative; z-index: 2;
+        opacity: 0; transform: translateY(16px);
+        transition: opacity 0.8s ease 0.35s,
+                    transform 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.35s,
+                    background 0.35s ease,
+                    border-color 0.35s ease,
+                    box-shadow 0.35s ease;
+        padding: 16px 64px;
+        background: rgba(255,255,255,0.16);
+        border: 1px solid rgba(255,255,255,0.40);
+        border-radius: 40px;
+        color: rgba(255,255,255,0.9);
+        font-size: 1.25rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+          "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+        pointer-events: none;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+      }
+      #welcome-btn.show {
+        opacity: 1; transform: translateY(0);
+        pointer-events: auto;
+        animation: btnPulse 3s ease-in-out 1.2s infinite;
+      }
+      @keyframes btnPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0),
+                              0 1px 0 rgba(255,255,255,0.5) inset; }
+        50%      { box-shadow: 0 0 50px 8px rgba(255,255,255,0.08),
+                              0 1px 0 rgba(255,255,255,0.6) inset; }
+      }
+      #welcome-btn:hover {
+        background: rgba(255,255,255,0.14);
+        border-color: rgba(255,255,255,0.55);
+        box-shadow: 0 0 60px rgba(255,255,255,0.10),
+                    0 1px 0 rgba(255,255,255,0.5) inset;
+        transform: translateY(-3px);
+        animation: none;
+      }
+      #welcome-btn:active {
+        transform: scale(0.95);
+        transition: transform 0.12s ease;
+        background: rgba(255,255,255,0.18);
+      }
+
+      #apple-welcome.done {
+        opacity: 0; visibility: hidden; pointer-events: none;
+      }
+
+      /* body 深色兜底 — 在 JS 执行前就生效，杜绝白闪 */
+      body {
+        background-color: #1a1512;
+      }
+      /* 全局：页面渲染完成前不显示，杜绝半成品状态 */
+      #app {
+        opacity: 0;
+      }
+      #app.ready {
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-BpnE8rTE.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/element-plus-Diwn5DAL.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-DUOfISSD.css">
+  </head>
+  <body>
+    <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
+    <svg style="position:absolute;width:0;height:0;pointer-events:none" aria-hidden="true">
+      <defs>
+        <!-- ═══ 动态液态玻璃 (JS 驱动 baseFrequency) ═══ -->
+        <filter id="liquid-live" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence id="liquid-turb" type="fractalNoise" baseFrequency="0.014 0.016" numOctaves="4" seed="7" result="noise"/>
+          <feGaussianBlur in="noise" stdDeviation="2" result="smooth"/>
+          <feDisplacementMap in="SourceGraphic" in2="smooth" scale="18"
+            xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <!-- ═══ 色差折射：R/G/B 通道分别偏移 → 边缘彩色分离 ═══ -->
+        <filter id="liquid-chroma" x="-15%" y="-15%" width="130%" height="130%">
+          <feTurbulence id="chroma-turb" type="fractalNoise" baseFrequency="0.018 0.02" numOctaves="3" seed="3" result="noise"/>
+          <feGaussianBlur in="noise" stdDeviation="2.5" result="smooth"/>
+          <!-- R通道 (暖色偏移) -->
+          <feDisplacementMap in="SourceGraphic" in2="smooth" scale="6"
+            xChannelSelector="R" yChannelSelector="G" result="red-shift"/>
+          <!-- 最终的色差混合 -->
+          <feOffset in="red-shift" dx="1" dy="0" result="chroma"/>
+        </filter>
+        <!-- ═══ 静态液态玻璃 (无 JS 时降级) ═══ -->
+        <filter id="liquid-static" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="5" result="noise"/>
+          <feGaussianBlur in="noise" stdDeviation="1.5" result="smooth"/>
+          <feDisplacementMap in="SourceGraphic" in2="smooth" scale="14"
+            xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+    </svg>
+    <!-- Welcome -->
+    <div id="apple-welcome">
+      <h1 id="welcome-word">💎 你好</h1>
+      <button id="welcome-btn">进入</button>
+    </div>
+
+    <div id="app"></div>
+
+    <script>
+      (function() {
+        var seen = sessionStorage.getItem('welcome_seen');
+        var wrap = document.getElementById('apple-welcome');
+        if (seen) {
+          wrap.style.display = 'none';
+          return;
+        }
+        sessionStorage.setItem('welcome_seen', '1');
+
+        var bgSrc = localStorage.getItem('bgImage') || '/images/wallpaper-20260717.png';
+        var img = new Image();
+        img.onload = function() {
+          wrap.style.setProperty('--welcome-bg', "url('"+bgSrc+"')");
+          wrap.classList.add('bg-loaded');
+        };
+        img.src = bgSrc;
+        if (img.complete) {
+          wrap.style.setProperty('--welcome-bg', "url('"+bgSrc+"')");
+          wrap.classList.add('bg-loaded');
+        }
+
+        var words = ['💎 你好', '🫧 Welcome', '🧊 Bienvenue', '🫙 ようこそ', '🌊 환영합니다', '🐾 小白的博客'];
+        var el = document.getElementById('welcome-word');
+        var btn = document.getElementById('welcome-btn');
+        var i = 0;
+        var DWELL = 800;
+        var FADE = 400;
+        var timers = [];
+        var dismissed = false;
+
+        function enter() {
+          if (dismissed) return;
+          dismissed = true;
+          timers.forEach(clearTimeout);
+          timers = [];
+          wrap.classList.add('done');
+          // 解锁音频自动播放
+          var audio = new Audio();
+          audio.volume = 0;
+          audio.play().then(function(){ audio.pause(); }).catch(function(){});
+        }
+
+        function showButton() {
+          btn.classList.add('show');
+          btn.addEventListener('click', enter);
+        }
+
+        function cycle() {
+          if (dismissed) return;
+          i++;
+          if (i >= words.length) return;
+          if (i === 2) showButton();
+
+          // rAF 确保浏览器在下一帧起播过渡，不丢帧
+          requestAnimationFrame(() => {
+            el.classList.add('fade');
+          });
+
+          timers.push(setTimeout(function() {
+            if (dismissed) return;
+            el.textContent = words[i];
+            requestAnimationFrame(() => {
+              el.classList.remove('fade');
+            });
+            timers.push(setTimeout(cycle, DWELL));
+          }, FADE));
+        }
+
+        // 首词停留后开始轮播
+        timers.push(setTimeout(cycle, 800));
+
+        // 键盘回车也可进入（按钮可见后）
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && !dismissed) enter();
+        });
+      })();
+    </script>
+
+  </body>
+</html>
