@@ -2,8 +2,8 @@
 <html lang="zh">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/images/icons/哈士奇.png" />
-    <link rel="preload" as="image" href="/images/wallpaper-20260717.png" fetchpriority="high" />
+    <link rel="icon" href="/huba-blog-static/images/icons/哈士奇.png" />
+    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260717.png" fetchpriority="high" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="小白的个人博客 — 记录白阿姨的前端/后端学习、生活碎片与心情日记" />
     <meta name="theme-color" content="#1a1512" />
@@ -15,7 +15,7 @@
     <!-- 在页面渲染前立即设背景 -->
     <script>
       (function(){
-        var src='/images/wallpaper-20260717.png';
+        var src='/huba-blog-static/images/wallpaper-20260717.png';
         localStorage.setItem('bgImage', src);
         document.documentElement.style.setProperty('--bg-image',"url('"+src+"')");
         // 预加载图片
@@ -31,7 +31,7 @@
         position: fixed;
         inset: 0;
         z-index: -2;
-        background: var(--bg-image, url('/images/wallpaper-20260717.png')) no-repeat center center;
+        background: var(--bg-image, url('/huba-blog-static/images/wallpaper-20260717.png')) no-repeat center center;
         background-size: cover;
         background-color: #1a1512;
         pointer-events: none;
@@ -179,9 +179,9 @@
         transition: opacity 0.5s ease;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-BpnE8rTE.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/element-plus-Diwn5DAL.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-DUOfISSD.css">
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-BkjdRRu3.js"></script>
+    <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-Diwn5DAL.js">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-DUOfISSD.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -231,7 +231,7 @@
         }
         sessionStorage.setItem('welcome_seen', '1');
 
-        var bgSrc = localStorage.getItem('bgImage') || '/images/wallpaper-20260717.png';
+        var bgSrc = localStorage.getItem('bgImage') || '/huba-blog-static/images/wallpaper-20260717.png';
         var img = new Image();
         img.onload = function() {
           wrap.style.setProperty('--welcome-bg', "url('"+bgSrc+"')");
