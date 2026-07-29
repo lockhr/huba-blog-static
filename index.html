@@ -179,9 +179,9 @@
         transition: opacity 0.5s ease;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-BCYkFYjw.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-DqAqd2Y5.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-Diwn5DAL.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CwiLx7sr.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CBQVpbBn.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -226,6 +226,8 @@
         var seen = sessionStorage.getItem('welcome_seen');
         var wrap = document.getElementById('apple-welcome');
         if (seen) {
+          wrap.classList.add('done');
+          wrap.setAttribute('aria-hidden', 'true');
           wrap.style.display = 'none';
           return;
         }
@@ -258,6 +260,11 @@
           timers.forEach(clearTimeout);
           timers = [];
           wrap.classList.add('done');
+          wrap.setAttribute('aria-hidden', 'true');
+          wrap.style.pointerEvents = 'none';
+          timers.push(setTimeout(function() {
+            if (dismissed) wrap.style.display = 'none';
+          }, 450));
           // 解锁音频自动播放
           var audio = new Audio();
           audio.volume = 0;
