@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/huba-blog-static/images/icons/白猫.png" />
-    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260717.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-preview.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260717.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="小白的个人博客 — 记录白阿姨的前端/后端学习、生活碎片与心情日记" />
-    <meta name="theme-color" content="#1a1512" />
+    <meta name="theme-color" content="#7b805f" />
     <meta name="color-scheme" content="dark" />
     <meta property="og:title" content="胡巴的博客" />
     <meta property="og:description" content="记录前端/后端学习、生活碎片与心情日记" />
@@ -33,7 +34,7 @@
         z-index: -2;
         background: var(--bg-image, url('/huba-blog-static/images/wallpaper-20260717.png')) no-repeat center center;
         background-size: cover;
-        background-color: #1a1512;
+        background-color: #7b805f;
         pointer-events: none;
       }
       body::after {
@@ -51,31 +52,38 @@
         pointer-events: none;
       }
 
-      /* ====== Welcome — 深色底 + 绿/蓝微光，统一项目色调 ====== */
+      /* ====== Welcome — 轻量预览首屏 + 高清壁纸淡入 ====== */
       #apple-welcome {
         position: fixed; inset: 0; z-index: 99999;
         display: flex; flex-direction: column;
         align-items: center; justify-content: center;
         gap: 36px;
-        background:
-          radial-gradient(ellipse 700px 450px at 25% 20%, rgba(52, 199, 89, 0.10) 0%, transparent 55%),
-          radial-gradient(ellipse 500px 350px at 70% 60%, rgba(59, 130, 246, 0.08) 0%, transparent 55%),
-          radial-gradient(ellipse 600px 400px at 50% 80%, rgba(52, 199, 89, 0.06) 0%, transparent 60%),
-          #1a1512;
+        background: #7b805f;
         transition: opacity 0.35s ease, visibility 0.35s ease;
         overflow: hidden;
+        isolation: isolate;
       }
-      /* 模糊壁纸 — JS 加载用户背景图后设 --welcome-bg */
+      /* 6 KB 预览图立即显示，避免首次访问等待高清图时出现深色底 */
       #apple-welcome::before {
         content: ""; position: absolute;
-        inset: -60px; z-index: -1;
-        background: var(--welcome-bg, none) center/cover no-repeat;
-        filter: blur(20px);
-        opacity: 0;
-        transition: opacity 0.6s ease;
+        inset: -16px; z-index: 0;
+        background: url('/huba-blog-static/images/wallpaper-preview.webp') center/cover no-repeat;
+        filter: blur(8px);
+        transform: scale(1.035);
         pointer-events: none;
       }
-      #apple-welcome.bg-loaded::before { opacity: 1; }
+      #apple-welcome .welcome-hd-bg {
+        position: absolute;
+        inset: -16px;
+        z-index: 0;
+        background: var(--welcome-bg, none) center/cover no-repeat;
+        filter: blur(8px);
+        transform: scale(1.035);
+        opacity: 0;
+        transition: opacity 0.55s ease;
+        pointer-events: none;
+      }
+      #apple-welcome.bg-loaded .welcome-hd-bg { opacity: 1; }
       /* 暗角 */
       #apple-welcome::after {
         content: ""; position: absolute; inset: 0; z-index: 0;
@@ -166,9 +174,9 @@
         opacity: 0; visibility: hidden; pointer-events: none;
       }
 
-      /* body 深色兜底 — 在 JS 执行前就生效，杜绝白闪 */
+      /* 取壁纸主色做兜底，图片不可用时也不会闪成深色 */
       body {
-        background-color: #1a1512;
+        background-color: #7b805f;
       }
       /* 全局：页面渲染完成前不显示，杜绝半成品状态 */
       #app {
@@ -179,9 +187,9 @@
         transition: opacity 0.5s ease;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-DexZUZz_.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-CDstOj25.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-Cz7xDGC6.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CifYuUuT.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -215,6 +223,7 @@
     </svg>
     <!-- Welcome -->
     <div id="apple-welcome">
+      <div class="welcome-hd-bg" aria-hidden="true"></div>
       <h1 id="welcome-word">💎 你好</h1>
       <button id="welcome-btn">进入</button>
     </div>
@@ -306,6 +315,6 @@
         });
       })();
     </script>
-
+
   </body>
 </html>
