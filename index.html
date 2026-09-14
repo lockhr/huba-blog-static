@@ -70,6 +70,9 @@
         background: url('/huba-blog-static/images/wallpaper-preview.webp') center/cover no-repeat;
         filter: blur(8px);
         transform: scale(1.035);
+        transform-origin: 50% 55%;
+        animation: welcomeScenery 18s ease-in-out infinite alternate;
+        will-change: transform;
         pointer-events: none;
       }
       #apple-welcome .welcome-hd-bg {
@@ -79,16 +82,31 @@
         background: var(--welcome-bg, none) center/cover no-repeat;
         filter: blur(8px);
         transform: scale(1.035);
+        transform-origin: 50% 55%;
         opacity: 0;
         transition: opacity 0.55s ease;
+        animation: welcomeScenery 18s ease-in-out infinite alternate;
+        will-change: transform, opacity;
         pointer-events: none;
       }
       #apple-welcome.bg-loaded .welcome-hd-bg { opacity: 1; }
+      @keyframes welcomeScenery {
+        0%   { transform: scale(1.04) translate3d(-0.5%, 0, 0); }
+        50%  { transform: scale(1.075) translate3d(0.5%, -0.6%, 0); }
+        100% { transform: scale(1.105) translate3d(0, 0.5%, 0); }
+      }
       /* 暗角 */
       #apple-welcome::after {
         content: ""; position: absolute; inset: 0; z-index: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.16) 100%);
+        background:
+          radial-gradient(circle at 28% 24%, rgba(255,246,209,0.16), transparent 38%),
+          linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.16) 100%);
+        animation: welcomeLight 8s ease-in-out infinite alternate;
         pointer-events: none;
+      }
+      @keyframes welcomeLight {
+        from { opacity: 0.78; }
+        to   { opacity: 1; }
       }
       #apple-welcome h1 {
         position: relative; z-index: 2;
@@ -172,6 +190,16 @@
 
       #apple-welcome.done {
         opacity: 0; visibility: hidden; pointer-events: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #apple-welcome::before,
+        #apple-welcome::after,
+        #apple-welcome .welcome-hd-bg,
+        #apple-welcome h1,
+        #welcome-btn.show {
+          animation: none;
+        }
       }
 
       /* 取壁纸主色做兜底，图片不可用时也不会闪成深色 */
@@ -315,6 +343,6 @@
         });
       })();
     </script>
-
+
   </body>
 </html>
