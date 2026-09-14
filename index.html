@@ -70,9 +70,6 @@
         background: url('/huba-blog-static/images/wallpaper-preview.webp') center/cover no-repeat;
         filter: blur(8px);
         transform: scale(1.035);
-        transform-origin: 50% 55%;
-        animation: welcomeScenery 18s ease-in-out infinite alternate;
-        will-change: transform;
         pointer-events: none;
       }
       #apple-welcome .welcome-hd-bg {
@@ -82,31 +79,48 @@
         background: var(--welcome-bg, none) center/cover no-repeat;
         filter: blur(8px);
         transform: scale(1.035);
-        transform-origin: 50% 55%;
         opacity: 0;
         transition: opacity 0.55s ease;
-        animation: welcomeScenery 18s ease-in-out infinite alternate;
-        will-change: transform, opacity;
         pointer-events: none;
       }
       #apple-welcome.bg-loaded .welcome-hd-bg { opacity: 1; }
-      @keyframes welcomeScenery {
-        0%   { transform: scale(1.04) translate3d(-0.5%, 0, 0); }
-        50%  { transform: scale(1.075) translate3d(0.5%, -0.6%, 0); }
-        100% { transform: scale(1.105) translate3d(0, 0.5%, 0); }
-      }
       /* 暗角 */
       #apple-welcome::after {
         content: ""; position: absolute; inset: 0; z-index: 0;
-        background:
-          radial-gradient(circle at 28% 24%, rgba(255,246,209,0.16), transparent 38%),
-          linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.16) 100%);
-        animation: welcomeLight 8s ease-in-out infinite alternate;
+        background: linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.16) 100%);
         pointer-events: none;
       }
-      @keyframes welcomeLight {
-        from { opacity: 0.78; }
-        to   { opacity: 1; }
+      .welcome-petals {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .welcome-petals span {
+        position: absolute;
+        top: -12%;
+        left: var(--x);
+        width: var(--size);
+        aspect-ratio: 1.65;
+        border-radius: 85% 18% 80% 22%;
+        background: rgba(255, 250, 226, 0.72);
+        box-shadow: 0 0 12px rgba(255, 240, 190, 0.42);
+        opacity: 0;
+        animation: welcomePetalFall var(--duration) linear var(--delay) infinite;
+        will-change: transform, opacity;
+      }
+      @keyframes welcomePetalFall {
+        0% {
+          opacity: 0;
+          transform: translate3d(0, -8vh, 0) rotate(0deg);
+        }
+        14% { opacity: 0.68; }
+        76% { opacity: 0.42; }
+        100% {
+          opacity: 0;
+          transform: translate3d(var(--drift), 116vh, 0) rotate(300deg);
+        }
       }
       #apple-welcome h1 {
         position: relative; z-index: 2;
@@ -193,9 +207,7 @@
       }
 
       @media (prefers-reduced-motion: reduce) {
-        #apple-welcome::before,
-        #apple-welcome::after,
-        #apple-welcome .welcome-hd-bg,
+        .welcome-petals,
         #apple-welcome h1,
         #welcome-btn.show {
           animation: none;
@@ -252,6 +264,15 @@
     <!-- Welcome -->
     <div id="apple-welcome">
       <div class="welcome-hd-bg" aria-hidden="true"></div>
+      <div class="welcome-petals" aria-hidden="true">
+        <span style="--x: 9%; --size: 9px; --duration: 13s; --delay: -4s; --drift: 42px"></span>
+        <span style="--x: 23%; --size: 13px; --duration: 16s; --delay: -11s; --drift: -36px"></span>
+        <span style="--x: 38%; --size: 8px; --duration: 12s; --delay: -7s; --drift: 28px"></span>
+        <span style="--x: 56%; --size: 11px; --duration: 15s; --delay: -2s; --drift: -48px"></span>
+        <span style="--x: 71%; --size: 7px; --duration: 11s; --delay: -9s; --drift: 34px"></span>
+        <span style="--x: 84%; --size: 12px; --duration: 17s; --delay: -6s; --drift: -30px"></span>
+        <span style="--x: 94%; --size: 8px; --duration: 14s; --delay: -13s; --drift: 24px"></span>
+      </div>
       <h1 id="welcome-word">💎 你好</h1>
       <button id="welcome-btn">进入</button>
     </div>
