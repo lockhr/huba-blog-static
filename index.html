@@ -503,60 +503,80 @@
       })();
     </script>
 
-    <!-- ===== 真机自检面板 — 只在 ?diag=1 时出现 =====
+    <!-- ===== 真机自检面板 — iOS 自动出现，其它设备加 ?diag=1 =====
          安全区在桌面浏览器恒为 0，没法在电脑上验证，只能真机看。
          把关键数字直接画在页面上，截一张图就能判断：
-         ① viewport-fit 有没有真的生效（看 innerHeight 与 screen.height 的差）
-         ② 页面是不是「装到主屏」的独立模式
-         它顺带还是缓存破除器：?diag=1 是新 URL，会强制重新拉最新 HTML。 -->
+         ① viewport 标签里有没有 viewport-fit=cover（没有 = 手机还在用缓存的旧 HTML）
+         ② CSS 里的 --safe-top 存不存在（不存在 = CSS 也是旧的）
+         ③ 设备是否真的上报了非零安全区（env(top) 实测）
+         ④ 页面是不是「装到主屏」的独立模式
+         拿到数据后这段会整个删掉。 -->
     <script>
       (function () {
-        if (!/[?&]diag=1/.test(location.search)) return;
+        // 为什么要自动显示：手机上改 URL 加参数很麻烦，而「安全区到底有没有生效」
+        // 又只能在真机上看到。所以 iOS 设备直接展示。
+        // ?diag=1 可以在任意设备上强制打开。
+        var forced = /[?&]diag=1/.test(location.search);
+        var isIOS =
+          /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        if (!forced && !isIOS) return;
 
-        // 用一个探针元素把 env() 真正解析出来（直接读自定义属性拿到的只是原始 token）
-        var probe = document.createElement('div');
-        probe.style.cssText =
-          'position:fixed;top:0;left:0;width:0;height:0;visibility:hidden;pointer-events:none;' +
-          'padding-top:env(safe-area-inset-top, 0px);' +
-          'padding-bottom:env(safe-area-inset-bottom, 0px);';
-        document.body.appendChild(probe);
-        var ps = getComputedStyle(probe);
-        var gap = window.screen.height - window.innerHeight;
+        // CSS 是 Vite 注入的，必须等 load 之后再量，否则可能读到还没生效的旧值。
+        function build() {
+          // 用探针元素把 env() 真正解析出来（直接读自定义属性只能拿到原始 token）
+          var probe = document.createElement('div');
+          probe.style.cssText =
+            'position:fixed;top:0;left:0;width:0;height:0;visibility:hidden;pointer-events:none;' +
+            'padding-top:env(safe-area-inset-top, 0px);' +
+            'padding-bottom:env(safe-area-inset-bottom, 0px);';
+          document.body.appendChild(probe);
+          var ps = getComputedStyle(probe);
+          var rootCS = getComputedStyle(document.documentElement);
+          var vpMeta = document.querySelector('meta[name="viewport"]');
+          var gap = window.screen.height - window.innerHeight;
 
-        var rows = [
-          ['页面版本', 'safe-area v2 · PWA'],
-          ['env(top) 实测', ps.paddingTop],
-          ['env(bottom) 实测', ps.paddingBottom],
-          ['innerHeight', window.innerHeight + 'px'],
-          ['screen.height', window.screen.height + 'px'],
-          ['高度差 screen-inner', gap + 'px ' + (gap > 40 ? '← 说明页面没铺满屏幕' : '← 页面已铺满')],
-          ['innerWidth', window.innerWidth + 'px'],
-          ['screen.width', window.screen.width + 'px'],
-          ['dpr', String(window.devicePixelRatio)],
-          ['独立模式', window.matchMedia('(display-mode: standalone)').matches ? '是' : '否'],
-          ['UA', navigator.userAgent],
-        ];
+          var rows = [
+            ['自检版本', 'v4 · 安全区诊断'],
+            ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
+            ['env(top) 实测', ps.paddingTop],
+            ['env(bottom) 实测', ps.paddingBottom],
+            ['CSS --safe-top', rootCS.getPropertyValue('--safe-top').trim() || '(CSS 是旧版)'],
+            ['innerHeight', window.innerHeight + 'px'],
+            ['screen.height', window.screen.height + 'px'],
+            ['高度差', gap + 'px'],
+            ['innerWidth', window.innerWidth + 'px'],
+            ['screen.width', window.screen.width + 'px'],
+            ['dpr', String(window.devicePixelRatio)],
+            ['独立模式', window.matchMedia('(display-mode: standalone)').matches ? '是' : '否'],
+            ['UA', navigator.userAgent],
+          ];
 
-        var box = document.createElement('div');
-        box.style.cssText =
-          'position:fixed;left:10px;right:10px;z-index:2147483647;' +
-          'top:calc(78px + env(safe-area-inset-top, 0px));padding:12px 14px;border-radius:14px;' +
-          'background:rgba(6,10,4,.9);color:#fff;word-break:break-all;' +
-          'font:12px/1.75 ui-monospace,Menlo,Consolas,monospace;' +
-          'border:1px solid rgba(255,255,255,.3);box-shadow:0 10px 30px rgba(0,0,0,.4);';
-        var html =
-          '<div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px">' +
-          '<b style="font-size:13px">真机自检</b>' +
-          '<span data-diag-close style="cursor:pointer;opacity:.7">关闭 ✕</span></div>';
-        rows.forEach(function (r) {
-          html += '<div><span style="opacity:.55">' + r[0] + '：</span>' + r[1] + '</div>';
-        });
-        box.innerHTML = html;
-        document.body.appendChild(box);
-        box.querySelector('[data-diag-close]').onclick = function () {
-          box.remove();
-          probe.remove();
-        };
+          var box = document.createElement('div');
+          box.style.cssText =
+            'position:fixed;left:10px;right:10px;z-index:2147483647;' +
+            'top:calc(78px + env(safe-area-inset-top, 0px));padding:12px 14px;border-radius:14px;' +
+            'background:rgba(6,10,4,.9);color:#fff;word-break:break-all;' +
+            'font:12px/1.75 ui-monospace,Menlo,Consolas,monospace;' +
+            'border:1px solid rgba(255,255,255,.3);box-shadow:0 10px 30px rgba(0,0,0,.4);';
+          var html =
+            '<div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px">' +
+            '<b style="font-size:13px">真机自检</b>' +
+            '<span data-diag-close style="cursor:pointer;opacity:.7">关闭 ✕</span></div>' +
+            '<div style="opacity:.55;margin-bottom:6px">把这一屏截图发我</div>';
+          rows.forEach(function (r) {
+            html += '<div><span style="opacity:.55">' + r[0] + '：</span>' + r[1] + '</div>';
+          });
+          box.innerHTML = html;
+          document.body.appendChild(box);
+          box.querySelector('[data-diag-close]').onclick = function () {
+            box.remove();
+            probe.remove();
+          };
+        }
+
+        if (document.readyState === 'complete') setTimeout(build, 300);
+        else window.addEventListener('load', function () { setTimeout(build, 300); });
       })();
     </script>
 
