@@ -315,7 +315,7 @@
         background-color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-CDpZJSrD.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-B2PUXnnf.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
     <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-yEgU1R8U.css">
   </head>
@@ -503,24 +503,19 @@
       })();
     </script>
 
-    <!-- ===== 真机自检面板 — iOS 自动出现，其它设备加 ?diag=1 =====
+    <!-- ===== 真机自检面板 — 只在 URL 带 ?diag=1 时出现 =====
          安全区在桌面浏览器恒为 0，没法在电脑上验证，只能真机看。
          把关键数字直接画在页面上，截一张图就能判断：
          ① viewport 标签里有没有 viewport-fit=cover（没有 = 手机还在用缓存的旧 HTML）
          ② CSS 里的 --safe-top 存不存在（不存在 = CSS 也是旧的）
          ③ 设备是否真的上报了非零安全区（env(top) 实测）
          ④ 页面是不是「装到主屏」的独立模式
-         拿到数据后这段会整个删掉。 -->
+         平时不显示，避免干扰正常浏览。 -->
     <script>
       (function () {
-        // 为什么要自动显示：手机上改 URL 加参数很麻烦，而「安全区到底有没有生效」
-        // 又只能在真机上看到。所以 iOS 设备直接展示。
-        // ?diag=1 可以在任意设备上强制打开。
-        var forced = /[?&]diag=1/.test(location.search);
-        var isIOS =
-          /iPhone|iPad|iPod/.test(navigator.userAgent) ||
-          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-        if (!forced && !isIOS) return;
+        // 2026-09-15：数据已经拿齐（结论见 useWallpaperEdge.js 顶部注释），
+        // 所以收回成「只在 ?diag=1 时出现」，不再自动弹出。
+        if (!/[?&]diag=1/.test(location.search)) return;
 
         function build() {
           // 用探针元素把 env() 真正解析出来（直接读自定义属性只能拿到原始 token）
