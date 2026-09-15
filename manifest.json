@@ -1,0 +1,32 @@
+{
+  "name": "胡巴的博客",
+  "short_name": "胡巴",
+  "description": "河北金融学院 · 区块链工程本科在读。记录学习过程、实践经历与问题复盘。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c0f09",
+  "theme_color": "#0c0f09",
+  "icons": [
+    {
+      "src": "images/icons/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icons/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icons/app-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -3,6 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/huba-blog-static/images/icons/白猫.png" />
+
+    <!-- ===== 装到主屏后像 App 一样全屏（没有地址栏、没有底部工具栏） =====
+         网页在浏览器里永远无法去掉浏览器自己的 UI，只有「添加到主屏幕」以
+         standalone 模式启动才能做到真正全屏 —— 这也是「像苹果那种」的唯一途径。
+         status-bar-style: black-translucent = 状态栏透明叠在页面上，
+         壁纸能一直铺到屏幕最上沿；配合 global.css 的 --safe-top 保证内容不被刘海压住。
+         iOS 走 apple-* 系列标签，Android/Chrome 走 manifest.json。 -->
+    <link rel="manifest" href="/huba-blog-static/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="胡巴" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/huba-blog-static/images/icons/app-icon-180.png" />
+
     <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-preview.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260717.png" />
     <!-- viewport-fit=cover：让页面铺满 iPhone 刘海/灵动岛与底部 Home 条区域。
@@ -486,6 +500,63 @@
 
         // 硬兜底：module 也挂了也不会一直藏着（global.css 里同源规则 + main.js 的 3s 兜底）
         setTimeout(function () { root.classList.add('hero-in'); }, 1800);
+      })();
+    </script>
+
+    <!-- ===== 真机自检面板 — 只在 ?diag=1 时出现 =====
+         安全区在桌面浏览器恒为 0，没法在电脑上验证，只能真机看。
+         把关键数字直接画在页面上，截一张图就能判断：
+         ① viewport-fit 有没有真的生效（看 innerHeight 与 screen.height 的差）
+         ② 页面是不是「装到主屏」的独立模式
+         它顺带还是缓存破除器：?diag=1 是新 URL，会强制重新拉最新 HTML。 -->
+    <script>
+      (function () {
+        if (!/[?&]diag=1/.test(location.search)) return;
+
+        // 用一个探针元素把 env() 真正解析出来（直接读自定义属性拿到的只是原始 token）
+        var probe = document.createElement('div');
+        probe.style.cssText =
+          'position:fixed;top:0;left:0;width:0;height:0;visibility:hidden;pointer-events:none;' +
+          'padding-top:env(safe-area-inset-top, 0px);' +
+          'padding-bottom:env(safe-area-inset-bottom, 0px);';
+        document.body.appendChild(probe);
+        var ps = getComputedStyle(probe);
+        var gap = window.screen.height - window.innerHeight;
+
+        var rows = [
+          ['页面版本', 'safe-area v2 · PWA'],
+          ['env(top) 实测', ps.paddingTop],
+          ['env(bottom) 实测', ps.paddingBottom],
+          ['innerHeight', window.innerHeight + 'px'],
+          ['screen.height', window.screen.height + 'px'],
+          ['高度差 screen-inner', gap + 'px ' + (gap > 40 ? '← 说明页面没铺满屏幕' : '← 页面已铺满')],
+          ['innerWidth', window.innerWidth + 'px'],
+          ['screen.width', window.screen.width + 'px'],
+          ['dpr', String(window.devicePixelRatio)],
+          ['独立模式', window.matchMedia('(display-mode: standalone)').matches ? '是' : '否'],
+          ['UA', navigator.userAgent],
+        ];
+
+        var box = document.createElement('div');
+        box.style.cssText =
+          'position:fixed;left:10px;right:10px;z-index:2147483647;' +
+          'top:calc(78px + env(safe-area-inset-top, 0px));padding:12px 14px;border-radius:14px;' +
+          'background:rgba(6,10,4,.9);color:#fff;word-break:break-all;' +
+          'font:12px/1.75 ui-monospace,Menlo,Consolas,monospace;' +
+          'border:1px solid rgba(255,255,255,.3);box-shadow:0 10px 30px rgba(0,0,0,.4);';
+        var html =
+          '<div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px">' +
+          '<b style="font-size:13px">真机自检</b>' +
+          '<span data-diag-close style="cursor:pointer;opacity:.7">关闭 ✕</span></div>';
+        rows.forEach(function (r) {
+          html += '<div><span style="opacity:.55">' + r[0] + '：</span>' + r[1] + '</div>';
+        });
+        box.innerHTML = html;
+        document.body.appendChild(box);
+        box.querySelector('[data-diag-close]').onclick = function () {
+          box.remove();
+          probe.remove();
+        };
       })();
     </script>
 
