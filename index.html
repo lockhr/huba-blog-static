@@ -356,9 +356,9 @@
         background-color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-Bra2BQzF.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-CxkqdC-2.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-D961n7Wg.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-COBLyDQK.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -583,7 +583,7 @@
           try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v6 · 安全区 + 浏览器 UI 取色'],
+            ['自检版本', 'v7 · 浏览器 UI 取色'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
@@ -592,7 +592,7 @@
               '安全区是否可用',
               safeTop > 0 || safeBottom > 0
                 ? '可用'
-                : '不可用 ✕ 浏览器把网页缩进了安全区，顶部/底部那两条画不到',
+                : '不可用（env 全为 0）— 浏览器把网页缩进了安全区，那两条带子里没有网页',
             ],
             ['innerHeight', window.innerHeight + 'px'],
             ['screen.height', window.screen.height + 'px'],
