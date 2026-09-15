@@ -26,6 +26,9 @@
          --safe-top / --safe-bottom 给固定元素和页面容器留白。 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="胡巴的个人博客 — 河北金融学院区块链工程本科在读，记录计算机基础、Java 后端与区块链的学习过程、实践经历和问题复盘" />
+    <!-- theme-color 只对 Safari 15~18.6 与 Android Chrome 有效；
+         Safari 26 起改成了「采样页面元素的 background-color」，见下方 .chrome-tint 说明。
+         这里给的是加载瞬间的兜底值，页面脚本就绪后会改成壁纸顶边色。 -->
     <meta name="theme-color" content="#0c0f09" />
     <meta name="color-scheme" content="dark" />
     <meta property="og:title" content="胡巴的博客" />
@@ -92,7 +95,11 @@
         position: fixed;
         inset: 0;
         z-index: -2;
-        background-color: var(--app-base);
+        /* 刻意不给底色：Safari 26 会拿贴边 fixed 元素的 background-color 给浏览器 UI
+           上色，本层铺满视口、上下都贴边，是个天然候选；但它只能有一个颜色，
+           没法同时匹配壁纸顶边和底边，所以让它退出竞争（颜色交给 .chrome-tint 探针）。
+           兜底色仍在 html 的 --app-base 上，视觉无变化。 */
+        background-color: transparent;
         background-image:
           var(--bg-image, none),
           var(--bg-preview-custom, none),
@@ -119,6 +126,40 @@
           rgba(0, 0, 0, 0.12) 100%
         );
         pointer-events: none;
+      }
+
+      /* ====== Safari 26 浏览器 UI 取色探针（真机「黑边」的正解） ======
+         Safari 26 起，Apple 不再使用 <meta name="theme-color"> 给浏览器界面染色，
+         改为**采样页面上某个元素的 background-color** 来决定顶部状态栏 / 底部地址栏的颜色：
+           · 默认来源是 <body> 的 background-color；body 没有就退到 <html> 的；
+             （Safari 15~18.6 读 theme-color，所以两个都留着。）
+           · 但「贴边 + 至少 80% 宽 + 至少 3px 高」的 fixed / sticky 元素优先于 <body>。
+         本项目 body 是透明的（壁纸由 body::before 铺满），壁纸层又是伪元素，
+         于是 Safari 没有 body 底色可采，只能退到 <html> 的 #0c0f09 ——
+         **那两条看起来像「浏览器没全屏」的近黑色边条就是这么来的**，跟
+         viewport-fit=cover、安全区都无关（真机自检里 env 全是 0 也印证了这点）。
+         解法：放两个只负责「被采样」的探针，一上一下贴着边缘，
+         颜色由 useWallpaperEdge.js 采样壁纸对应边缘后写入 --bg-edge-top / -bottom。
+         规范明确 visibility: hidden 仍在采样范围内，所以它们完全不可见、也不吃点击。
+         桌面浏览器 / Android 上只是两个隐藏空 div，无任何副作用。 */
+      .chrome-tint {
+        position: fixed;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 6px;              /* 规范要求 ≥ 3px */
+        z-index: -4;              /* 比壁纸层(-2)还低，绝不遮挡任何内容 */
+        visibility: hidden;       /* 不可见，但仍会被 Safari 采样 */
+        pointer-events: none;
+        background-color: var(--app-base);
+      }
+      #chrome-tint-top {
+        top: 0;                   /* 规范：距顶 4px 以内 */
+        background-color: var(--bg-edge-top, var(--app-base));
+      }
+      #chrome-tint-bottom {
+        bottom: 0;                /* 规范：距底 3px 以内 */
+        background-color: var(--bg-edge-bottom, var(--app-base));
       }
 
       /* ====== Welcome — 首次进入的问候层 ======
@@ -315,9 +356,9 @@
         background-color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-B2PUXnnf.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-Bra2BQzF.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-yEgU1R8U.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-D961n7Wg.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -364,6 +405,10 @@
     </div>
 
     <div id="app"></div>
+
+    <!-- Safari 26 的浏览器 UI 取色探针（不可见，只负责被采样）—— 见 head 里的说明 -->
+    <div id="chrome-tint-top" class="chrome-tint" aria-hidden="true"></div>
+    <div id="chrome-tint-bottom" class="chrome-tint" aria-hidden="true"></div>
 
     <script>
       (function () {
@@ -538,7 +583,7 @@
           try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v5 · 安全区诊断'],
+            ['自检版本', 'v6 · 安全区 + 浏览器 UI 取色'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
@@ -557,6 +602,18 @@
             ['dpr', String(window.devicePixelRatio)],
             ['独立模式', standalone ? '是' : '否'],
             ['在 iframe 里', inFrame ? '是 ✕ 这会让安全区失效' : '否'],
+            [
+              '取色探针 · 顶',
+              rootCS.getPropertyValue('--bg-edge-top').trim() || '(还没算出来)',
+            ],
+            [
+              '取色探针 · 底',
+              rootCS.getPropertyValue('--bg-edge-bottom').trim() || '(还没算出来)',
+            ],
+            [
+              'theme-color',
+              (document.querySelector('meta[name="theme-color"]') || {}).content || '(无)',
+            ],
             ['UA', navigator.userAgent],
           ];
 
@@ -578,8 +635,9 @@
           if (!standalone) {
             html +=
               '<div style="margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.22);line-height:1.7">' +
-              '你现在看到的上、下深色条，是<b>浏览器自己的界面</b>（状态栏 + 地址栏），网页画不进去。<br>' +
-              '想要真全屏：<b>用 Safari 打开本页 → 分享 → 添加到主屏幕</b>，再从桌面图标进去。' +
+              '上下那两条是<b>浏览器自己的界面</b>（状态栏 + 地址栏），网页画不进去。<br>' +
+              '现在改成让它们<b>采样页面底色</b>，跟着壁纸走（见上面两个取色探针）。<br>' +
+              '想要彻底没有它们：<b>用 Safari 打开本页 → 分享 → 添加到主屏幕</b>，再从桌面图标进去。' +
               '</div>';
           }
           box.innerHTML = html;
