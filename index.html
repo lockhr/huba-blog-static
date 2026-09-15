@@ -522,7 +522,6 @@
           (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
         if (!forced && !isIOS) return;
 
-        // CSS 是 Vite 注入的，必须等 load 之后再量，否则可能读到还没生效的旧值。
         function build() {
           // 用探针元素把 env() 真正解析出来（直接读自定义属性只能拿到原始 token）
           var probe = document.createElement('div');
@@ -575,8 +574,13 @@
           };
         }
 
-        if (document.readyState === 'complete') setTimeout(build, 300);
-        else window.addEventListener('load', function () { setTimeout(build, 300); });
+        // CSS 是 Vite 注入的，必须等页面解析完再量，否则可能读到还没生效的旧值。
+        // 不用 window.load：那张全屏壁纸很大，load 可能被拖很久，面板会迟迟不出现。
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function () { setTimeout(build, 1000); });
+        } else {
+          setTimeout(build, 300);
+        }
       })();
     </script>
 
