@@ -128,38 +128,39 @@
         pointer-events: none;
       }
 
-      /* ====== Safari 26 浏览器 UI 取色探针（真机「黑边」的正解） ======
+      /* ====== Safari 26 浏览器 UI 取色探针（贴边 6px 可见细条） ======
          Safari 26 起，Apple 不再使用 <meta name="theme-color"> 给浏览器界面染色，
          改为**采样页面上某个元素的 background-color** 来决定顶部状态栏 / 底部地址栏的颜色：
            · 默认来源是 <body> 的 background-color；body 没有就退到 <html> 的；
              （Safari 15~18.6 读 theme-color，所以两个都留着。）
-           · 但「贴边 + 至少 80% 宽 + 至少 3px 高」的 fixed / sticky 元素优先于 <body>。
-         本项目 body 是透明的（壁纸由 body::before 铺满），壁纸层又是伪元素，
-         于是 Safari 没有 body 底色可采，只能退到 <html> 的 #0c0f09 ——
-         **那两条看起来像「浏览器没全屏」的近黑色边条就是这么来的**，跟
-         viewport-fit=cover、安全区都无关（真机自检里 env 全是 0 也印证了这点）。
-         解法：放两个只负责「被采样」的探针，一上一下贴着边缘，
-         颜色由 useWallpaperEdge.js 采样壁纸对应边缘后写入 --bg-edge-top / -bottom。
-         规范明确 visibility: hidden 仍在采样范围内，所以它们完全不可见、也不吃点击。
-         桌面浏览器 / Android 上只是两个隐藏空 div，无任何副作用。 */
+           · 「贴边（距顶 4px 内 / 距底 3px 内）+ ≥80% 宽 + ≥3px 高」的 fixed 元素
+             可以被单独采为顶部 / 底部的颜色。
+         ⚠️ 一票否决清单（2026-09-15 真机实测 + grooovinger 2026-02 实验核对）——
+         探针一旦带有下面任一属性，Safari 就**拒绝采样**，退回 html 底色
+         （表现就是上下两条同色，底边接不上壁纸）：
+           visibility:hidden、opacity<1、display:none、z-index 为负、
+           transform/translate/scale/clip/zoom、backdrop-filter。
+         v7 之前的探针正是踩了 visibility:hidden + z-index:-4 两个雷：
+         顶栏颜色其实来自 html 底色兜底，底栏跟着变成顶边色（灰蓝）而不是草绿。
+         所以探针必须是**正常可见、正常层级**的元素——
+         好在它的颜色就是壁纸对应边缘的采样色，贴在壁纸上毫无接缝。
+         非 iOS 环境变量不会被写入，回退 transparent，等于不存在。 */
       .chrome-tint {
         position: fixed;
         left: 0;
-        right: 0;
         width: 100%;
-        height: 6px;              /* 规范要求 ≥ 3px */
-        z-index: -4;              /* 比壁纸层(-2)还低，绝不遮挡任何内容 */
-        visibility: hidden;       /* 不可见，但仍会被 Safari 采样 */
-        pointer-events: none;
-        background-color: var(--app-base);
+        height: 6px;              /* 规范要求 ≥ 3px，grooovinger 实测 6px 最稳 */
+        z-index: 1;               /* 必须非负；1 = 盖过壁纸层(-2/-1)，但低于导航等 UI */
+        pointer-events: none;     /* 已验证不影响采样 */
+        background-color: transparent;
       }
       #chrome-tint-top {
         top: 0;                   /* 规范：距顶 4px 以内 */
-        background-color: var(--bg-edge-top, var(--app-base));
+        background-color: var(--bg-edge-top, transparent);
       }
       #chrome-tint-bottom {
         bottom: 0;                /* 规范：距底 3px 以内 */
-        background-color: var(--bg-edge-bottom, var(--app-base));
+        background-color: var(--bg-edge-bottom, transparent);
       }
 
       /* ====== Welcome — 首次进入的问候层 ======
@@ -583,7 +584,7 @@
           try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v7 · 浏览器 UI 取色'],
+            ['自检版本', 'v8 · 探针可见化（贴边 6px 细条，无隐藏属性）'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
