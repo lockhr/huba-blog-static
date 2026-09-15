@@ -534,20 +534,34 @@
           var rootCS = getComputedStyle(document.documentElement);
           var vpMeta = document.querySelector('meta[name="viewport"]');
           var gap = window.screen.height - window.innerHeight;
+          var safeTop = parseFloat(ps.paddingTop) || 0;
+          var safeBottom = parseFloat(ps.paddingBottom) || 0;
+          var standalone =
+            window.matchMedia('(display-mode: standalone)').matches ||
+            navigator.standalone === true;
+          var inFrame = false;
+          try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v4 · 安全区诊断'],
+            ['自检版本', 'v5 · 安全区诊断'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
             ['CSS --safe-top', rootCS.getPropertyValue('--safe-top').trim() || '(CSS 是旧版)'],
+            [
+              '安全区是否可用',
+              safeTop > 0 || safeBottom > 0
+                ? '可用'
+                : '不可用 ✕ 浏览器把网页缩进了安全区，顶部/底部那两条画不到',
+            ],
             ['innerHeight', window.innerHeight + 'px'],
             ['screen.height', window.screen.height + 'px'],
-            ['高度差', gap + 'px'],
+            ['高度差', gap + 'px（就是被浏览器占掉的）'],
             ['innerWidth', window.innerWidth + 'px'],
             ['screen.width', window.screen.width + 'px'],
             ['dpr', String(window.devicePixelRatio)],
-            ['独立模式', window.matchMedia('(display-mode: standalone)').matches ? '是' : '否'],
+            ['独立模式', standalone ? '是' : '否'],
+            ['在 iframe 里', inFrame ? '是 ✕ 这会让安全区失效' : '否'],
             ['UA', navigator.userAgent],
           ];
 
@@ -566,6 +580,13 @@
           rows.forEach(function (r) {
             html += '<div><span style="opacity:.55">' + r[0] + '：</span>' + r[1] + '</div>';
           });
+          if (!standalone) {
+            html +=
+              '<div style="margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.22);line-height:1.7">' +
+              '你现在看到的上、下深色条，是<b>浏览器自己的界面</b>（状态栏 + 地址栏），网页画不进去。<br>' +
+              '想要真全屏：<b>用 Safari 打开本页 → 分享 → 添加到主屏幕</b>，再从桌面图标进去。' +
+              '</div>';
+          }
           box.innerHTML = html;
           document.body.appendChild(box);
           box.querySelector('[data-diag-close]').onclick = function () {
