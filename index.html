@@ -5,7 +5,12 @@
     <link rel="icon" href="/huba-blog-static/images/icons/白猫.png" />
     <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-preview.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260717.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport-fit=cover：让页面铺满 iPhone 刘海/灵动岛与底部 Home 条区域。
+         缺了它，安全区会被浏览器用页面底色（--app-base 深色）填充，
+         表现就是上下各有一条深色边条、壁纸铺不满。
+         注意：开启后内容会顶到安全区下面，必须配合 global.css 里的
+         --safe-top / --safe-bottom 给固定元素和页面容器留白。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="胡巴的个人博客 — 河北金融学院区块链工程本科在读，记录计算机基础、Java 后端与区块链的学习过程、实践经历和问题复盘" />
     <meta name="theme-color" content="#0c0f09" />
     <meta name="color-scheme" content="dark" />
@@ -296,9 +301,9 @@
         background-color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-YgsbGeRJ.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-CDpZJSrD.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-dgfq4bdT.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-yEgU1R8U.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
