@@ -6,35 +6,85 @@
     <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-preview.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260717.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="小白的个人博客 — 记录白阿姨的前端/后端学习、生活碎片与心情日记" />
-    <meta name="theme-color" content="#7b805f" />
+    <meta name="description" content="胡瑞的个人博客 — 河北金融学院区块链工程本科在读，记录计算机基础、Java 后端与区块链的学习过程、实践经历和问题复盘" />
+    <meta name="theme-color" content="#0c0f09" />
     <meta name="color-scheme" content="dark" />
-    <meta property="og:title" content="胡巴的博客" />
-    <meta property="og:description" content="记录前端/后端学习、生活碎片与心情日记" />
+    <meta property="og:title" content="胡瑞的博客" />
+    <meta property="og:description" content="记录学习过程、实践经历与问题复盘" />
     <meta property="og:type" content="website" />
-    <title>小白的博客</title>
-    <!-- 在页面渲染前立即设背景 -->
+    <title>胡瑞的博客</title>
+
+    <!-- 在首次绘制前定好背景与欢迎层状态，杜绝纯色闪烁 -->
     <script>
-      (function(){
-        var src='/huba-blog-static/images/wallpaper-20260717.png';
-        localStorage.setItem('bgImage', src);
-        document.documentElement.style.setProperty('--bg-image',"url('"+src+"')");
-        // 预加载图片
-        var link=document.createElement('link');
-        link.rel='preload';link.as='image';link.href=src;
-        document.head.appendChild(link);
+      (function () {
+        var root = document.documentElement;
+        var fallbackPreview = '/huba-blog-static/images/wallpaper-preview.webp';
+
+        // query-string 调试开关：?welcome=1 强制重播，?nowelcome=1 强制跳过
+        var qs = location.search;
+        var forceWelcome = /[?&]welcome=1/.test(qs);
+        var skipWelcome = /[?&]nowelcome=1/.test(qs);
+
+        // 只负责“预览层”，--bg-image 由 store 独占，避免旧壁纸覆盖新配置。
+        // 分两层：--bg-preview 是本地 6KB 兜底图（永远有效，永远垫底），
+        // --bg-preview-custom 是缓存的自定义壁纸（可能加载失败/过慢，失败时露出兜底图）。
+        var cached = null;
+        try { cached = localStorage.getItem('bgImage'); } catch (e) {}
+        root.style.setProperty('--bg-preview', "url('" + fallbackPreview + "')");
+        if (cached) root.style.setProperty('--bg-preview-custom', "url('" + cached + "')");
+
+        // 欢迎层是否展示：用 localStorage（跨标签页/刷新都记住），在 <html> 上打标记，
+        // 首帧就不渲染，避免底部脚本执行前的闪现
+        try {
+          if (forceWelcome) localStorage.removeItem('welcome_seen');
+          if (skipWelcome || localStorage.getItem('welcome_seen')) {
+            root.classList.add('welcome-seen');
+          }
+        } catch (e) {}
+
+        // 预热两张预览图（有自定义壁纸时两张都拉），让它们尽量赶在首次绘制前就位。
+        // 注意：这里不再对外暴露「就绪 Promise」，也不再让任何层等它淡入 ——
+        // 淡入会破坏毛玻璃（见上面 body::before 的说明）。
+        [fallbackPreview, cached].forEach(function (u) {
+          if (!u) return;
+          var link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.href = u;
+          document.head.appendChild(link);
+          var warm = new Image();
+          warm.src = u;
+        });
       })();
     </script>
+
     <style>
-      /* ====== 关键背景层 — JS 加载前就有，杜绝空白期 ====== */
+      :root {
+        /* 深色兜底 —— 取代原先的橄榄绿纯色，刷新时不会出现整屏“绿布” */
+        --app-base: #0c0f09;
+        --bg-preview: url('/huba-blog-static/images/wallpaper-preview.webp');
+        --bg-preview-custom: none;
+      }
+
+      /* ====== 背景层 — 三层：当前壁纸在上，缓存的自定义壁纸居中，6KB 本地预览图垫底 ======
+         中间层加载失败/过慢时露出垫底层，欢迎层/加载幕永远不会变成纯黑。 */
       body::before {
         content: "";
         position: fixed;
         inset: 0;
         z-index: -2;
-        background: var(--bg-image, url('/huba-blog-static/images/wallpaper-20260717.png')) no-repeat center center;
-        background-size: cover;
-        background-color: #7b805f;
+        background-color: var(--app-base);
+        background-image:
+          var(--bg-image, none),
+          var(--bg-preview-custom, none),
+          var(--bg-preview, none);
+        background-size: cover, cover, cover;
+        background-position: center, center, center;
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        /* 关键：这一层绝不能淡入。
+           毛玻璃（backdrop-filter）是“采样身后的背景”，这个背景就是本层。
+           一旦本层 opacity < 1 地淡入，玻璃采到的就是一张正在变暗的图，
+           表现就是“玻璃先深色、再变正常白色”。所以壁纸永远是满不透明度。 */
         pointer-events: none;
       }
       body::after {
@@ -52,184 +102,203 @@
         pointer-events: none;
       }
 
-      /* ====== Welcome — 轻量预览首屏 + 高清壁纸淡入 ====== */
+      /* ====== Welcome — 首次进入的问候层 ======
+         设计要点：它不是「另一个世界」，而是**同一张壁纸的虚焦版**。
+         揭开时只做一次「对焦」动作（虚焦归零 + 遮罩掀开），不换场景、不换色调。 */
       #apple-welcome {
-        position: fixed; inset: 0; z-index: 99999;
-        display: flex; flex-direction: column;
-        align-items: center; justify-content: center;
-        gap: 36px;
-        background: #7b805f;
-        transition: opacity 0.35s ease, visibility 0.35s ease;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 34px;
+        background-color: var(--app-base);
+        transition: opacity 0.46s cubic-bezier(0.22, 1, 0.36, 1),
+          visibility 0.46s cubic-bezier(0.22, 1, 0.36, 1);
         overflow: hidden;
         isolation: isolate;
       }
-      /* 6 KB 预览图立即显示，避免首次访问等待高清图时出现深色底 */
-      #apple-welcome::before {
-        content: ""; position: absolute;
-        inset: -16px; z-index: 0;
-        background: url('/huba-blog-static/images/wallpaper-preview.webp') center/cover no-repeat;
-        filter: blur(8px);
-        transform: scale(1.035);
-        pointer-events: none;
+      /* 已访问过 → 首帧就不渲染，不再出现遮罩过程 */
+      html.welcome-seen #apple-welcome {
+        display: none;
       }
-      #apple-welcome .welcome-hd-bg {
+
+      /* 同一张壁纸做底，只做虚焦 + 轻微压暗（缓存壁纸失败时露出本地兜底图） */
+      .welcome-bg {
         position: absolute;
-        inset: -16px;
+        inset: -8%;
         z-index: 0;
-        background: var(--welcome-bg, none) center/cover no-repeat;
-        filter: blur(8px);
-        transform: scale(1.035);
-        opacity: 0;
-        transition: opacity 0.55s ease;
+        background-image:
+          var(--bg-preview-custom, none),
+          var(--bg-preview, none);
+        background-size: cover, cover;
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+        filter: blur(26px) saturate(0.95) brightness(0.8);
+        transform: scale(1.06);
+        transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: filter, transform;
         pointer-events: none;
       }
-      #apple-welcome.bg-loaded .welcome-hd-bg { opacity: 1; }
-      /* 暗角 */
-      #apple-welcome::after {
-        content: ""; position: absolute; inset: 0; z-index: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.16) 100%);
-        pointer-events: none;
-      }
-      .welcome-petals {
+      /* 一层轻压暗，保证文字可读；刻意不重，让场景仍然看得见 */
+      .welcome-scrim {
         position: absolute;
         inset: 0;
-        z-index: 1;
-        overflow: hidden;
+        z-index: 0;
+        background: radial-gradient(
+          ellipse 95% 75% at 50% 45%,
+          rgba(6, 9, 7, 0.16) 0%,
+          rgba(6, 9, 7, 0.58) 100%
+        );
+        transition: opacity 0.5s ease;
         pointer-events: none;
       }
-      .welcome-petals span {
-        position: absolute;
-        top: -12%;
-        left: var(--x);
-        width: var(--size);
-        aspect-ratio: 1.65;
-        border-radius: 85% 18% 80% 22%;
-        background: rgba(255, 250, 226, 0.72);
-        box-shadow: 0 0 12px rgba(255, 240, 190, 0.42);
-        opacity: 0;
-        animation: welcomePetalFall var(--duration) linear var(--delay) infinite;
-        will-change: transform, opacity;
+      /* 进入 = 对焦：虚焦归零、遮罩掀开 */
+      #apple-welcome.done .welcome-bg {
+        filter: blur(0px) saturate(1) brightness(1);
+        transform: scale(1);
       }
-      @keyframes welcomePetalFall {
-        0% {
-          opacity: 0;
-          transform: translate3d(0, -8vh, 0) rotate(0deg);
-        }
-        14% { opacity: 0.68; }
-        76% { opacity: 0.42; }
-        100% {
-          opacity: 0;
-          transform: translate3d(var(--drift), 116vh, 0) rotate(300deg);
-        }
-      }
-      #apple-welcome h1 {
-        position: relative; z-index: 2;
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-          "PingFang SC", "Helvetica Neue", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-        font-size: clamp(3.5rem, 10vw, 7rem);
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        background: linear-gradient(
-          180deg,
-          rgba(255,255,255,0.9) 0%,
-          rgba(255,255,255,0.55) 35%,
-          rgba(255,255,255,0.35) 60%,
-          rgba(255,255,255,0.55) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 1px 3px rgba(255,255,255,0.25);
-        animation: glassFloat 5s ease-in-out infinite;
-        transition: opacity 0.4s ease;
-        will-change: opacity;
-      }
-      @keyframes glassFloat {
-        0%, 100% { transform: translateY(0); }
-        25%      { transform: translateY(-10px); }
-        50%      { transform: translateY(-4px); }
-        75%      { transform: translateY(-8px); }
-      }
-      #apple-welcome h1.fade {
+      #apple-welcome.done .welcome-scrim {
         opacity: 0;
       }
 
-      /* 玻璃按钮 — iOS 26 纯透明 */
+      /* 问候语 —— 只有一个词，没有粒子、没有进度点、没有呼吸动画 */
+      .welcome-core {
+        position: relative;
+        z-index: 2;
+      }
+
+      #welcome-word {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+          "PingFang SC", "Helvetica Neue", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+        font-size: clamp(2.6rem, 8vw, 4.6rem);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: rgba(255, 255, 255, 0.97);
+        text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.35);
+        transition: opacity 0.3s ease, transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.3s ease;
+        will-change: opacity, transform, filter;
+      }
+      #welcome-word.out {
+        opacity: 0;
+        transform: translateY(-14px);
+        filter: blur(8px);
+      }
+      #welcome-word.in {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(8px);
+      }
+      #welcome-word.instant {
+        transition: none;
+      }
+      /* 揭开时文字顺着「对焦」的方向散开 */
+      #apple-welcome.done #welcome-word {
+        opacity: 0;
+        transform: translateY(-14px) scale(1.02);
+        filter: blur(8px);
+      }
+
+      /* 玻璃按钮 —— 去掉脉冲呼吸，只保留一次淡入 */
       #welcome-btn {
-        position: relative; z-index: 2;
-        opacity: 0; transform: translateY(16px);
-        transition: opacity 0.8s ease 0.35s,
-                    transform 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.35s,
-                    background 0.35s ease,
-                    border-color 0.35s ease,
-                    box-shadow 0.35s ease;
-        padding: 16px 64px;
-        background: rgba(255,255,255,0.16);
-        border: 1px solid rgba(255,255,255,0.40);
+        position: relative;
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+          background 0.3s ease, border-color 0.3s ease;
+        padding: 13px 52px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.38);
         border-radius: 40px;
-        color: rgba(255,255,255,0.9);
-        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.94);
+        font-size: 1.06rem;
         font-weight: 500;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
         cursor: pointer;
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
           "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
         pointer-events: none;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
       }
       #welcome-btn.show {
-        opacity: 1; transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
         pointer-events: auto;
-        animation: btnPulse 3s ease-in-out 1.2s infinite;
-      }
-      @keyframes btnPulse {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0),
-                              0 1px 0 rgba(255,255,255,0.5) inset; }
-        50%      { box-shadow: 0 0 50px 8px rgba(255,255,255,0.08),
-                              0 1px 0 rgba(255,255,255,0.6) inset; }
       }
       #welcome-btn:hover {
-        background: rgba(255,255,255,0.14);
-        border-color: rgba(255,255,255,0.55);
-        box-shadow: 0 0 60px rgba(255,255,255,0.10),
-                    0 1px 0 rgba(255,255,255,0.5) inset;
-        transform: translateY(-3px);
-        animation: none;
+        background: rgba(255, 255, 255, 0.24);
+        border-color: rgba(255, 255, 255, 0.58);
+        transform: translateY(-2px);
       }
       #welcome-btn:active {
-        transform: scale(0.95);
+        transform: scale(0.97);
         transition: transform 0.12s ease;
-        background: rgba(255,255,255,0.18);
+      }
+      #welcome-btn:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.75);
+        outline-offset: 3px;
+      }
+
+      .welcome-hint {
+        position: relative;
+        z-index: 2;
+        margin: -18px 0 0;
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        color: rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+          "Microsoft YaHei", sans-serif;
+      }
+      .welcome-hint.show {
+        opacity: 1;
       }
 
       #apple-welcome.done {
-        opacity: 0; visibility: hidden; pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .welcome-petals,
-        #apple-welcome h1,
-        #welcome-btn.show {
-          animation: none;
+        #welcome-word,
+        .welcome-bg,
+        .welcome-scrim,
+        .welcome-hint,
+        #welcome-btn {
+          transition-duration: 0.01s;
         }
       }
 
-      /* 取壁纸主色做兜底，图片不可用时也不会闪成深色 */
+      /* ====== 加载幕已移除 ======
+         曾经有一层 #boot-curtain（同一张壁纸 blur(26px) + 压暗 + 径向遮罩）
+         用来遮 FOUC。但它每次打开/刷新都会先糊一层深色，观感很差，
+         而且一旦揭幕逻辑失败就整屏卡住。现已整层删除：
+         首屏不再有任何全屏遮罩，标题的可见性由 html.hero-in 单独控制
+         （见 global.css 的首屏文字进场），不会出现"先黑后白"。 */
+
+      /* ====== 全局首屏 ======
+         #app 刻意「不做」整体淡入：任何祖先元素上的 opacity < 1 都会让
+         后代的 backdrop-filter 立刻塌成深色，松手才变回正常白色。
+         首屏的设计感由「逐元素的错落入场」承担（导航 / 标题 / 简介 / 按钮）。 */
+      html {
+        background-color: var(--app-base);
+      }
       body {
-        background-color: #7b805f;
-      }
-      /* 全局：页面渲染完成前不显示，杜绝半成品状态 */
-      #app {
-        opacity: 0;
-      }
-      #app.ready {
-        opacity: 1;
-        transition: opacity 0.5s ease;
+        background-color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-CDstOj25.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-R6RxBov2.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CifYuUuT.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-BWqjQnSZ.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -261,56 +330,48 @@
         </filter>
       </defs>
     </svg>
-    <!-- Welcome -->
+
+    <!-- Welcome — 同一张壁纸的虚焦版，揭开时只做一次「对焦」 -->
     <div id="apple-welcome">
-      <div class="welcome-hd-bg" aria-hidden="true"></div>
-      <div class="welcome-petals" aria-hidden="true">
-        <span style="--x: 9%; --size: 9px; --duration: 13s; --delay: -4s; --drift: 42px"></span>
-        <span style="--x: 23%; --size: 13px; --duration: 16s; --delay: -11s; --drift: -36px"></span>
-        <span style="--x: 38%; --size: 8px; --duration: 12s; --delay: -7s; --drift: 28px"></span>
-        <span style="--x: 56%; --size: 11px; --duration: 15s; --delay: -2s; --drift: -48px"></span>
-        <span style="--x: 71%; --size: 7px; --duration: 11s; --delay: -9s; --drift: 34px"></span>
-        <span style="--x: 84%; --size: 12px; --duration: 17s; --delay: -6s; --drift: -30px"></span>
-        <span style="--x: 94%; --size: 8px; --duration: 14s; --delay: -13s; --drift: 24px"></span>
+      <div class="welcome-bg" aria-hidden="true"></div>
+      <div class="welcome-scrim" aria-hidden="true"></div>
+
+      <div class="welcome-core">
+        <h1 id="welcome-word">你好</h1>
       </div>
-      <h1 id="welcome-word">💎 你好</h1>
-      <button id="welcome-btn">进入</button>
+
+      <button id="welcome-btn" type="button">进入</button>
+      <p class="welcome-hint">或按 Enter</p>
     </div>
 
     <div id="app"></div>
 
     <script>
-      (function() {
-        var seen = sessionStorage.getItem('welcome_seen');
+      (function () {
+        var root = document.documentElement;
+
+        // 已经看过问候页 → 完全跳过，连定时器都不启动
+        if (root.classList.contains('welcome-seen')) return;
+        try { localStorage.setItem('welcome_seen', '1'); } catch (e) {}
+
         var wrap = document.getElementById('apple-welcome');
-        if (seen) {
-          wrap.classList.add('done');
-          wrap.setAttribute('aria-hidden', 'true');
-          wrap.style.display = 'none';
-          return;
-        }
-        sessionStorage.setItem('welcome_seen', '1');
-
-        var bgSrc = localStorage.getItem('bgImage') || '/huba-blog-static/images/wallpaper-20260717.png';
-        var img = new Image();
-        img.onload = function() {
-          wrap.style.setProperty('--welcome-bg', "url('"+bgSrc+"')");
-          wrap.classList.add('bg-loaded');
-        };
-        img.src = bgSrc;
-        if (img.complete) {
-          wrap.style.setProperty('--welcome-bg', "url('"+bgSrc+"')");
-          wrap.classList.add('bg-loaded');
-        }
-
-        var words = ['💎 你好', '🫧 Welcome', '🧊 Bienvenue', '🫙 ようこそ', '🌊 환영합니다', '🐾 小白的博客'];
         var el = document.getElementById('welcome-word');
         var btn = document.getElementById('welcome-btn');
-        var i = 0;
-        var DWELL = 800;
-        var FADE = 400;
+        var hint = document.querySelector('.welcome-hint');
+
+        // 只有两句：一次招呼 + 站名。不再堆 5 种语言，也不再有进度点。
+        var words = ['你好', '胡瑞的博客'];
+        var DWELL = 520;   // 每句停留
+        var FADE = 280;    // 交叉溶解时长
+        var AUTO_ENTER = 800; // 说完自动揭开，避免“卡住”
+
+        var step = 0;
         var timers = [];
         var dismissed = false;
+
+        function push(fn, ms) {
+          timers.push(setTimeout(fn, ms));
+        }
 
         function enter() {
           if (dismissed) return;
@@ -320,50 +381,108 @@
           wrap.classList.add('done');
           wrap.setAttribute('aria-hidden', 'true');
           wrap.style.pointerEvents = 'none';
-          timers.push(setTimeout(function() {
-            if (dismissed) wrap.style.display = 'none';
-          }, 450));
+          push(function () {
+            wrap.style.display = 'none';
+          }, 520);
+          // 揭开的同时让首页 hero 文字错落进场（等 webfont 就绪，保证
+          // 露出来的一开始就是白色渐变的最终样式）
+          revealHero(280);
           // 解锁音频自动播放
-          var audio = new Audio();
-          audio.volume = 0;
-          audio.play().then(function(){ audio.pause(); }).catch(function(){});
+          try {
+            var audio = new Audio();
+            audio.volume = 0;
+            audio.play().then(function () { audio.pause(); }).catch(function () {});
+          } catch (e) {}
         }
 
-        function showButton() {
-          btn.classList.add('show');
-          btn.addEventListener('click', enter);
+        // hero 文字进场开关：尽量等 webfont 就绪（最多 1.2s），避免渐变标题先以深色渲染
+        var fontsSettled = Promise.race([
+          (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve(),
+          new Promise(function (r) { setTimeout(r, 1200); })
+        ]);
+        function revealHero(delay) {
+          push(function () {
+            fontsSettled.then(function () { root.classList.add('hero-in'); });
+          }, delay || 0);
         }
 
         function cycle() {
           if (dismissed) return;
-          i++;
-          if (i >= words.length) return;
-          if (i === 2) showButton();
+          step++;
+          if (step >= words.length) {
+            // 说完了 → 自动揭开
+            push(enter, AUTO_ENTER);
+            return;
+          }
 
-          // rAF 确保浏览器在下一帧起播过渡，不丢帧
-          requestAnimationFrame(() => {
-            el.classList.add('fade');
-          });
-
-          timers.push(setTimeout(function() {
+          el.classList.add('out');
+          push(function () {
             if (dismissed) return;
-            el.textContent = words[i];
-            requestAnimationFrame(() => {
-              el.classList.remove('fade');
+            el.textContent = words[step];
+            // 无过渡落到“入场起始位”，再回到常态
+            el.classList.add('instant', 'in');
+            el.classList.remove('out');
+            void el.offsetWidth;
+            el.classList.remove('instant');
+            requestAnimationFrame(function () {
+              if (dismissed) return;
+              el.classList.remove('in');
             });
-            timers.push(setTimeout(cycle, DWELL));
-          }, FADE));
+            push(cycle, DWELL);
+          }, FADE);
         }
 
-        // 首词停留后开始轮播
-        timers.push(setTimeout(cycle, 800));
+        push(cycle, DWELL);
+        push(function () {
+          if (dismissed) return;
+          btn.classList.add('show');
+          hint.classList.add('show');
+        }, 260);
 
-        // 键盘回车也可进入（按钮可见后）
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' && !dismissed) enter();
+        btn.addEventListener('click', enter);
+
+        document.addEventListener('keydown', function (e) {
+          if (dismissed) return;
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+            e.preventDefault();
+            enter();
+          }
         });
+
+        // 离开时不留下悬挂的定时器
+        window.addEventListener('pagehide', function () {
+          dismissed = true;
+          timers.forEach(clearTimeout);
+        });
+
+        // ===== 硬兜底：无论轮播定时器是否被节流/挂起，欢迎层最多停留 6s =====
+        window.addEventListener('load', function () {
+          setTimeout(function () { if (!dismissed) enter(); }, 3500);
+        });
+        setTimeout(function () { if (!dismissed) enter(); }, 6000);
       })();
     </script>
-
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        // 加载幕已整层删除（见上方注释）。这段现在只做一件事：
+        // 给「刷新/回访」路径打上首屏文字进场开关 html.hero-in。
+        // 首次访问由欢迎层在揭幕时自己打上，这里直接跳过。
+        if (!root.classList.contains('welcome-seen')) return;
+
+        // 等 webfont 就绪再放行，避免渐变标题先以深色渲染（最多等 1.2s，慢网络不拖久）。
+        // 放在内联脚本里而不是等 main.js：模块包要下载+执行，会让首屏文字多藏一会儿。
+        var fontsSettled = Promise.race([
+          (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve(),
+          new Promise(function (r) { setTimeout(r, 1200); })
+        ]);
+        fontsSettled.then(function () { root.classList.add('hero-in'); });
+
+        // 硬兜底：module 也挂了也不会一直藏着（global.css 里同源规则 + main.js 的 3s 兜底）
+        setTimeout(function () { root.classList.add('hero-in'); }, 1800);
+      })();
+    </script>
+
   </body>
 </html>
