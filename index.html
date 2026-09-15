@@ -84,7 +84,7 @@
       :root {
         /* 深色兜底 —— 取代原先的橄榄绿纯色，刷新时不会出现整屏“绿布” */
         --app-base: #0c0f09;
-        --bg-preview: url('/huba-blog-static/images/wallpaper-preview.webp');
+        --bg-preview: url('/huba-blog-static/assets/wallpaper-preview-7qBb0T-9.webp');
         --bg-preview-custom: none;
       }
 
@@ -101,12 +101,27 @@
            兜底色仍在 html 的 --app-base 上，视觉无变化。 */
         background-color: transparent;
         background-image:
+          /* ===== 顶部 / 底部「接片」渐变 =====
+             浏览器 UI（状态栏、地址栏）只能是一条纯色，而壁纸有纹理，
+             直接相接必然出现硬边。这里在壁纸上方垫一层同色渐变：
+             最上方 = 壁纸边缘的**原色**（--bg-edge-*-raw，只有 iOS 会写入），
+             往下 100 多 px 淡出 → 壁纸纹理自然浮现，接缝消失。
+             为什么用 raw（未压暗）而不是 --bg-edge-*：本层会被 body::after 再压暗
+             0.78 / 0.85，用原色算下来正好等于浏览器 UI 的采样色。
+             非 iOS 环境下变量为空 → transparent，等于不存在，桌面零影响。 */
+          linear-gradient(180deg, var(--bg-edge-top-raw, transparent), transparent),
+          linear-gradient(0deg, var(--bg-edge-bottom-raw, transparent), transparent),
           var(--bg-image, none),
           var(--bg-preview-custom, none),
           var(--bg-preview, none);
-        background-size: cover, cover, cover;
-        background-position: center, center, center;
-        background-repeat: no-repeat, no-repeat, no-repeat;
+        background-size:
+          100% var(--edge-fade-top, 128px),
+          100% var(--edge-fade-bottom, 132px),
+          cover,
+          cover,
+          cover;
+        background-position: center top, center bottom, center, center, center;
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
         /* 关键：这一层绝不能淡入。
            毛玻璃（backdrop-filter）是“采样身后的背景”，这个背景就是本层。
            一旦本层 opacity < 1 地淡入，玻璃采到的就是一张正在变暗的图，
@@ -357,9 +372,9 @@
         background-color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-CxkqdC-2.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-Bmq2a3j-.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-COBLyDQK.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-C0OncZbe.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -584,7 +599,7 @@
           try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v8 · 探针可见化（贴边 6px 细条，无隐藏属性）'],
+            ['自检版本', 'v9 · 探针可见化 + 上下接片渐变'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
@@ -604,12 +619,20 @@
             ['独立模式', standalone ? '是' : '否'],
             ['在 iframe 里', inFrame ? '是 ✕ 这会让安全区失效' : '否'],
             [
-              '取色探针 · 顶',
+              '取色探针 · 顶（UI 用色）',
               rootCS.getPropertyValue('--bg-edge-top').trim() || '(还没算出来)',
             ],
             [
-              '取色探针 · 底',
+              '取色探针 · 底（UI 用色）',
               rootCS.getPropertyValue('--bg-edge-bottom').trim() || '(还没算出来)',
+            ],
+            [
+              '接片渐变 · 顶原始色',
+              rootCS.getPropertyValue('--bg-edge-top-raw').trim() || '(还没算出来)',
+            ],
+            [
+              '接片渐变 · 底原始色',
+              rootCS.getPropertyValue('--bg-edge-bottom-raw').trim() || '(还没算出来)',
             ],
             [
               'theme-color',
