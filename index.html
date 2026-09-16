@@ -84,7 +84,7 @@
       :root {
         /* 深色兜底 —— 取代原先的橄榄绿纯色，刷新时不会出现整屏“绿布” */
         --app-base: #0c0f09;
-        --bg-preview: url('/huba-blog-static/assets/wallpaper-preview-z8IzRqJv.webp');
+        --bg-preview: url('/huba-blog-static/images/wallpaper-preview.webp');
         --bg-preview-custom: none;
       }
 
@@ -372,9 +372,9 @@
         background-color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-Bz9SGar0.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index--2gnLHOC.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-BBEznaIA.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-D5chhkTI.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -603,7 +603,7 @@
           try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v11 · 边缘纯化 + 滚动融合层'],
+            ['自检版本', 'v12 · 横屏刚性旋转 + 朝向重采样'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
@@ -641,6 +641,33 @@
             [
               'theme-color',
               (document.querySelector('meta[name="theme-color"]') || {}).content || '(无)',
+            ],
+            [
+              '屏幕朝向 / 旋转模式',
+              ((screen.orientation && screen.orientation.type) || '(不支持)') +
+                ' · ' +
+                (document.documentElement.classList.contains('bg-rot-off')
+                  ? '已关闭（?norot=1）'
+                  : document.documentElement.classList.contains('bg-rot-b')
+                    ? 'B（+90°）'
+                    : 'A（-90°）'),
+            ],
+            [
+              '壁纸层尺寸',
+              (function () {
+                try {
+                  var b = getComputedStyle(document.body, '::before');
+                  return b.width + ' × ' + b.height;
+                } catch (e) { return '(读取失败)'; }
+              })(),
+            ],
+            [
+              '壁纸层 transform',
+              (function () {
+                try {
+                  return getComputedStyle(document.body, '::before').transform;
+                } catch (e) { return '(读取失败)'; }
+              })(),
             ],
             ['UA', navigator.userAgent],
           ];
