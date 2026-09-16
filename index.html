@@ -372,9 +372,9 @@
         background-color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-CIGMPTHE.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-Bz9SGar0.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CEcuapBo.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-BBEznaIA.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -425,6 +425,10 @@
     <!-- Safari 26 的浏览器 UI 取色探针（不可见，只负责被采样）—— 见 head 里的说明 -->
     <div id="chrome-tint-top" class="chrome-tint" aria-hidden="true"></div>
     <div id="chrome-tint-bottom" class="chrome-tint" aria-hidden="true"></div>
+
+    <!-- 边缘融合层（v11）：滚动时把内容自然融进浏览器 UI 的颜色 —— 见 global.css 的 .chrome-scrim -->
+    <div id="chrome-scrim-top" class="chrome-scrim" aria-hidden="true"></div>
+    <div id="chrome-scrim-bottom" class="chrome-scrim" aria-hidden="true"></div>
 
     <script>
       (function () {
@@ -599,7 +603,7 @@
           try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v10 · 壁纸边缘纯化 + 接片收口'],
+            ['自检版本', 'v11 · 边缘纯化 + 滚动融合层'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
@@ -679,6 +683,24 @@
         } else {
           setTimeout(build, 300);
         }
+      })();
+    </script>
+
+    <!-- ===== 调试钩子：?scroll=N =====
+         打开后自动滚到 N px。用来截图验证「滚动之后」的观感
+         （边缘融合层是否把内容融进浏览器 UI 的颜色）。
+         多次尝试：SPA 路由/首屏动画都可能把滚动位置重置回顶部。
+         正常访问不带参数时完全无副作用。 -->
+    <script>
+      (function () {
+        var m = /[?&]scroll=(\d+)/.exec(location.search);
+        if (!m) return;
+        var target = parseInt(m[1], 10);
+        function go() {
+          window.scrollTo(0, target);
+        }
+        [400, 1200, 2500, 4000].forEach(function (t) { setTimeout(go, t); });
+        window.addEventListener('load', go);
       })();
     </script>
 
