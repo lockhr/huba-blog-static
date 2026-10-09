@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <title>壁纸真机对照预览</title>
+  <style>
+    :root { color-scheme: dark; background: #14243b; color: #f4f7ff; font: 17px/1.7 system-ui; }
+    body { max-width: 620px; margin: auto; padding: max(28px, env(safe-area-inset-top)) 24px max(32px, env(safe-area-inset-bottom)); }
+    h1 { font-size: 28px; } h2 { font-size: 19px; margin: 0 0 6px; }
+    a { display: block; color: inherit; text-decoration: none; background: #243b59; padding: 20px; margin: 16px 0; border: 1px solid #49637f; border-radius: 16px; }
+    a:focus-visible { outline: 3px solid #a5dfff; outline-offset: 4px; }
+    p { margin: 8px 0; } small { color: #c1d1e5; }
+  </style>
+</head>
+<body>
+  <h1>壁纸真机对照预览</h1>
+  <p>用 iPhone 的 Safari 打开。各版沿用原壁纸；现在增加透明网页底色对照，检查底栏是否还被染成整块深蓝。</p>
+  <a href="./?wallpaperPreview=baseline&amp;nowelcome=1"><h2>① 当前版本</h2><small>保留现有纯色取色条，作为对照。</small></a>
+  <a href="./?wallpaperPreview=unbridged&amp;nowelcome=1"><h2>② 实验一：移除取色条</h2><small>不再向 Safari 提供上下纯色条，停止动态边缘取色；其他布局不变。</small></a>
+  <a href="./?wallpaperPreview=transparent&amp;nowelcome=1"><h2>③ 实验三：透明底色，保留原壁纸层</h2><small>网页 html/body 底色透明，移除取色条，保留原来的固定壁纸层。</small></a>
+  <a href="./?wallpaperPreview=root&amp;nowelcome=1"><h2>④ 实验四：透明底色 + 页面根背景</h2><small>网页底色透明，壁纸改由页面根背景绘制，不使用固定伪元素或背景位移。</small></a>
+  <p>检查：首屏 → 上下滚动 → 地址栏展开/收起 → 页面底部回弹 → 横竖屏 → 返回页面。</p>
+  <p>用浏览器返回可切换版本；每页底部也有切换入口和本机验收信息。这里没有绘制假的 Safari 工具栏，所见就是浏览器实际表现。</p>
+  <p><small>这页只作真机对照。确认背景方式后，再调整小猫焦点和加载前后的构图。</small></p>
+</body>
+</html>
