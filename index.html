@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/huba-blog-static/images/icons/app-icon-180.png" />
 
     <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-preview.webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260916.png" />
+    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260916.webp" type="image/webp" />
     <!-- viewport-fit=cover：让页面铺满 iPhone 刘海/灵动岛与底部 Home 条区域。
          缺了它，安全区会被浏览器用页面底色（--app-base 深色）填充，
          表现就是上下各有一条深色边条、壁纸铺不满。
@@ -84,6 +84,8 @@
       :root {
         /* 深色兜底 —— 取代原先的橄榄绿纯色，刷新时不会出现整屏“绿布” */
         --app-base: #0c0f09;
+        --safari-top-color: #0c0f09;
+        --safari-bottom-color: #0c0f09;
         --bg-preview: url('/huba-blog-static/images/wallpaper-preview.webp');
         --bg-preview-custom: none;
       }
@@ -94,7 +96,7 @@
         content: "";
         position: fixed;
         inset: 0;
-        z-index: -2;
+        z-index: 0;
         /* 刻意不给底色：Safari 26 会拿贴边 fixed 元素的 background-color 给浏览器 UI
            上色，本层铺满视口、上下都贴边，是个天然候选；但它只能有一个颜色，
            没法同时匹配壁纸顶边和底边，所以让它退出竞争（颜色交给 .chrome-tint 探针）。
@@ -132,7 +134,7 @@
         content: "";
         position: fixed;
         inset: 0;
-        z-index: -1;
+        z-index: 0;
         background: linear-gradient(
           180deg,
           rgba(0, 0, 0, 0.16) 0%,
@@ -366,15 +368,18 @@
          后代的 backdrop-filter 立刻塌成深色，松手才变回正常白色。
          首屏的设计感由「逐元素的错落入场」承担（导航 / 标题 / 简介 / 按钮）。 */
       html {
-        background-color: var(--app-base);
+        background-color: var(--safari-top-color, var(--app-base));
       }
       body {
-        background-color: transparent;
+        background-color: var(--safari-top-color, var(--app-base));
+      }
+      #app {
+        position: relative;
+        z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-BiUN0-HB.js"></script>
-    <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/element-plus-CGZCb7mi.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-C34d9v5h.css">
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-CcmA02ae.js"></script>
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CL8Jx3fy.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -422,7 +427,7 @@
 
     <div id="app"></div>
 
-    <!-- Safari 26 的浏览器 UI 取色探针（不可见，只负责被采样）—— 见 head 里的说明 -->
+    <!-- Safari 26 的浏览器 UI 纯色融合桥（贴边窄条，同时供系统栏取色）—— 见 head 里的说明 -->
     <div id="chrome-tint-top" class="chrome-tint" aria-hidden="true"></div>
     <div id="chrome-tint-bottom" class="chrome-tint" aria-hidden="true"></div>
 
@@ -603,7 +608,7 @@
           try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v12 · 横屏刚性旋转 + 朝向重采样'],
+            ['自检版本', 'v13 · 触屏 hover 门控 + 404 兜底'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
@@ -641,6 +646,16 @@
             [
               'theme-color',
               (document.querySelector('meta[name="theme-color"]') || {}).content || '(无)',
+            ],
+            [
+              'hover 能力',
+              (function () {
+                try {
+                  return window.matchMedia('(hover: hover)').matches
+                    ? '有（鼠标）— 悬停效果生效'
+                    : '无（触屏）— :hover 已全部门控关闭';
+                } catch (e) { return '(读取失败)'; }
+              })(),
             ],
             [
               '屏幕朝向 / 壁纸模式',
