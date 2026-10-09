@@ -17,8 +17,8 @@
     <meta name="apple-mobile-web-app-title" content="胡巴" />
     <link rel="apple-touch-icon" sizes="180x180" href="/huba-blog-static/images/icons/app-icon-180.png" />
 
-    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-preview.webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-20260916.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-huba-20261009-preview.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-huba-20261009.webp" type="image/webp" />
     <!-- viewport-fit=cover：让页面铺满 iPhone 刘海/灵动岛与底部 Home 条区域。
          缺了它，安全区会被浏览器用页面底色（--app-base 深色）填充，
          表现就是上下各有一条深色边条、壁纸铺不满。
@@ -29,7 +29,7 @@
     <!-- theme-color 只对 Safari 15~18.6 与 Android Chrome 有效；
          Safari 26 起改成了「采样页面元素的 background-color」，见下方 .chrome-tint 说明。
          这里给的是加载瞬间的兜底值，页面脚本就绪后会改成壁纸顶边色。 -->
-    <meta name="theme-color" content="#0c0f09" />
+    <meta name="theme-color" content="#c8e0f5" />
     <meta name="color-scheme" content="dark" />
     <meta property="og:title" content="胡巴的博客" />
     <meta property="og:description" content="记录学习过程、实践经历与问题复盘" />
@@ -40,7 +40,7 @@
     <script>
       (function () {
         var root = document.documentElement;
-        var fallbackPreview = '/huba-blog-static/images/wallpaper-preview.webp';
+        var fallbackPreview = '/huba-blog-static/images/wallpaper-huba-20261009-preview.webp';
 
         // query-string 调试开关：?welcome=1 强制重播，?nowelcome=1 强制跳过
         var qs = location.search;
@@ -48,10 +48,17 @@
         var skipWelcome = /[?&]nowelcome=1/.test(qs);
 
         // 只负责“预览层”，--bg-image 由 store 独占，避免旧壁纸覆盖新配置。
-        // 分两层：--bg-preview 是本地 6KB 兜底图（永远有效，永远垫底），
+        // 分两层：--bg-preview 是本地轻量兜底图（永远有效，永远垫底），
         // --bg-preview-custom 是缓存的自定义壁纸（可能加载失败/过慢，失败时露出兜底图）。
         var cached = null;
-        try { cached = localStorage.getItem('bgImage'); } catch (e) {}
+        try {
+          cached = localStorage.getItem('bgImage');
+          // 站点默认壁纸更新后，不让旧版本的深色缓存抢在新图之前闪现。
+          if (cached && /wallpaper-20260916/.test(cached)) {
+            cached = null;
+            localStorage.removeItem('bgImage');
+          }
+        } catch (e) {}
         root.style.setProperty('--bg-preview', "url('" + fallbackPreview + "')");
         if (cached) root.style.setProperty('--bg-preview-custom', "url('" + cached + "')");
 
@@ -82,11 +89,11 @@
 
     <style>
       :root {
-        /* 深色兜底 —— 取代原先的橄榄绿纯色，刷新时不会出现整屏“绿布” */
-        --app-base: #0c0f09;
-        --safari-top-color: #0c0f09;
-        --safari-bottom-color: #0c0f09;
-        --bg-preview: url('/huba-blog-static/images/wallpaper-preview.webp');
+        /* 新壁纸的天空 / 草地边缘纯色兜底，刷新和回弹时不再闪灰或闪绿 */
+        --app-base: #c8e0f5;
+        --safari-top-color: #c8e0f5;
+        --safari-bottom-color: #c2d998;
+        --bg-preview: url('/huba-blog-static/images/wallpaper-huba-20261009-preview.webp');
         --bg-preview-custom: none;
       }
 
@@ -102,28 +109,18 @@
            没法同时匹配壁纸顶边和底边，所以让它退出竞争（颜色交给 .chrome-tint 探针）。
            兜底色仍在 html 的 --app-base 上，视觉无变化。 */
         background-color: transparent;
+        /* 壁纸本身直接铺满，不再叠加上下大面积雾状渐变。
+           Safari 的取色只交给下面两条 6px 纯色桥接条，回弹时不会露出灰/绿处理带。 */
         background-image:
-          /* ===== 顶部 / 底部「接片」渐变 =====
-             浏览器 UI（状态栏、地址栏）只能是一条纯色，而壁纸有纹理，
-             直接相接必然出现硬边。这里在壁纸上方垫一层同色渐变：
-             最上方 = 壁纸边缘的**原色**（--bg-edge-*-raw，只有 iOS 会写入），
-             往下 100 多 px 淡出 → 壁纸纹理自然浮现，接缝消失。
-             为什么用 raw（未压暗）而不是 --bg-edge-*：本层会被 body::after 再压暗
-             0.78 / 0.85，用原色算下来正好等于浏览器 UI 的采样色。
-             非 iOS 环境下变量为空 → transparent，等于不存在，桌面零影响。 */
-          linear-gradient(180deg, var(--bg-edge-top-raw, transparent), transparent),
-          linear-gradient(0deg, var(--bg-edge-bottom-raw, transparent), transparent),
           var(--bg-image, none),
           var(--bg-preview-custom, none),
           var(--bg-preview, none);
         background-size:
-          100% var(--edge-fade-top, 40px),
-          100% var(--edge-fade-bottom, 44px),
           cover,
           cover,
           cover;
-        background-position: center top, center bottom, center, center, center;
-        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+        background-position: center, center, center;
+        background-repeat: no-repeat, no-repeat, no-repeat;
         /* 关键：这一层绝不能淡入。
            毛玻璃（backdrop-filter）是“采样身后的背景”，这个背景就是本层。
            一旦本层 opacity < 1 地淡入，玻璃采到的就是一张正在变暗的图，
@@ -135,13 +132,7 @@
         position: fixed;
         inset: 0;
         z-index: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.16) 0%,
-          rgba(0, 0, 0, 0.08) 30%,
-          rgba(0, 0, 0, 0.04) 60%,
-          rgba(0, 0, 0, 0.12) 100%
-        );
+        background: transparent;
         pointer-events: none;
       }
 
@@ -378,8 +369,8 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-CcmA02ae.js"></script>
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CL8Jx3fy.css">
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-BTsASu5_.js"></script>
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-VLM7fxlt.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -430,10 +421,6 @@
     <!-- Safari 26 的浏览器 UI 纯色融合桥（贴边窄条，同时供系统栏取色）—— 见 head 里的说明 -->
     <div id="chrome-tint-top" class="chrome-tint" aria-hidden="true"></div>
     <div id="chrome-tint-bottom" class="chrome-tint" aria-hidden="true"></div>
-
-    <!-- 边缘融合层（v11）：滚动时把内容自然融进浏览器 UI 的颜色 —— 见 global.css 的 .chrome-scrim -->
-    <div id="chrome-scrim-top" class="chrome-scrim" aria-hidden="true"></div>
-    <div id="chrome-scrim-bottom" class="chrome-scrim" aria-hidden="true"></div>
 
     <script>
       (function () {
@@ -636,11 +623,11 @@
               rootCS.getPropertyValue('--bg-edge-bottom').trim() || '(还没算出来)',
             ],
             [
-              '接片渐变 · 顶原始色',
+              '边缘原色 · 顶',
               rootCS.getPropertyValue('--bg-edge-top-raw').trim() || '(还没算出来)',
             ],
             [
-              '接片渐变 · 底原始色',
+              '边缘原色 · 底',
               rootCS.getPropertyValue('--bg-edge-bottom-raw').trim() || '(还没算出来)',
             ],
             [
