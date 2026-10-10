@@ -14,6 +14,20 @@
         }
       })();
     </script>
+    <script id="mobile-cover-bootstrap">
+      (function () {
+        var query = new URLSearchParams(location.search);
+        var root = document.documentElement;
+        var enabled = query.get('mobileCover') === '1' && !query.has('wallpaperPreview');
+        if (!enabled) return;
+        root.dataset.mobileCoverPreview = '1';
+        var route = location.hash.slice(1) || location.pathname;
+        var admin = /(?:^|\/)admin(?:\/|$|\?)/.test(route);
+        if (!admin && (innerWidth <= 1280 || matchMedia('(pointer: coarse)').matches)) {
+          root.dataset.mobileCover = 'active';
+        }
+      })();
+    </script>
     <link rel="icon" href="/huba-blog-static/images/icons/白猫.png" />
 
     <!-- ===== 装到主屏后像 App 一样全屏（没有地址栏、没有底部工具栏） =====
@@ -57,7 +71,7 @@
         // query-string 调试开关：?welcome=1 强制重播，?nowelcome=1 强制跳过
         var qs = location.search;
         var forceWelcome = /[?&]welcome=1/.test(qs);
-        var skipWelcome = /[?&]nowelcome=1/.test(qs);
+        var skipWelcome = /[?&]nowelcome=1/.test(qs) || root.dataset.mobileCover === 'active';
 
         // 只负责“预览层”，--bg-image 由 store 独占，避免旧壁纸覆盖新配置。
         // 分两层：--bg-preview 是本地轻量兜底图（永远有效，永远垫底），
@@ -108,6 +122,16 @@
         --bg-preview: url('/huba-blog-static/images/wallpaper-huba-20261009-night-cat-preview.webp');
         --bg-preview-custom: none;
       }
+      /* Opt-in cover: suppress legacy fixed layers before Vue/CSS loads. */
+      html[data-mobile-cover="active"], html[data-mobile-cover="active"] body {
+        background-color: #101c30;
+      }
+      html[data-mobile-cover="active"] body::before,
+      html[data-mobile-cover="active"] body::after,
+      html[data-mobile-cover="active"] .chrome-tint,
+      html[data-mobile-cover="active"] #apple-welcome {
+        display: none;
+      }
 
       /* ====== 背景层 — 三层：当前壁纸在上，缓存的自定义壁纸居中，6KB 本地预览图垫底 ======
          中间层加载失败/过慢时露出垫底层，欢迎层/加载幕永远不会变成纯黑。 */
@@ -117,8 +141,8 @@
         inset: 0;
         z-index: 0;
         /* 刻意不给底色：Safari 26 会拿贴边 fixed 元素的 background-color 给浏览器 UI
-           上色，本层铺满视口、上下都贴边，是个天然候选；但它只能有一个颜色，
-           没法同时匹配壁纸顶边和底边，所以让它退出竞争（颜色交给 .chrome-tint 探针）。
+           上色，本层铺满视口、上下都贴边，是个天然候选；但同一个层很难同时表达壁纸
+           顶边和底边的差异，所以让它退出竞争（颜色交给 .chrome-tint 探针）。
            兜底色仍在 html 的 --app-base 上，视觉无变化。 */
         background-color: transparent;
         /* 壁纸本身直接铺满，不再叠加上下大面积雾状渐变。
@@ -381,8 +405,8 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-DMc5lTkP.js"></script>
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CTFDUaIc.css">
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-BsZtFRkD.js"></script>
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CueCCMk8.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
