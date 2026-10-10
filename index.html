@@ -9,10 +9,10 @@
         if (query.get('siteV2') !== '1') return;
         root.dataset.siteV2 = 'active';
         root.classList.add('welcome-seen');
-        var saved = 'system';
-        try { saved = localStorage.getItem('huba-theme') || 'system'; } catch (e) {}
-        if (!['system', 'light', 'dark'].includes(saved)) saved = 'system';
-        var dark = saved === 'dark' || (saved === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+        var saved = 'dark';
+        try { saved = localStorage.getItem('huba-theme') || 'dark'; } catch (e) {}
+        if (!['light', 'dark'].includes(saved)) saved = 'dark';
+        var dark = saved === 'dark';
         root.dataset.themeMode = saved;
         root.dataset.theme = dark ? 'dark' : 'light';
         root.style.colorScheme = dark ? 'dark' : 'light';
@@ -428,8 +428,8 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-xED4CEMK.js"></script>
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-DwfqKGdR.css">
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-BJGg5U4F.js"></script>
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-BRTuN-hF.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
