@@ -2,12 +2,15 @@
 <html lang="zh">
   <head>
     <meta charset="UTF-8" />
-    <!-- Local acceptance preview only; no query parameter means the existing site. -->
+    <!-- Retired experiment links fall back before first paint; normal visits are unchanged. -->
     <script id="wallpaper-preview-bootstrap">
       (function () {
         var mode = new URLSearchParams(location.search).get('wallpaperPreview');
         if (['baseline', 'unbridged', 'root', 'transparent'].includes(mode)) {
-          document.documentElement.dataset.wallpaperPreview = mode;
+          document.documentElement.dataset.wallpaperPreview = 'baseline';
+          if (mode !== 'baseline') {
+            document.documentElement.dataset.retiredWallpaperPreview = mode;
+          }
         }
       })();
     </script>
@@ -178,31 +181,6 @@
       #chrome-tint-bottom {
         bottom: 0;                /* 规范：距底 3px 以内 */
         background-color: var(--bg-edge-bottom, transparent);
-      }
-
-      /* Experiments are isolated from the default site, including its first paint.
-         No full-width tinting element may remain in either experimental mode. */
-      html:is([data-wallpaper-preview="unbridged"], [data-wallpaper-preview="root"], [data-wallpaper-preview="transparent"]) .chrome-tint {
-        display: none;
-      }
-      html:is([data-wallpaper-preview="root"], [data-wallpaper-preview="transparent"]) {
-        background-color: transparent !important;
-      }
-      html:is([data-wallpaper-preview="root"], [data-wallpaper-preview="transparent"]) body {
-        background-color: transparent !important;
-      }
-      html[data-wallpaper-preview="root"] {
-        background-image: var(--bg-image, none), var(--bg-preview-custom, none), var(--bg-preview, none);
-        /* Explicit viewport-sized image avoids cover using the entire long document.
-           Whether Safari extends this native root background is a real-device test. */
-        background-size: max(100vw, calc(100lvh * var(--wallpaper-source-ratio, 1.333333))) auto;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }
-      html[data-wallpaper-preview="root"] body::before,
-      html[data-wallpaper-preview="root"] body::after {
-        display: none;
       }
 
       /* ====== Welcome — 首次进入的问候层 ======
@@ -403,7 +381,7 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-o0PxCpB_.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-DMc5lTkP.js"></script>
     <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CTFDUaIc.css">
   </head>
   <body>
