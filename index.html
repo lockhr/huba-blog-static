@@ -2,26 +2,6 @@
 <html lang="zh">
   <head>
     <meta charset="UTF-8" />
-    <script id="site-v2-bootstrap">
-      (function () {
-        var root = document.documentElement;
-        root.dataset.siteV2 = 'active';
-        root.classList.add('welcome-seen');
-        var saved = 'dark';
-        try { saved = localStorage.getItem('huba-theme') || 'dark'; } catch (e) {}
-        if (!['light', 'dark'].includes(saved)) saved = 'dark';
-        var dark = saved === 'dark';
-        root.dataset.themeMode = saved;
-        root.dataset.theme = dark ? 'dark' : 'light';
-        root.style.colorScheme = dark ? 'dark' : 'light';
-        var heroPreload = document.createElement('link');
-        heroPreload.rel = 'preload';
-        heroPreload.as = 'image';
-        heroPreload.href = '/huba-blog-static/images/huba-reading-cat-rabbit-supplied.png';
-        heroPreload.fetchPriority = 'high';
-        document.head.appendChild(heroPreload);
-      })();
-    </script>
     <!-- Retired experiment links fall back before first paint; normal visits are unchanged. -->
     <script id="wallpaper-preview-bootstrap">
       (function () {
@@ -63,8 +43,24 @@
     <meta name="apple-mobile-web-app-title" content="胡巴" />
     <link rel="apple-touch-icon" sizes="180x180" href="/huba-blog-static/images/icons/app-icon-180.png" />
 
-    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-huba-20261009-night-cat-preview.webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/huba-blog-static/images/wallpaper-huba-20261009-night-cat.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/huba-blog-static/images/cover.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/huba-blog-static/images/cover-blur.jpg" />
+    <!-- 主题首帧：在首次绘制前按 localStorage / 系统偏好打好 html.dark，
+         避免浅色页面先闪一帧深色。useTheme 之后会接管切换与持久化。 -->
+    <script id="theme-bootstrap">
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+          }
+          if (t === 'dark') document.documentElement.classList.add('dark');
+          document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
     <!-- viewport-fit=cover：让页面铺满 iPhone 刘海/灵动岛与底部 Home 条区域。
          缺了它，安全区会被浏览器用页面底色（--app-base 深色）填充，
          表现就是上下各有一条深色边条、壁纸铺不满。
@@ -75,8 +71,8 @@
     <!-- theme-color 只对 Safari 15~18.6 与 Android Chrome 有效；
          Safari 26 起改成了「采样页面元素的 background-color」，见下方 .chrome-tint 说明。
          这里给的是加载瞬间的兜底值，页面脚本就绪后会改成壁纸顶边色。 -->
-    <meta name="theme-color" content="#1c3560" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#ddd0d4" />
+    <meta name="color-scheme" content="light dark" />
     <meta property="og:title" content="胡巴的博客" />
     <meta property="og:description" content="记录学习过程、实践经历与问题复盘" />
     <meta property="og:type" content="website" />
@@ -86,27 +82,32 @@
     <script>
       (function () {
         var root = document.documentElement;
-        var fallbackPreview = '/huba-blog-static/images/wallpaper-huba-20261009-night-cat-preview.webp';
+        var fallbackPreview = '/huba-blog-static/images/cover-blur.jpg';
 
         // query-string 调试开关：?welcome=1 强制重播，?nowelcome=1 强制跳过
         var qs = location.search;
         var forceWelcome = /[?&]welcome=1/.test(qs);
         var skipWelcome = /[?&]nowelcome=1/.test(qs) || root.dataset.mobileCover === 'active';
 
-        // 只负责“预览层”，--bg-image 由 store 独占，避免旧壁纸覆盖新配置。
-        // 分两层：--bg-preview 是本地轻量兜底图（永远有效，永远垫底），
-        // --bg-preview-custom 是缓存的自定义壁纸（可能加载失败/过慢，失败时露出兜底图）。
+        // 两层壁纸变量（2026-10-11 液态玻璃改版，回退链已简化）：
+        //   --bg-preview     本地模糊兜底图（永远有效，永远垫底）
+        //   --bg-image       清晰壁纸（hero 窗口用），--bg-image-blur 模糊版（页面背景用）
+        // --bg-image 平时由 store 独占写入；这里只在有缓存的自定义壁纸时提前落笔，
+        // 让首帧不至于先闪默认猫图。旧版夜猫/绿野缓存一律作废，避免抢在新图前闪现。
         var cached = null;
         try {
           cached = localStorage.getItem('bgImage');
-          // 站点默认壁纸更新后，不让旧版本的深色缓存抢在新图之前闪现。
-          if (cached && (/wallpaper-20260916/.test(cached) || /wallpaper-huba-20261009(?:-mobile|-landscape)?\./.test(cached))) {
+          if (cached && (/wallpaper-20260916/.test(cached) || /wallpaper-huba-20261009/.test(cached))) {
             cached = null;
             localStorage.removeItem('bgImage');
           }
         } catch (e) {}
         root.style.setProperty('--bg-preview', "url('" + fallbackPreview + "')");
-        if (cached) root.style.setProperty('--bg-preview-custom', "url('" + cached + "')");
+        if (cached) {
+          // 自定义壁纸没有模糊版，两层都用同一张，保证首帧上下一致。
+          root.style.setProperty('--bg-image', "url('" + cached + "')");
+          root.style.setProperty('--bg-image-blur', "url('" + cached + "')");
+        }
 
         // 欢迎层是否展示：用 localStorage（跨标签页/刷新都记住），在 <html> 上打标记，
         // 首帧就不渲染，避免底部脚本执行前的闪现
@@ -135,28 +136,30 @@
 
     <style>
       :root {
-        /* 新壁纸的天空 / 草地边缘纯色兜底，刷新和回弹时不再闪灰或闪绿 */
-        --app-base: #1c3560;
-        --safari-top-color: #1c3560;
-        --safari-bottom-color: #615637;
-        --bg-preview: url('/huba-blog-static/images/wallpaper-huba-20261009-night-cat-preview.webp');
-        --bg-preview-custom: none;
+        /* 新壁纸（窗边猫咪）的天空 / 毯子边缘纯色兜底，刷新和回弹时不再闪灰 */
+        --app-base: #ddd0d4;
+        --safari-top-color: #ddd0d4;
+        --safari-bottom-color: #dcb18f;
+        --bg-preview: url('/huba-blog-static/images/cover-blur.jpg');
       }
       /* Opt-in cover: suppress legacy fixed layers before Vue/CSS loads. */
       html[data-mobile-cover="active"], html[data-mobile-cover="active"] body {
-        background-color: #101c30;
+        background-color: #ddd0d4;
       }
-      html[data-mobile-cover="active"] body::before,
-      html[data-mobile-cover="active"] body::after,
+      html[data-mobile-cover="active"] .bg-wallpaper,
       html[data-mobile-cover="active"] .chrome-tint,
       html[data-mobile-cover="active"] #apple-welcome {
         display: none;
       }
 
-      /* ====== 背景层 — 三层：当前壁纸在上，缓存的自定义壁纸居中，6KB 本地预览图垫底 ======
-         中间层加载失败/过慢时露出垫底层，欢迎层/加载幕永远不会变成纯黑。 */
-      body::before {
-        content: "";
+      /* ====== 页面背景层 — 真实 <div>（不再是 body::before 伪元素） ======
+         为什么改成真实元素（2026-10-11 液态玻璃改版）：
+         导航栏的 WebGL 液态玻璃（apple-liquid-glass-webgl）用 backdrop:'auto'
+         重画身后的页面，但它「不画 ::before/::after」。壁纸放在伪元素上，
+         玻璃就采不到壁纸。真实 fixed div 既能被玻璃库采样，iOS 上也不受
+         background-attachment:fixed 的兼容性问题影响。
+         单层结构：--bg-image-blur（模糊壁纸）优先，缺了就用 --bg-preview 兜底。 */
+      .bg-wallpaper {
         position: fixed;
         inset: 0;
         z-index: 0;
@@ -165,30 +168,14 @@
            顶边和底边的差异，所以让它退出竞争（颜色交给 .chrome-tint 探针）。
            兜底色仍在 html 的 --app-base 上，视觉无变化。 */
         background-color: transparent;
-        /* 壁纸本身直接铺满，不再叠加上下大面积雾状渐变。
-           Safari 的取色只交给下面两条 6px 纯色桥接条，回弹时不会露出灰/绿处理带。 */
-        background-image:
-          var(--bg-image, none),
-          var(--bg-preview-custom, none),
-          var(--bg-preview, none);
-        background-size:
-          cover,
-          cover,
-          cover;
-        background-position: center, center, center;
-        background-repeat: no-repeat, no-repeat, no-repeat;
+        background-image: var(--bg-image-blur, var(--bg-preview, none));
+        background-size: cover;
+        background-position: center calc(50% + var(--bg-offset, 0%));
+        background-repeat: no-repeat;
         /* 关键：这一层绝不能淡入。
            毛玻璃（backdrop-filter）是“采样身后的背景”，这个背景就是本层。
            一旦本层 opacity < 1 地淡入，玻璃采到的就是一张正在变暗的图，
            表现就是“玻璃先深色、再变正常白色”。所以壁纸永远是满不透明度。 */
-        pointer-events: none;
-      }
-      body::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        background: transparent;
         pointer-events: none;
       }
 
@@ -250,17 +237,15 @@
         display: none;
       }
 
-      /* 同一张壁纸做底，只做虚焦 + 轻微压暗（缓存壁纸失败时露出本地兜底图） */
+      /* 同一张壁纸做底，只做虚焦 + 轻微压暗（--bg-preview 已是高斯模糊图，更省力） */
       .welcome-bg {
         position: absolute;
         inset: -8%;
         z-index: 0;
-        background-image:
-          var(--bg-preview-custom, none),
-          var(--bg-preview, none);
-        background-size: cover, cover;
-        background-position: center, center;
-        background-repeat: no-repeat, no-repeat;
+        background-image: var(--bg-preview, none);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         filter: blur(26px) saturate(0.95) brightness(0.8);
         transform: scale(1.06);
         transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -425,8 +410,8 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-BXR1Y1Ex.js"></script>
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CWSNJKrJ.css">
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-DRgpFwHh.js"></script>
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-ni9jwWRt.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -473,6 +458,9 @@
     </div>
 
     <div id="app"></div>
+
+    <!-- 页面背景层（模糊壁纸）—— 真实元素，WebGL 液态玻璃才能采到它（见 head 说明） -->
+    <div class="bg-wallpaper" aria-hidden="true"></div>
 
     <!-- Safari 26 的浏览器 UI 纯色融合桥（贴边窄条，同时供系统栏取色）—— 见 head 里的说明 -->
     <div id="chrome-tint-top" class="chrome-tint" aria-hidden="true"></div>
@@ -651,7 +639,7 @@
           try { inFrame = window.top !== window.self; } catch (e) { inFrame = true; }
 
           var rows = [
-            ['自检版本', 'v13 · 触屏 hover 门控 + 404 兜底'],
+            ['自检版本', 'v14 · WebGL 液态玻璃导航 + 浅/深双模式'],
             ['viewport 标签', vpMeta ? vpMeta.getAttribute('content') : '(标签缺失)'],
             ['env(top) 实测', ps.paddingTop],
             ['env(bottom) 实测', ps.paddingBottom],
@@ -709,7 +697,9 @@
               '壁纸层尺寸',
               (function () {
                 try {
-                  var b = getComputedStyle(document.body, '::before');
+                  var el = document.querySelector('.bg-wallpaper');
+                  if (!el) return '(未找到 .bg-wallpaper)';
+                  var b = getComputedStyle(el);
                   return b.width + ' × ' + b.height;
                 } catch (e) { return '(读取失败)'; }
               })(),
@@ -718,7 +708,8 @@
               '壁纸层 transform',
               (function () {
                 try {
-                  return getComputedStyle(document.body, '::before').transform;
+                  var el = document.querySelector('.bg-wallpaper');
+                  return el ? getComputedStyle(el).transform : '(未找到)';
                 } catch (e) { return '(读取失败)'; }
               })(),
             ],
@@ -783,6 +774,6 @@
         window.addEventListener('load', go);
       })();
     </script>
-
+
   </body>
 </html>
