@@ -1,1 +1,0 @@
-import{g as n}from"./AppFooter-Ekr9edH2.js";function d(u){let t=null;function s(r){const e=(u==null?void 0:u.value)??u;return t=n.context(r,e),t}function l(r){t&&t.add(r)}function o(){t==null||t.revert(),t=null}return{create:s,add:l,revert:o}}export{d as u};
