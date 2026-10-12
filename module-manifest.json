@@ -1,0 +1,617 @@
+{
+  "_AppFooter-!~{00a}~.js": {
+    "file": "assets/AppFooter-CGrX1zMo.css",
+    "src": "_AppFooter-!~{00a}~.js"
+  },
+  "_AppFooter-B_Jld1pF.js": {
+    "file": "assets/AppFooter-B_Jld1pF.js",
+    "name": "AppFooter",
+    "imports": [
+      "index.html"
+    ],
+    "css": [
+      "assets/AppFooter-CGrX1zMo.css"
+    ]
+  },
+  "_liquid-glass-CuDciSUj.js": {
+    "file": "assets/liquid-glass-CuDciSUj.js",
+    "name": "liquid-glass"
+  },
+  "index.html": {
+    "file": "assets/index-8W71Eq2p.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "dynamicImports": [
+      "src/views/AboutPage.vue",
+      "src/views/LearningPage.vue",
+      "src/views/ArchivePage.vue",
+      "src/views/ProjectsPage.vue",
+      "src/views/GardenPage.vue",
+      "src/views/NotFoundPage.vue",
+      "src/utils/wallpaperPreview.js"
+    ],
+    "css": [
+      "assets/index-Dy-qXGty.css"
+    ],
+    "assets": [
+      "assets/lxgwwenkaiscreen-subset-4-PatS3YHh.woff2",
+      "assets/lxgwwenkaiscreen-subset-5-B0CtGbX_.woff2",
+      "assets/lxgwwenkaiscreen-subset-6-BnAelmYU.woff2",
+      "assets/lxgwwenkaiscreen-subset-21-pDubCJV5.woff2",
+      "assets/lxgwwenkaiscreen-subset-22-ChAPMpqp.woff2",
+      "assets/lxgwwenkaiscreen-subset-23-BBx3oNpT.woff2",
+      "assets/lxgwwenkaiscreen-subset-24-CYt-Oagk.woff2",
+      "assets/lxgwwenkaiscreen-subset-25-Cx3j-ZUv.woff2",
+      "assets/lxgwwenkaiscreen-subset-26-B9AfZ3LL.woff2",
+      "assets/lxgwwenkaiscreen-subset-27-Bh2s9MNE.woff2",
+      "assets/lxgwwenkaiscreen-subset-28-C02JPoKP.woff2",
+      "assets/lxgwwenkaiscreen-subset-29-T_tbUGhk.woff2",
+      "assets/lxgwwenkaiscreen-subset-30-DMfyNzhz.woff2",
+      "assets/lxgwwenkaiscreen-subset-31-DFfdzbkg.woff2",
+      "assets/lxgwwenkaiscreen-subset-32-Bs1fz2iW.woff2",
+      "assets/lxgwwenkaiscreen-subset-33-cpB96OkZ.woff2",
+      "assets/lxgwwenkaiscreen-subset-34-BhinPYWX.woff2",
+      "assets/lxgwwenkaiscreen-subset-35-D_njRQqA.woff2",
+      "assets/lxgwwenkaiscreen-subset-36-DqXlLE3t.woff2",
+      "assets/lxgwwenkaiscreen-subset-37-j5LbvMph.woff2",
+      "assets/lxgwwenkaiscreen-subset-38-oO4jWdKm.woff2",
+      "assets/lxgwwenkaiscreen-subset-39-CabsX4rw.woff2",
+      "assets/lxgwwenkaiscreen-subset-40-yrLg3C3e.woff2",
+      "assets/lxgwwenkaiscreen-subset-41-DBXmCQhc.woff2",
+      "assets/lxgwwenkaiscreen-subset-42-Bqij_UiQ.woff2",
+      "assets/lxgwwenkaiscreen-subset-43-D3kp0Ntc.woff2",
+      "assets/lxgwwenkaiscreen-subset-44-B_BNGvK4.woff2",
+      "assets/lxgwwenkaiscreen-subset-45-CZc0cQWs.woff2",
+      "assets/lxgwwenkaiscreen-subset-46-CHQX5Kd9.woff2",
+      "assets/lxgwwenkaiscreen-subset-47-Ci8gLrHA.woff2",
+      "assets/lxgwwenkaiscreen-subset-48-run3ugD3.woff2",
+      "assets/lxgwwenkaiscreen-subset-49-DgfiUb6u.woff2",
+      "assets/lxgwwenkaiscreen-subset-50-CdCG-POr.woff2",
+      "assets/lxgwwenkaiscreen-subset-51-L2okeQZ2.woff2",
+      "assets/lxgwwenkaiscreen-subset-52-BZAqyGJW.woff2",
+      "assets/lxgwwenkaiscreen-subset-53-B0xWqLeU.woff2",
+      "assets/lxgwwenkaiscreen-subset-54-BZVQX-EA.woff2",
+      "assets/lxgwwenkaiscreen-subset-55-093mkIUJ.woff2",
+      "assets/lxgwwenkaiscreen-subset-56-CbhWG8G-.woff2",
+      "assets/lxgwwenkaiscreen-subset-57-pLQuvo6c.woff2",
+      "assets/lxgwwenkaiscreen-subset-58-BHhoY50x.woff2",
+      "assets/lxgwwenkaiscreen-subset-59-D1_6DuIQ.woff2",
+      "assets/lxgwwenkaiscreen-subset-60-HDBIuLTZ.woff2",
+      "assets/lxgwwenkaiscreen-subset-61-C-c13SeU.woff2",
+      "assets/lxgwwenkaiscreen-subset-62-kHRVOhZ2.woff2",
+      "assets/lxgwwenkaiscreen-subset-63-C0MCsvFv.woff2",
+      "assets/lxgwwenkaiscreen-subset-64-DZekguCj.woff2",
+      "assets/lxgwwenkaiscreen-subset-65-CtP6c3IU.woff2",
+      "assets/lxgwwenkaiscreen-subset-66-DLVWoMSf.woff2",
+      "assets/lxgwwenkaiscreen-subset-67-BVuOnayH.woff2",
+      "assets/lxgwwenkaiscreen-subset-68-DpxQ6Mnx.woff2",
+      "assets/lxgwwenkaiscreen-subset-69-qesBxLmC.woff2",
+      "assets/lxgwwenkaiscreen-subset-70-BBt1xN7h.woff2",
+      "assets/lxgwwenkaiscreen-subset-71-BWqZacwB.woff2",
+      "assets/lxgwwenkaiscreen-subset-72-B1wP_Yst.woff2",
+      "assets/lxgwwenkaiscreen-subset-73-C99T7jNZ.woff2",
+      "assets/lxgwwenkaiscreen-subset-74-DrUTsWBe.woff2",
+      "assets/lxgwwenkaiscreen-subset-75-C4M5XXQe.woff2",
+      "assets/lxgwwenkaiscreen-subset-76-Bq8spVWF.woff2",
+      "assets/lxgwwenkaiscreen-subset-77-D9vNupE2.woff2",
+      "assets/lxgwwenkaiscreen-subset-78-D6th7Gnu.woff2",
+      "assets/lxgwwenkaiscreen-subset-79-bezM85cS.woff2",
+      "assets/lxgwwenkaiscreen-subset-80-DD8pnhG2.woff2",
+      "assets/lxgwwenkaiscreen-subset-81-N6jtSyBs.woff2",
+      "assets/lxgwwenkaiscreen-subset-82-D6c180bZ.woff2",
+      "assets/lxgwwenkaiscreen-subset-83-em17AadM.woff2",
+      "assets/lxgwwenkaiscreen-subset-84-CJ8gdrMK.woff2",
+      "assets/lxgwwenkaiscreen-subset-85-9PPGO1eB.woff2",
+      "assets/lxgwwenkaiscreen-subset-86-CjWPf-u5.woff2",
+      "assets/lxgwwenkaiscreen-subset-87-8D_X_yOC.woff2",
+      "assets/lxgwwenkaiscreen-subset-88-9vtKFPBx.woff2",
+      "assets/lxgwwenkaiscreen-subset-89-BhE5jAKX.woff2",
+      "assets/lxgwwenkaiscreen-subset-90-D2Npfm5E.woff2",
+      "assets/lxgwwenkaiscreen-subset-91-C6Ft1-Eu.woff2",
+      "assets/lxgwwenkaiscreen-subset-97-CaExyQP9.woff2",
+      "assets/lxgwwenkaiscreen-subset-98-CPoVbsUd.woff2",
+      "assets/lxgwwenkaiscreen-subset-99-ZUQZGVgH.woff2",
+      "assets/lxgwwenkaiscreen-subset-100-DLPe7tEt.woff2",
+      "assets/lxgwwenkaiscreen-subset-101-d3VsZKWT.woff2",
+      "assets/lxgwwenkaiscreen-subset-102-ClzJuLq6.woff2",
+      "assets/lxgwwenkaiscreen-subset-103-DuDnQ6K-.woff2",
+      "assets/lxgwwenkaiscreen-subset-104-kPGW3Eem.woff2",
+      "assets/lxgwwenkaiscreen-subset-105-BzD54h-0.woff2",
+      "assets/lxgwwenkaiscreen-subset-106-BQ7fIzlx.woff2",
+      "assets/lxgwwenkaiscreen-subset-107-D8tDfFHI.woff2",
+      "assets/lxgwwenkaiscreen-subset-108-tGhkpwep.woff2",
+      "assets/lxgwwenkaiscreen-subset-109-7SMVSrly.woff2",
+      "assets/lxgwwenkaiscreen-subset-110-_uDKrFed.woff2",
+      "assets/lxgwwenkaiscreen-subset-111-Bio825RE.woff2",
+      "assets/lxgwwenkaiscreen-subset-112-D2ee0i-C.woff2",
+      "assets/lxgwwenkaiscreen-subset-113-JPFVDrga.woff2",
+      "assets/lxgwwenkaiscreen-subset-114-BcfxYA4w.woff2",
+      "assets/lxgwwenkaiscreen-subset-115-B1HeeOsd.woff2",
+      "assets/lxgwwenkaiscreen-subset-116-hY12tXpq.woff2",
+      "assets/lxgwwenkaiscreen-subset-117-BvuZwmre.woff2",
+      "assets/lxgwwenkaiscreen-subset-118-tzvs_H7j.woff2",
+      "assets/lxgwwenkaiscreen-subset-119-J2DWuYDN.woff2"
+    ]
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-100.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-100-DLPe7tEt.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-100.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-101.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-101-d3VsZKWT.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-101.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-102.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-102-ClzJuLq6.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-102.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-103.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-103-DuDnQ6K-.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-103.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-104.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-104-kPGW3Eem.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-104.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-105.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-105-BzD54h-0.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-105.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-106.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-106-BQ7fIzlx.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-106.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-107.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-107-D8tDfFHI.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-107.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-108.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-108-tGhkpwep.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-108.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-109.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-109-7SMVSrly.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-109.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-110.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-110-_uDKrFed.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-110.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-111.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-111-Bio825RE.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-111.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-112.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-112-D2ee0i-C.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-112.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-113.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-113-JPFVDrga.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-113.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-114.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-114-BcfxYA4w.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-114.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-115.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-115-B1HeeOsd.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-115.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-116.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-116-hY12tXpq.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-116.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-117.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-117-BvuZwmre.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-117.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-118.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-118-tzvs_H7j.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-118.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-119.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-119-J2DWuYDN.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-119.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-21.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-21-pDubCJV5.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-21.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-22.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-22-ChAPMpqp.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-22.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-23.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-23-BBx3oNpT.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-23.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-24.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-24-CYt-Oagk.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-24.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-25.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-25-Cx3j-ZUv.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-25.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-26.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-26-B9AfZ3LL.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-26.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-27.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-27-Bh2s9MNE.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-27.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-28.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-28-C02JPoKP.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-28.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-29.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-29-T_tbUGhk.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-29.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-30.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-30-DMfyNzhz.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-30.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-31.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-31-DFfdzbkg.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-31.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-32.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-32-Bs1fz2iW.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-32.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-33.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-33-cpB96OkZ.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-33.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-34.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-34-BhinPYWX.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-34.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-35.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-35-D_njRQqA.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-35.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-36.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-36-DqXlLE3t.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-36.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-37.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-37-j5LbvMph.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-37.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-38.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-38-oO4jWdKm.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-38.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-39.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-39-CabsX4rw.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-39.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-4.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-4-PatS3YHh.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-4.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-40.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-40-yrLg3C3e.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-40.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-41.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-41-DBXmCQhc.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-41.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-42.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-42-Bqij_UiQ.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-42.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-43.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-43-D3kp0Ntc.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-43.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-44.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-44-B_BNGvK4.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-44.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-45.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-45-CZc0cQWs.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-45.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-46.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-46-CHQX5Kd9.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-46.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-47.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-47-Ci8gLrHA.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-47.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-48.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-48-run3ugD3.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-48.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-49.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-49-DgfiUb6u.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-49.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-5.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-5-B0CtGbX_.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-5.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-50.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-50-CdCG-POr.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-50.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-51.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-51-L2okeQZ2.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-51.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-52.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-52-BZAqyGJW.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-52.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-53.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-53-B0xWqLeU.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-53.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-54.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-54-BZVQX-EA.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-54.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-55.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-55-093mkIUJ.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-55.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-56.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-56-CbhWG8G-.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-56.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-57.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-57-pLQuvo6c.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-57.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-58.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-58-BHhoY50x.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-58.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-59.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-59-D1_6DuIQ.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-59.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-6.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-6-BnAelmYU.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-6.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-60.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-60-HDBIuLTZ.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-60.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-61.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-61-C-c13SeU.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-61.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-62.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-62-kHRVOhZ2.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-62.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-63.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-63-C0MCsvFv.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-63.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-64.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-64-DZekguCj.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-64.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-65.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-65-CtP6c3IU.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-65.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-66.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-66-DLVWoMSf.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-66.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-67.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-67-BVuOnayH.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-67.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-68.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-68-DpxQ6Mnx.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-68.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-69.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-69-qesBxLmC.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-69.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-70.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-70-BBt1xN7h.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-70.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-71.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-71-BWqZacwB.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-71.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-72.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-72-B1wP_Yst.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-72.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-73.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-73-C99T7jNZ.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-73.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-74.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-74-DrUTsWBe.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-74.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-75.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-75-C4M5XXQe.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-75.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-76.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-76-Bq8spVWF.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-76.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-77.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-77-D9vNupE2.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-77.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-78.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-78-D6th7Gnu.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-78.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-79.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-79-bezM85cS.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-79.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-80.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-80-DD8pnhG2.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-80.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-81.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-81-N6jtSyBs.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-81.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-82.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-82-D6c180bZ.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-82.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-83.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-83-em17AadM.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-83.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-84.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-84-CJ8gdrMK.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-84.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-85.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-85-9PPGO1eB.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-85.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-86.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-86-CjWPf-u5.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-86.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-87.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-87-8D_X_yOC.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-87.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-88.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-88-9vtKFPBx.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-88.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-89.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-89-BhE5jAKX.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-89.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-90.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-90-D2Npfm5E.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-90.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-91.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-91-C6Ft1-Eu.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-91.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-97.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-97-CaExyQP9.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-97.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-98.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-98-CPoVbsUd.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-98.woff2"
+  },
+  "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-99.woff2": {
+    "file": "assets/lxgwwenkaiscreen-subset-99-ZUQZGVgH.woff2",
+    "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-99.woff2"
+  },
+  "src/utils/wallpaperPreview.js": {
+    "file": "assets/wallpaperPreview-DCQ61cOX.js",
+    "name": "wallpaperPreview",
+    "src": "src/utils/wallpaperPreview.js",
+    "isDynamicEntry": true
+  },
+  "src/views/AboutPage.vue": {
+    "file": "assets/AboutPage-B42ZnJKC.js",
+    "name": "AboutPage",
+    "src": "src/views/AboutPage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_AppFooter-B_Jld1pF.js",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "css": [
+      "assets/AboutPage-CzJ5Ajnm.css"
+    ]
+  },
+  "src/views/ArchivePage.vue": {
+    "file": "assets/ArchivePage-Cn0y_O_M.js",
+    "name": "ArchivePage",
+    "src": "src/views/ArchivePage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_AppFooter-B_Jld1pF.js",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "css": [
+      "assets/ArchivePage-B82obca2.css"
+    ]
+  },
+  "src/views/GardenPage.vue": {
+    "file": "assets/GardenPage-t5y__FZ0.js",
+    "name": "GardenPage",
+    "src": "src/views/GardenPage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_AppFooter-B_Jld1pF.js",
+      "index.html",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "css": [
+      "assets/GardenPage-CVLpTVSG.css"
+    ]
+  },
+  "src/views/LearningPage.vue": {
+    "file": "assets/LearningPage-Bpv7InoB.js",
+    "name": "LearningPage",
+    "src": "src/views/LearningPage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_AppFooter-B_Jld1pF.js",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "css": [
+      "assets/LearningPage-Czay91oN.css"
+    ]
+  },
+  "src/views/NotFoundPage.vue": {
+    "file": "assets/NotFoundPage-DI3GaPZ2.js",
+    "name": "NotFoundPage",
+    "src": "src/views/NotFoundPage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "css": [
+      "assets/NotFoundPage-DfcsMAqX.css"
+    ]
+  },
+  "src/views/ProjectsPage.vue": {
+    "file": "assets/ProjectsPage-xxFwELHo.js",
+    "name": "ProjectsPage",
+    "src": "src/views/ProjectsPage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_AppFooter-B_Jld1pF.js",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "css": [
+      "assets/ProjectsPage-HxHdYwGw.css"
+    ]
+  }
+}

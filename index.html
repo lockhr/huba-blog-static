@@ -79,58 +79,48 @@
     <title>胡巴的博客</title>
 
     <!-- 在首次绘制前定好背景与欢迎层状态，杜绝纯色闪烁 -->
-    <script>
+    <script id="background-bootstrap">
       (function () {
         var root = document.documentElement;
+        var fallbackClear = '/huba-blog-static/images/cover.jpg';
         var fallbackPreview = '/huba-blog-static/images/cover-blur.jpg';
+        var resolveWelcome;
+        var resolveBackground;
+        window.__blogBoot = {
+          welcomeReady: new Promise(function (resolve) { resolveWelcome = resolve; }),
+          backgroundReady: new Promise(function (resolve) { resolveBackground = resolve; }),
+          settleWelcome: function () { resolveWelcome(); },
+          settleBackground: function (result) { resolveBackground(result); },
+          enterRequested: false
+        };
 
         // query-string 调试开关：?welcome=1 强制重播，?nowelcome=1 强制跳过
         var qs = location.search;
         var forceWelcome = /[?&]welcome=1/.test(qs);
         var skipWelcome = /[?&]nowelcome=1/.test(qs) || root.dataset.mobileCover === 'active';
+        var route = location.hash.indexOf('#/') === 0 ? location.hash.slice(1).split(/[?#]/)[0] : location.pathname;
+        var homePath = '/huba-blog-static/'.replace(/\/$/, '') || '/';
+        var isHome = route === '/' || route.replace(/\/$/, '') === homePath;
+        skipWelcome = skipWelcome || !isHome;
 
-        // 两层壁纸变量（2026-10-11 液态玻璃改版，回退链已简化）：
-        //   --bg-preview     本地模糊兜底图（永远有效，永远垫底）
-        //   --bg-image       清晰壁纸（hero 窗口用），--bg-image-blur 模糊版（页面背景用）
-        // --bg-image 平时由 store 独占写入；这里只在有缓存的自定义壁纸时提前落笔，
-        // 让首帧不至于先闪默认猫图。旧版夜猫/绿野缓存一律作废，避免抢在新图前闪现。
-        var cached = null;
-        try {
-          cached = localStorage.getItem('bgImage');
-          if (cached && (/wallpaper-20260916/.test(cached) || /wallpaper-huba-20261009/.test(cached))) {
-            cached = null;
-            localStorage.removeItem('bgImage');
-          }
-        } catch (e) {}
-        root.style.setProperty('--bg-preview', "url('" + fallbackPreview + "')");
-        if (cached) {
-          // 自定义壁纸没有模糊版，两层都用同一张，保证首帧上下一致。
-          root.style.setProperty('--bg-image', "url('" + cached + "')");
-          root.style.setProperty('--bg-image-blur', "url('" + cached + "')");
-        }
+        // First paint always has valid BASE-relative defaults. Cached custom URLs
+        // are applied by the store only after loading and decoding succeeds.
+        root.style.setProperty('--bg-preview', 'url("' + fallbackPreview + '")');
+        root.style.setProperty('--bg-image', 'url("' + fallbackClear + '")');
+        root.style.setProperty('--bg-image-blur', 'url("' + fallbackPreview + '")');
+        root.style.setProperty('--bg-offset', '6%');
 
         // 欢迎层是否展示：用 localStorage（跨标签页/刷新都记住），在 <html> 上打标记，
         // 首帧就不渲染，避免底部脚本执行前的闪现
         try {
-          if (forceWelcome) localStorage.removeItem('welcome_seen');
+          if (forceWelcome && isHome) localStorage.removeItem('welcome_seen');
           if (skipWelcome || localStorage.getItem('welcome_seen')) {
             root.classList.add('welcome-seen');
+            window.__blogBoot.settleWelcome();
           }
-        } catch (e) {}
-
-        // 预热两张预览图（有自定义壁纸时两张都拉），让它们尽量赶在首次绘制前就位。
-        // 注意：这里不再对外暴露「就绪 Promise」，也不再让任何层等它淡入 ——
-        // 淡入会破坏毛玻璃（见上面 body::before 的说明）。
-        [fallbackPreview, cached].forEach(function (u) {
-          if (!u) return;
-          var link = document.createElement('link');
-          link.rel = 'preload';
-          link.as = 'image';
-          link.href = u;
-          document.head.appendChild(link);
-          var warm = new Image();
-          warm.src = u;
-        });
+        } catch (e) {
+          if (skipWelcome) { root.classList.add('welcome-seen'); window.__blogBoot.settleWelcome(); }
+        }
       })();
     </script>
 
@@ -141,6 +131,9 @@
         --safari-top-color: #ddd0d4;
         --safari-bottom-color: #dcb18f;
         --bg-preview: url('/huba-blog-static/images/cover-blur.jpg');
+        --bg-image: url('/huba-blog-static/images/cover.jpg');
+        --bg-image-blur: url('/huba-blog-static/images/cover-blur.jpg');
+        --bg-offset: 6%;
       }
       /* Opt-in cover: suppress legacy fixed layers before Vue/CSS loads. */
       html[data-mobile-cover="active"], html[data-mobile-cover="active"] body {
@@ -410,8 +403,9 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-DRgpFwHh.js"></script>
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-ni9jwWRt.css">
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-8W71Eq2p.js"></script>
+    <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-Dy-qXGty.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -466,7 +460,7 @@
     <div id="chrome-tint-top" class="chrome-tint" aria-hidden="true"></div>
     <div id="chrome-tint-bottom" class="chrome-tint" aria-hidden="true"></div>
 
-    <script>
+    <script id="welcome-sequence">
       (function () {
         var root = document.documentElement;
 
@@ -496,6 +490,7 @@
         function enter() {
           if (dismissed) return;
           dismissed = true;
+          window.__blogBoot.enterRequested = true;
           timers.forEach(clearTimeout);
           timers = [];
           wrap.classList.add('done');
@@ -503,27 +498,14 @@
           wrap.style.pointerEvents = 'none';
           push(function () {
             wrap.style.display = 'none';
+            window.__blogBoot.settleWelcome();
           }, 520);
-          // 揭开的同时让首页 hero 文字错落进场（等 webfont 就绪，保证
-          // 露出来的一开始就是白色渐变的最终样式）
-          revealHero(280);
           // 解锁音频自动播放
           try {
             var audio = new Audio();
             audio.volume = 0;
             audio.play().then(function () { audio.pause(); }).catch(function () {});
           } catch (e) {}
-        }
-
-        // hero 文字进场开关：尽量等 webfont 就绪（最多 1.2s），避免渐变标题先以深色渲染
-        var fontsSettled = Promise.race([
-          (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve(),
-          new Promise(function (r) { setTimeout(r, 1200); })
-        ]);
-        function revealHero(delay) {
-          push(function () {
-            fontsSettled.then(function () { root.classList.add('hero-in'); });
-          }, delay || 0);
         }
 
         function cycle() {
@@ -573,6 +555,8 @@
         window.addEventListener('pagehide', function () {
           dismissed = true;
           timers.forEach(clearTimeout);
+          wrap.style.display = 'none';
+          window.__blogBoot.settleWelcome();
         });
 
         // ===== 硬兜底：无论轮播定时器是否被节流/挂起，欢迎层最多停留 6s =====
@@ -580,27 +564,6 @@
           setTimeout(function () { if (!dismissed) enter(); }, 3500);
         });
         setTimeout(function () { if (!dismissed) enter(); }, 6000);
-      })();
-    </script>
-
-    <script>
-      (function () {
-        var root = document.documentElement;
-        // 加载幕已整层删除（见上方注释）。这段现在只做一件事：
-        // 给「刷新/回访」路径打上首屏文字进场开关 html.hero-in。
-        // 首次访问由欢迎层在揭幕时自己打上，这里直接跳过。
-        if (!root.classList.contains('welcome-seen')) return;
-
-        // 等 webfont 就绪再放行，避免渐变标题先以深色渲染（最多等 1.2s，慢网络不拖久）。
-        // 放在内联脚本里而不是等 main.js：模块包要下载+执行，会让首屏文字多藏一会儿。
-        var fontsSettled = Promise.race([
-          (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve(),
-          new Promise(function (r) { setTimeout(r, 1200); })
-        ]);
-        fontsSettled.then(function () { root.classList.add('hero-in'); });
-
-        // 硬兜底：module 也挂了也不会一直藏着（global.css 里同源规则 + main.js 的 3s 兜底）
-        setTimeout(function () { root.classList.add('hero-in'); }, 1800);
       })();
     </script>
 
