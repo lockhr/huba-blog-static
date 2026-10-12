@@ -40,7 +40,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="胡巴" />
+    <meta name="apple-mobile-web-app-title" content="胡巴HB" />
     <link rel="apple-touch-icon" sizes="180x180" href="/huba-blog-static/images/icons/app-icon-180.png" />
 
     <link rel="preload" as="image" href="/huba-blog-static/images/cover.jpg" fetchpriority="high" />
@@ -67,16 +67,16 @@
          注意：开启后内容会顶到安全区下面，必须配合 global.css 里的
          --safe-top / --safe-bottom 给固定元素和页面容器留白。 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="胡巴的个人博客 — 河北金融学院区块链工程本科在读，记录计算机基础、Java 后端与区块链的学习过程、实践经历和问题复盘" />
+    <meta name="description" content="胡巴HB — 记录学习、项目与生活。" />
     <!-- theme-color 只对 Safari 15~18.6 与 Android Chrome 有效；
          Safari 26 起改成了「采样页面元素的 background-color」，见下方 .chrome-tint 说明。
          这里给的是加载瞬间的兜底值，页面脚本就绪后会改成壁纸顶边色。 -->
     <meta name="theme-color" content="#ddd0d4" />
     <meta name="color-scheme" content="light dark" />
-    <meta property="og:title" content="胡巴的博客" />
-    <meta property="og:description" content="记录学习过程、实践经历与问题复盘" />
+    <meta property="og:title" content="胡巴HB" />
+    <meta property="og:description" content="记录学习、项目与生活。" />
     <meta property="og:type" content="website" />
-    <title>胡巴的博客</title>
+    <title>胡巴HB</title>
 
     <!-- 在首次绘制前定好背景与欢迎层状态，杜绝纯色闪烁 -->
     <script id="background-bootstrap">
@@ -388,6 +388,7 @@
          首屏不再有任何全屏遮罩，标题的可见性由 html.hero-in 单独控制
          （见 global.css 的首屏文字进场），不会出现"先黑后白"。 */
 
+      .wallpaper-bootstrap-preview { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center calc(50% + var(--bg-offset, 6%)); }
       /* ====== 全局首屏 ======
          #app 刻意「不做」整体淡入：任何祖先元素上的 opacity < 1 都会让
          后代的 backdrop-filter 立刻塌成深色，松手才变回正常白色。
@@ -403,9 +404,9 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-8W71Eq2p.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-4Lw6UhMg.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-Dy-qXGty.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-DTewfpKg.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -454,7 +455,7 @@
     <div id="app"></div>
 
     <!-- 页面背景层（模糊壁纸）—— 真实元素，WebGL 液态玻璃才能采到它（见 head 说明） -->
-    <div class="bg-wallpaper" aria-hidden="true"></div>
+    <div id="wallpaper-root" class="bg-wallpaper" aria-hidden="true"><img class="wallpaper-bootstrap-preview" src="/huba-blog-static/images/cover-blur.jpg" alt="" decoding="async"></div>
 
     <!-- Safari 26 的浏览器 UI 纯色融合桥（贴边窄条，同时供系统栏取色）—— 见 head 里的说明 -->
     <div id="chrome-tint-top" class="chrome-tint" aria-hidden="true"></div>
@@ -474,7 +475,7 @@
         var hint = document.querySelector('.welcome-hint');
 
         // 只有两句：一次招呼 + 站名。不再堆 5 种语言，也不再有进度点。
-        var words = ['你好', '胡巴的博客'];
+        var words = ['你好', '胡巴HB'];
         var DWELL = 520;   // 每句停留
         var FADE = 280;    // 交叉溶解时长
         var AUTO_ENTER = 800; // 说完自动揭开，避免“卡住”
@@ -737,6 +738,6 @@
         window.addEventListener('load', go);
       })();
     </script>
-
+
   </body>
 </html>
