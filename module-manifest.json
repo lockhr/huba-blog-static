@@ -1,16 +1,16 @@
 {
   "_AppFooter-!~{00a}~.js": {
-    "file": "assets/AppFooter-jhHzqdRu.css",
+    "file": "assets/AppFooter-OboN0d6s.css",
     "src": "_AppFooter-!~{00a}~.js"
   },
-  "_AppFooter-Ctb5L523.js": {
-    "file": "assets/AppFooter-Ctb5L523.js",
+  "_AppFooter-D8BOfDPT.js": {
+    "file": "assets/AppFooter-D8BOfDPT.js",
     "name": "AppFooter",
     "imports": [
       "index.html"
     ],
     "css": [
-      "assets/AppFooter-jhHzqdRu.css"
+      "assets/AppFooter-OboN0d6s.css"
     ]
   },
   "_liquid-glass-CuDciSUj.js": {
@@ -18,7 +18,7 @@
     "name": "liquid-glass"
   },
   "index.html": {
-    "file": "assets/index-CUyP0H2Y.js",
+    "file": "assets/index-3SWEv7BD.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -35,7 +35,7 @@
       "src/utils/wallpaperPreview.js"
     ],
     "css": [
-      "assets/index-DGjSWGXR.css"
+      "assets/index-UB7xAX3p.css"
     ],
     "assets": [
       "assets/lxgwwenkaiscreen-subset-4-PatS3YHh.woff2",
@@ -532,13 +532,13 @@
     "isDynamicEntry": true
   },
   "src/views/AboutPage.vue": {
-    "file": "assets/AboutPage-CeiuOzkE.js",
+    "file": "assets/AboutPage-B7R__1cu.js",
     "name": "AboutPage",
     "src": "src/views/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-Ctb5L523.js",
+      "_AppFooter-D8BOfDPT.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
@@ -546,13 +546,13 @@
     ]
   },
   "src/views/ArchivePage.vue": {
-    "file": "assets/ArchivePage-D_WPMGaL.js",
+    "file": "assets/ArchivePage-CNM94p_6.js",
     "name": "ArchivePage",
     "src": "src/views/ArchivePage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-Ctb5L523.js",
+      "_AppFooter-D8BOfDPT.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
@@ -560,12 +560,12 @@
     ]
   },
   "src/views/GardenPage.vue": {
-    "file": "assets/GardenPage-DMFPLVop.js",
+    "file": "assets/GardenPage-ClQb9o3N.js",
     "name": "GardenPage",
     "src": "src/views/GardenPage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_AppFooter-Ctb5L523.js",
+      "_AppFooter-D8BOfDPT.js",
       "index.html",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -574,13 +574,13 @@
     ]
   },
   "src/views/LearningPage.vue": {
-    "file": "assets/LearningPage-C9Dvcvgo.js",
+    "file": "assets/LearningPage-BU-jXdQg.js",
     "name": "LearningPage",
     "src": "src/views/LearningPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-Ctb5L523.js",
+      "_AppFooter-D8BOfDPT.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
@@ -588,7 +588,7 @@
     ]
   },
   "src/views/NotFoundPage.vue": {
-    "file": "assets/NotFoundPage-DMjD9jJo.js",
+    "file": "assets/NotFoundPage-BNKIW3X9.js",
     "name": "NotFoundPage",
     "src": "src/views/NotFoundPage.vue",
     "isDynamicEntry": true,
@@ -601,13 +601,13 @@
     ]
   },
   "src/views/ProjectsPage.vue": {
-    "file": "assets/ProjectsPage-DWENUNv1.js",
+    "file": "assets/ProjectsPage-ChH_MP6B.js",
     "name": "ProjectsPage",
     "src": "src/views/ProjectsPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-Ctb5L523.js",
+      "_AppFooter-D8BOfDPT.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
