@@ -138,6 +138,7 @@
       /* Opt-in cover: suppress legacy fixed layers before Vue/CSS loads. */
       html[data-mobile-cover="active"], html[data-mobile-cover="active"] body {
         background-color: #ddd0d4;
+        background-image: none;
       }
       html[data-mobile-cover="active"] .bg-wallpaper,
       html[data-mobile-cover="active"] .chrome-tint,
@@ -155,6 +156,7 @@
       .bg-wallpaper {
         position: fixed;
         inset: 0;
+        min-height: 100lvh;
         z-index: 0;
         /* 刻意不给底色：Safari 26 会拿贴边 fixed 元素的 background-color 给浏览器 UI
            上色，本层铺满视口、上下都贴边，是个天然候选；但同一个层很难同时表达壁纸
@@ -395,18 +397,26 @@
          首屏的设计感由「逐元素的错落入场」承担（导航 / 标题 / 简介 / 按钮）。 */
       html {
         background-color: var(--safari-top-color, var(--app-base));
+        background-image: var(--bg-image-blur, var(--bg-preview));
+        background-size: var(--wallpaper-fallback-size, 100% 100lvh);
+        background-position: var(--wallpaper-fallback-position, center top);
+        background-repeat: repeat-y;
       }
       body {
         background-color: var(--safari-top-color, var(--app-base));
+        background-image: var(--bg-image-blur, var(--bg-preview));
+        background-size: var(--wallpaper-fallback-size, 100% 100lvh);
+        background-position: var(--wallpaper-fallback-position, center top);
+        background-repeat: repeat-y;
       }
       #app {
         position: relative;
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-OIXu17I4.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-CPV8ldgB.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-N2L1zTKG.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-BaaTy3Oz.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
