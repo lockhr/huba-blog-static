@@ -71,7 +71,7 @@
     <!-- theme-color 只对 Safari 15~18.6 与 Android Chrome 有效；
          Safari 26 起改成了「采样页面元素的 background-color」，见下方 .chrome-tint 说明。
          这里给的是加载瞬间的兜底值，页面脚本就绪后会改成壁纸顶边色。 -->
-    <meta name="theme-color" content="#ddd0d4" />
+    <meta name="theme-color" content="#203369" />
     <meta name="color-scheme" content="light dark" />
     <meta property="og:title" content="胡巴HB" />
     <meta property="og:description" content="记录学习、项目与生活。" />
@@ -126,18 +126,23 @@
 
     <style>
       :root {
-        /* 新壁纸（窗边猫咪）的天空 / 毯子边缘纯色兜底，刷新和回弹时不再闪灰 */
-        --app-base: #ddd0d4;
-        --safari-top-color: #ddd0d4;
-        --safari-bottom-color: #dcb18f;
+        /* 月夜猫兔壁纸的天空 / 毯子边缘纯色兜底，刷新和回弹时不再闪旧底色 */
+        --app-base: #203369;
+        --safari-top-color: #203369;
+        --safari-bottom-color: #696182;
         --bg-preview: url('/huba-blog-static/images/cover-blur.jpg');
         --bg-image: url('/huba-blog-static/images/cover.jpg');
         --bg-image-blur: url('/huba-blog-static/images/cover-blur.jpg');
         --bg-offset: 6%;
       }
+      /* 首帧就隐藏整页滚动条，避免刷新时先闪出白色侧栏。 */
+      html { scrollbar-width: none; scrollbar-gutter: auto; scrollbar-color: #5b6370 #080b12; }
+      html::-webkit-scrollbar { display: none; width: 0; height: 0; }
+      html::-webkit-scrollbar-track { background: #080b12; }
+      html::-webkit-scrollbar-thumb { background: #5b6370; }
       /* Opt-in cover: suppress legacy fixed layers before Vue/CSS loads. */
       html[data-mobile-cover="active"], html[data-mobile-cover="active"] body {
-        background-color: #ddd0d4;
+        background-color: #203369;
         background-image: none;
       }
       html[data-mobile-cover="active"] .bg-wallpaper,
@@ -414,9 +419,9 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-DAYdpz7W.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-DF2aoAqw.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-Dw4SK0WI.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CEFwv3Ev.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
