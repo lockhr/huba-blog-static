@@ -203,8 +203,8 @@
     "file": "assets/AppFooter-OboN0d6s.css",
     "src": "_AppFooter-!~{00c}~.js"
   },
-  "_AppFooter-odJ5edum.js": {
-    "file": "assets/AppFooter-odJ5edum.js",
+  "_AppFooter-q9aPJzIL.js": {
+    "file": "assets/AppFooter-q9aPJzIL.js",
     "name": "AppFooter",
     "imports": [
       "index.html"
@@ -226,7 +226,7 @@
     "src": "content/universe-model/hand_landmarker-float16-v1.task"
   },
   "index.html": {
-    "file": "assets/index-Cht5Nkxq.js",
+    "file": "assets/index-DZXw5P24.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -744,7 +744,7 @@
     "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-99.woff2"
   },
   "src/features/universe/gestures/handController.js": {
-    "file": "assets/handController-D1iPdq9U.js",
+    "file": "assets/handController-Bp8ZxmYv.js",
     "name": "handController",
     "src": "src/features/universe/gestures/handController.js",
     "isDynamicEntry": true,
@@ -758,16 +758,44 @@
     ]
   },
   "src/features/universe/gestures/interpreter.js": {
-    "file": "assets/interpreter-DxhiuLJY.js",
+    "file": "assets/interpreter-DwbqZV84.js",
     "name": "interpreter",
     "src": "src/features/universe/gestures/interpreter.js",
     "isDynamicEntry": true
   },
+  "src/features/universe/gestures/landmarkerRuntime.js": {
+    "file": "assets/landmarkerRuntime-CK1zr8W2.js",
+    "name": "landmarkerRuntime",
+    "src": "src/features/universe/gestures/landmarkerRuntime.js",
+    "isDynamicEntry": true
+  },
+  "src/features/universe/gestures/mainThreadClient.js": {
+    "file": "assets/mainThreadClient-Cqpj1bXi.js",
+    "name": "mainThreadClient",
+    "src": "src/features/universe/gestures/mainThreadClient.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_http-client-DcNlVx-A.js",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "dynamicImports": [
+      "src/features/universe/gestures/landmarkerRuntime.js"
+    ]
+  },
   "src/features/universe/gestures/workerClient.js": {
-    "file": "assets/workerClient-SSCDonNJ.js",
+    "file": "assets/workerClient-DmnRouk1.js",
     "name": "workerClient",
     "src": "src/features/universe/gestures/workerClient.js",
     "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_http-client-DcNlVx-A.js",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "dynamicImports": [
+      "src/features/universe/gestures/mainThreadClient.js"
+    ],
     "assets": [
       "assets/hand_landmarker-float16-v1-BA8W11YW.task",
       "assets/vision_wasm_module_internal-BEiPKPmH.js",
@@ -775,7 +803,7 @@
     ]
   },
   "src/features/universe/scene/index.js": {
-    "file": "assets/index-BzituMxB.js",
+    "file": "assets/index-DRZuozr3.js",
     "name": "index",
     "src": "src/features/universe/scene/index.js",
     "isDynamicEntry": true
@@ -787,13 +815,13 @@
     "isDynamicEntry": true
   },
   "src/views/AboutPage.vue": {
-    "file": "assets/AboutPage-CDrbbK7O.js",
+    "file": "assets/AboutPage-PelkZWAt.js",
     "name": "AboutPage",
     "src": "src/views/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-odJ5edum.js",
+      "_AppFooter-q9aPJzIL.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -802,13 +830,13 @@
     ]
   },
   "src/views/ArchivePage.vue": {
-    "file": "assets/ArchivePage-DfNL4gL7.js",
+    "file": "assets/ArchivePage-Vln66xoF.js",
     "name": "ArchivePage",
     "src": "src/views/ArchivePage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-odJ5edum.js",
+      "_AppFooter-q9aPJzIL.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -817,12 +845,12 @@
     ]
   },
   "src/views/GardenPage.vue": {
-    "file": "assets/GardenPage-DxATK3U-.js",
+    "file": "assets/GardenPage-Dj3eN_3l.js",
     "name": "GardenPage",
     "src": "src/views/GardenPage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_AppFooter-odJ5edum.js",
+      "_AppFooter-q9aPJzIL.js",
       "index.html",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
@@ -832,13 +860,13 @@
     ]
   },
   "src/views/LearningPage.vue": {
-    "file": "assets/LearningPage-BzAtPTYH.js",
+    "file": "assets/LearningPage-KRc2tUeJ.js",
     "name": "LearningPage",
     "src": "src/views/LearningPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-odJ5edum.js",
+      "_AppFooter-q9aPJzIL.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -847,7 +875,7 @@
     ]
   },
   "src/views/NotFoundPage.vue": {
-    "file": "assets/NotFoundPage-m6aH1A3o.js",
+    "file": "assets/NotFoundPage-CmmDA70X.js",
     "name": "NotFoundPage",
     "src": "src/views/NotFoundPage.vue",
     "isDynamicEntry": true,
@@ -861,13 +889,13 @@
     ]
   },
   "src/views/ProjectsPage.vue": {
-    "file": "assets/ProjectsPage-CfTbvlId.js",
+    "file": "assets/ProjectsPage-BopDZvvC.js",
     "name": "ProjectsPage",
     "src": "src/views/ProjectsPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-odJ5edum.js",
+      "_AppFooter-q9aPJzIL.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -876,7 +904,7 @@
     ]
   },
   "src/views/UniversePage.vue": {
-    "file": "assets/UniversePage-rK3mMs0R.js",
+    "file": "assets/UniversePage-Dh0YAyjM.js",
     "name": "UniversePage",
     "src": "src/views/UniversePage.vue",
     "isDynamicEntry": true,
@@ -891,7 +919,7 @@
       "src/features/universe/gestures/interpreter.js"
     ],
     "css": [
-      "assets/UniversePage-Egjm0hNm.css"
+      "assets/UniversePage-DATP3kh-.css"
     ],
     "assets": [
       "assets/memory-01-Dsj-T7L6.webp",
@@ -946,8 +974,8 @@
       "assets/memory-25-BCeXW1xw.webp"
     ]
   },
-  "_universe-worker/handWorker-Cnygodcv.js": {
-    "file": "assets/handWorker-Cnygodcv.js",
+  "_universe-worker/handWorker-DBFxbbrL.js": {
+    "file": "assets/handWorker-DBFxbbrL.js",
     "name": "universe-hand-worker"
   }
 }
