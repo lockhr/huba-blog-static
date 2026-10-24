@@ -1,202 +1,210 @@
 {
-  ".generated/universe/photos/demo-01.webp": {
-    "file": "assets/demo-01-B9Y9KWh4.webp",
-    "src": ".generated/universe/photos/demo-01.webp"
+  ".generated/universe/photos/memory-01.webp": {
+    "file": "assets/memory-01-Dsj-T7L6.webp",
+    "src": ".generated/universe/photos/memory-01.webp"
   },
-  ".generated/universe/photos/demo-02.webp": {
-    "file": "assets/demo-02-DZq46vXQ.webp",
-    "src": ".generated/universe/photos/demo-02.webp"
+  ".generated/universe/photos/memory-02.webp": {
+    "file": "assets/memory-02-CVtmFnyF.webp",
+    "src": ".generated/universe/photos/memory-02.webp"
   },
-  ".generated/universe/photos/demo-03.webp": {
-    "file": "assets/demo-03-DLkqTZXr.webp",
-    "src": ".generated/universe/photos/demo-03.webp"
+  ".generated/universe/photos/memory-03.webp": {
+    "file": "assets/memory-03-CDKDq6Vq.webp",
+    "src": ".generated/universe/photos/memory-03.webp"
   },
-  ".generated/universe/photos/demo-04.webp": {
-    "file": "assets/demo-04-LJiTnLJB.webp",
-    "src": ".generated/universe/photos/demo-04.webp"
+  ".generated/universe/photos/memory-04.webp": {
+    "file": "assets/memory-04-CbkJ3XBw.webp",
+    "src": ".generated/universe/photos/memory-04.webp"
   },
-  ".generated/universe/photos/demo-05.webp": {
-    "file": "assets/demo-05-CVnnX6qH.webp",
-    "src": ".generated/universe/photos/demo-05.webp"
+  ".generated/universe/photos/memory-05.webp": {
+    "file": "assets/memory-05-BIJb_9eF.webp",
+    "src": ".generated/universe/photos/memory-05.webp"
   },
-  ".generated/universe/photos/demo-06.webp": {
-    "file": "assets/demo-06-DBI3EuaU.webp",
-    "src": ".generated/universe/photos/demo-06.webp"
+  ".generated/universe/photos/memory-06.webp": {
+    "file": "assets/memory-06-C5rrz5XL.webp",
+    "src": ".generated/universe/photos/memory-06.webp"
   },
-  ".generated/universe/photos/demo-07.webp": {
-    "file": "assets/demo-07-BeWAs748.webp",
-    "src": ".generated/universe/photos/demo-07.webp"
+  ".generated/universe/photos/memory-07.webp": {
+    "file": "assets/memory-07-ZTI17MaR.webp",
+    "src": ".generated/universe/photos/memory-07.webp"
   },
-  ".generated/universe/photos/demo-08.webp": {
-    "file": "assets/demo-08-CHHoi3sA.webp",
-    "src": ".generated/universe/photos/demo-08.webp"
+  ".generated/universe/photos/memory-08.webp": {
+    "file": "assets/memory-08-Dm9eL1b4.webp",
+    "src": ".generated/universe/photos/memory-08.webp"
   },
-  ".generated/universe/photos/demo-09.webp": {
-    "file": "assets/demo-09-Bh6EKFUQ.webp",
-    "src": ".generated/universe/photos/demo-09.webp"
+  ".generated/universe/photos/memory-09.webp": {
+    "file": "assets/memory-09-DSSEw3wX.webp",
+    "src": ".generated/universe/photos/memory-09.webp"
   },
-  ".generated/universe/photos/demo-10.webp": {
-    "file": "assets/demo-10-AC89PRUs.webp",
-    "src": ".generated/universe/photos/demo-10.webp"
+  ".generated/universe/photos/memory-10.webp": {
+    "file": "assets/memory-10-BojoWH6L.webp",
+    "src": ".generated/universe/photos/memory-10.webp"
   },
-  ".generated/universe/photos/demo-11.webp": {
-    "file": "assets/demo-11-CQv9JVDc.webp",
-    "src": ".generated/universe/photos/demo-11.webp"
+  ".generated/universe/photos/memory-11.webp": {
+    "file": "assets/memory-11-xL72SN1N.webp",
+    "src": ".generated/universe/photos/memory-11.webp"
   },
-  ".generated/universe/photos/demo-12.webp": {
-    "file": "assets/demo-12-DD5Io-Ku.webp",
-    "src": ".generated/universe/photos/demo-12.webp"
+  ".generated/universe/photos/memory-12.webp": {
+    "file": "assets/memory-12-R97bcAZu.webp",
+    "src": ".generated/universe/photos/memory-12.webp"
   },
-  ".generated/universe/photos/demo-13.webp": {
-    "file": "assets/demo-13-Co87tP4r.webp",
-    "src": ".generated/universe/photos/demo-13.webp"
+  ".generated/universe/photos/memory-13.webp": {
+    "file": "assets/memory-13-DLkByVvX.webp",
+    "src": ".generated/universe/photos/memory-13.webp"
   },
-  ".generated/universe/photos/demo-14.webp": {
-    "file": "assets/demo-14-DxzpqDo1.webp",
-    "src": ".generated/universe/photos/demo-14.webp"
+  ".generated/universe/photos/memory-14.webp": {
+    "file": "assets/memory-14-DP27QEbX.webp",
+    "src": ".generated/universe/photos/memory-14.webp"
   },
-  ".generated/universe/photos/demo-15.webp": {
-    "file": "assets/demo-15-Bjpot7WA.webp",
-    "src": ".generated/universe/photos/demo-15.webp"
+  ".generated/universe/photos/memory-15.webp": {
+    "file": "assets/memory-15-BihWdw3T.webp",
+    "src": ".generated/universe/photos/memory-15.webp"
   },
-  ".generated/universe/photos/demo-16.webp": {
-    "file": "assets/demo-16-HvM_eygi.webp",
-    "src": ".generated/universe/photos/demo-16.webp"
+  ".generated/universe/photos/memory-16.webp": {
+    "file": "assets/memory-16-CnIAy3wl.webp",
+    "src": ".generated/universe/photos/memory-16.webp"
   },
-  ".generated/universe/photos/demo-17.webp": {
-    "file": "assets/demo-17-WASQweKJ.webp",
-    "src": ".generated/universe/photos/demo-17.webp"
+  ".generated/universe/photos/memory-17.webp": {
+    "file": "assets/memory-17-DLGy1uFb.webp",
+    "src": ".generated/universe/photos/memory-17.webp"
   },
-  ".generated/universe/photos/demo-18.webp": {
-    "file": "assets/demo-18-CvwurpLN.webp",
-    "src": ".generated/universe/photos/demo-18.webp"
+  ".generated/universe/photos/memory-18.webp": {
+    "file": "assets/memory-18-PIWbCPxh.webp",
+    "src": ".generated/universe/photos/memory-18.webp"
   },
-  ".generated/universe/photos/demo-19.webp": {
-    "file": "assets/demo-19-DNoRHxKr.webp",
-    "src": ".generated/universe/photos/demo-19.webp"
+  ".generated/universe/photos/memory-19.webp": {
+    "file": "assets/memory-19-C5A8Rjkt.webp",
+    "src": ".generated/universe/photos/memory-19.webp"
   },
-  ".generated/universe/photos/demo-20.webp": {
-    "file": "assets/demo-20-_2dL9U9V.webp",
-    "src": ".generated/universe/photos/demo-20.webp"
+  ".generated/universe/photos/memory-20.webp": {
+    "file": "assets/memory-20-ChWKFtjH.webp",
+    "src": ".generated/universe/photos/memory-20.webp"
   },
-  ".generated/universe/photos/demo-21.webp": {
-    "file": "assets/demo-21-Cc2mPI0h.webp",
-    "src": ".generated/universe/photos/demo-21.webp"
+  ".generated/universe/photos/memory-21.webp": {
+    "file": "assets/memory-21-DlEX9J6k.webp",
+    "src": ".generated/universe/photos/memory-21.webp"
   },
-  ".generated/universe/photos/demo-22.webp": {
-    "file": "assets/demo-22-CiPZlBJg.webp",
-    "src": ".generated/universe/photos/demo-22.webp"
+  ".generated/universe/photos/memory-22.webp": {
+    "file": "assets/memory-22-BzAq4nYI.webp",
+    "src": ".generated/universe/photos/memory-22.webp"
   },
-  ".generated/universe/photos/demo-23.webp": {
-    "file": "assets/demo-23-PA93tI28.webp",
-    "src": ".generated/universe/photos/demo-23.webp"
+  ".generated/universe/photos/memory-23.webp": {
+    "file": "assets/memory-23-CQ6LWhL0.webp",
+    "src": ".generated/universe/photos/memory-23.webp"
   },
-  ".generated/universe/photos/demo-24.webp": {
-    "file": "assets/demo-24-DFYapHmV.webp",
-    "src": ".generated/universe/photos/demo-24.webp"
+  ".generated/universe/photos/memory-24.webp": {
+    "file": "assets/memory-24-DK-A1wWV.webp",
+    "src": ".generated/universe/photos/memory-24.webp"
   },
-  ".generated/universe/thumbs/demo-01.webp": {
-    "file": "assets/demo-01-C7ieOZ2l.webp",
-    "src": ".generated/universe/thumbs/demo-01.webp"
+  ".generated/universe/photos/memory-25.webp": {
+    "file": "assets/memory-25-Pu2apP8s.webp",
+    "src": ".generated/universe/photos/memory-25.webp"
   },
-  ".generated/universe/thumbs/demo-02.webp": {
-    "file": "assets/demo-02-D4P8FYxe.webp",
-    "src": ".generated/universe/thumbs/demo-02.webp"
+  ".generated/universe/thumbs/memory-01.webp": {
+    "file": "assets/memory-01-sOq-PLWM.webp",
+    "src": ".generated/universe/thumbs/memory-01.webp"
   },
-  ".generated/universe/thumbs/demo-03.webp": {
-    "file": "assets/demo-03-Mp5zconF.webp",
-    "src": ".generated/universe/thumbs/demo-03.webp"
+  ".generated/universe/thumbs/memory-02.webp": {
+    "file": "assets/memory-02-3Ph4zofl.webp",
+    "src": ".generated/universe/thumbs/memory-02.webp"
   },
-  ".generated/universe/thumbs/demo-04.webp": {
-    "file": "assets/demo-04-CmrGvJf9.webp",
-    "src": ".generated/universe/thumbs/demo-04.webp"
+  ".generated/universe/thumbs/memory-03.webp": {
+    "file": "assets/memory-03-BMsXB5h4.webp",
+    "src": ".generated/universe/thumbs/memory-03.webp"
   },
-  ".generated/universe/thumbs/demo-05.webp": {
-    "file": "assets/demo-05-CPRGKygx.webp",
-    "src": ".generated/universe/thumbs/demo-05.webp"
+  ".generated/universe/thumbs/memory-04.webp": {
+    "file": "assets/memory-04-ElJQbWKJ.webp",
+    "src": ".generated/universe/thumbs/memory-04.webp"
   },
-  ".generated/universe/thumbs/demo-06.webp": {
-    "file": "assets/demo-06-CaMYxP1f.webp",
-    "src": ".generated/universe/thumbs/demo-06.webp"
+  ".generated/universe/thumbs/memory-05.webp": {
+    "file": "assets/memory-05-AjOk2AyZ.webp",
+    "src": ".generated/universe/thumbs/memory-05.webp"
   },
-  ".generated/universe/thumbs/demo-07.webp": {
-    "file": "assets/demo-07-w58hjspP.webp",
-    "src": ".generated/universe/thumbs/demo-07.webp"
+  ".generated/universe/thumbs/memory-06.webp": {
+    "file": "assets/memory-06-Dsg2NVlW.webp",
+    "src": ".generated/universe/thumbs/memory-06.webp"
   },
-  ".generated/universe/thumbs/demo-08.webp": {
-    "file": "assets/demo-08-A_1ONdPn.webp",
-    "src": ".generated/universe/thumbs/demo-08.webp"
+  ".generated/universe/thumbs/memory-07.webp": {
+    "file": "assets/memory-07-CF5hlCmx.webp",
+    "src": ".generated/universe/thumbs/memory-07.webp"
   },
-  ".generated/universe/thumbs/demo-09.webp": {
-    "file": "assets/demo-09-DDDKcTUl.webp",
-    "src": ".generated/universe/thumbs/demo-09.webp"
+  ".generated/universe/thumbs/memory-08.webp": {
+    "file": "assets/memory-08-Bcm5Xi1N.webp",
+    "src": ".generated/universe/thumbs/memory-08.webp"
   },
-  ".generated/universe/thumbs/demo-10.webp": {
-    "file": "assets/demo-10-CvpImQxr.webp",
-    "src": ".generated/universe/thumbs/demo-10.webp"
+  ".generated/universe/thumbs/memory-09.webp": {
+    "file": "assets/memory-09-D6etHq2v.webp",
+    "src": ".generated/universe/thumbs/memory-09.webp"
   },
-  ".generated/universe/thumbs/demo-11.webp": {
-    "file": "assets/demo-11-BaBB-M7z.webp",
-    "src": ".generated/universe/thumbs/demo-11.webp"
+  ".generated/universe/thumbs/memory-10.webp": {
+    "file": "assets/memory-10-C00Q-JhR.webp",
+    "src": ".generated/universe/thumbs/memory-10.webp"
   },
-  ".generated/universe/thumbs/demo-12.webp": {
-    "file": "assets/demo-12-qJ-gIvyr.webp",
-    "src": ".generated/universe/thumbs/demo-12.webp"
+  ".generated/universe/thumbs/memory-11.webp": {
+    "file": "assets/memory-11-I7xwTBEt.webp",
+    "src": ".generated/universe/thumbs/memory-11.webp"
   },
-  ".generated/universe/thumbs/demo-13.webp": {
-    "file": "assets/demo-13-BPTI79zQ.webp",
-    "src": ".generated/universe/thumbs/demo-13.webp"
+  ".generated/universe/thumbs/memory-12.webp": {
+    "file": "assets/memory-12-DXL7xlbQ.webp",
+    "src": ".generated/universe/thumbs/memory-12.webp"
   },
-  ".generated/universe/thumbs/demo-14.webp": {
-    "file": "assets/demo-14-DUqM_Jcn.webp",
-    "src": ".generated/universe/thumbs/demo-14.webp"
+  ".generated/universe/thumbs/memory-13.webp": {
+    "file": "assets/memory-13-DgpPYdYD.webp",
+    "src": ".generated/universe/thumbs/memory-13.webp"
   },
-  ".generated/universe/thumbs/demo-15.webp": {
-    "file": "assets/demo-15-BBjGu_9f.webp",
-    "src": ".generated/universe/thumbs/demo-15.webp"
+  ".generated/universe/thumbs/memory-14.webp": {
+    "file": "assets/memory-14-CFgPySlV.webp",
+    "src": ".generated/universe/thumbs/memory-14.webp"
   },
-  ".generated/universe/thumbs/demo-16.webp": {
-    "file": "assets/demo-16-gtipTqv3.webp",
-    "src": ".generated/universe/thumbs/demo-16.webp"
+  ".generated/universe/thumbs/memory-15.webp": {
+    "file": "assets/memory-15-DLS6NA92.webp",
+    "src": ".generated/universe/thumbs/memory-15.webp"
   },
-  ".generated/universe/thumbs/demo-17.webp": {
-    "file": "assets/demo-17-BJkVekA1.webp",
-    "src": ".generated/universe/thumbs/demo-17.webp"
+  ".generated/universe/thumbs/memory-16.webp": {
+    "file": "assets/memory-16-BTS5IpbV.webp",
+    "src": ".generated/universe/thumbs/memory-16.webp"
   },
-  ".generated/universe/thumbs/demo-18.webp": {
-    "file": "assets/demo-18-DAKpKOIq.webp",
-    "src": ".generated/universe/thumbs/demo-18.webp"
+  ".generated/universe/thumbs/memory-17.webp": {
+    "file": "assets/memory-17-Dq8yZMDE.webp",
+    "src": ".generated/universe/thumbs/memory-17.webp"
   },
-  ".generated/universe/thumbs/demo-19.webp": {
-    "file": "assets/demo-19-BiUYf42r.webp",
-    "src": ".generated/universe/thumbs/demo-19.webp"
+  ".generated/universe/thumbs/memory-18.webp": {
+    "file": "assets/memory-18-Cz_h80kR.webp",
+    "src": ".generated/universe/thumbs/memory-18.webp"
   },
-  ".generated/universe/thumbs/demo-20.webp": {
-    "file": "assets/demo-20-BMlJ0BMO.webp",
-    "src": ".generated/universe/thumbs/demo-20.webp"
+  ".generated/universe/thumbs/memory-19.webp": {
+    "file": "assets/memory-19-64doeC31.webp",
+    "src": ".generated/universe/thumbs/memory-19.webp"
   },
-  ".generated/universe/thumbs/demo-21.webp": {
-    "file": "assets/demo-21-CSukuWl6.webp",
-    "src": ".generated/universe/thumbs/demo-21.webp"
+  ".generated/universe/thumbs/memory-20.webp": {
+    "file": "assets/memory-20-BJCYcMfc.webp",
+    "src": ".generated/universe/thumbs/memory-20.webp"
   },
-  ".generated/universe/thumbs/demo-22.webp": {
-    "file": "assets/demo-22-B-KJzUy9.webp",
-    "src": ".generated/universe/thumbs/demo-22.webp"
+  ".generated/universe/thumbs/memory-21.webp": {
+    "file": "assets/memory-21-BuEhLbS3.webp",
+    "src": ".generated/universe/thumbs/memory-21.webp"
   },
-  ".generated/universe/thumbs/demo-23.webp": {
-    "file": "assets/demo-23-BvqRAAHX.webp",
-    "src": ".generated/universe/thumbs/demo-23.webp"
+  ".generated/universe/thumbs/memory-22.webp": {
+    "file": "assets/memory-22-Dl1cKuPu.webp",
+    "src": ".generated/universe/thumbs/memory-22.webp"
   },
-  ".generated/universe/thumbs/demo-24.webp": {
-    "file": "assets/demo-24-cp3eIUFX.webp",
-    "src": ".generated/universe/thumbs/demo-24.webp"
+  ".generated/universe/thumbs/memory-23.webp": {
+    "file": "assets/memory-23-9chlJ8xQ.webp",
+    "src": ".generated/universe/thumbs/memory-23.webp"
+  },
+  ".generated/universe/thumbs/memory-24.webp": {
+    "file": "assets/memory-24-BdDvUgOP.webp",
+    "src": ".generated/universe/thumbs/memory-24.webp"
+  },
+  ".generated/universe/thumbs/memory-25.webp": {
+    "file": "assets/memory-25-BCeXW1xw.webp",
+    "src": ".generated/universe/thumbs/memory-25.webp"
   },
   "_AppFooter-!~{00c}~.js": {
     "file": "assets/AppFooter-OboN0d6s.css",
     "src": "_AppFooter-!~{00c}~.js"
   },
-  "_AppFooter-D5-OJ0Wj.js": {
-    "file": "assets/AppFooter-D5-OJ0Wj.js",
+  "_AppFooter-odJ5edum.js": {
+    "file": "assets/AppFooter-odJ5edum.js",
     "name": "AppFooter",
     "imports": [
       "index.html"
@@ -218,7 +226,7 @@
     "src": "content/universe-model/hand_landmarker-float16-v1.task"
   },
   "index.html": {
-    "file": "assets/index-AttLieMw.js",
+    "file": "assets/index-Cht5Nkxq.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -736,7 +744,7 @@
     "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-99.woff2"
   },
   "src/features/universe/gestures/handController.js": {
-    "file": "assets/handController-DMdqJQYh.js",
+    "file": "assets/handController-D1iPdq9U.js",
     "name": "handController",
     "src": "src/features/universe/gestures/handController.js",
     "isDynamicEntry": true,
@@ -779,13 +787,13 @@
     "isDynamicEntry": true
   },
   "src/views/AboutPage.vue": {
-    "file": "assets/AboutPage-DZ4nWOT0.js",
+    "file": "assets/AboutPage-CDrbbK7O.js",
     "name": "AboutPage",
     "src": "src/views/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-D5-OJ0Wj.js",
+      "_AppFooter-odJ5edum.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -794,13 +802,13 @@
     ]
   },
   "src/views/ArchivePage.vue": {
-    "file": "assets/ArchivePage-DFJ1XjIg.js",
+    "file": "assets/ArchivePage-DfNL4gL7.js",
     "name": "ArchivePage",
     "src": "src/views/ArchivePage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-D5-OJ0Wj.js",
+      "_AppFooter-odJ5edum.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -809,12 +817,12 @@
     ]
   },
   "src/views/GardenPage.vue": {
-    "file": "assets/GardenPage-TFYtaoPB.js",
+    "file": "assets/GardenPage-DxATK3U-.js",
     "name": "GardenPage",
     "src": "src/views/GardenPage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_AppFooter-D5-OJ0Wj.js",
+      "_AppFooter-odJ5edum.js",
       "index.html",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
@@ -824,13 +832,13 @@
     ]
   },
   "src/views/LearningPage.vue": {
-    "file": "assets/LearningPage-ousahLka.js",
+    "file": "assets/LearningPage-BzAtPTYH.js",
     "name": "LearningPage",
     "src": "src/views/LearningPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-D5-OJ0Wj.js",
+      "_AppFooter-odJ5edum.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -839,7 +847,7 @@
     ]
   },
   "src/views/NotFoundPage.vue": {
-    "file": "assets/NotFoundPage-CGDibrUW.js",
+    "file": "assets/NotFoundPage-m6aH1A3o.js",
     "name": "NotFoundPage",
     "src": "src/views/NotFoundPage.vue",
     "isDynamicEntry": true,
@@ -853,13 +861,13 @@
     ]
   },
   "src/views/ProjectsPage.vue": {
-    "file": "assets/ProjectsPage-BmmqY0YZ.js",
+    "file": "assets/ProjectsPage-CfTbvlId.js",
     "name": "ProjectsPage",
     "src": "src/views/ProjectsPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-D5-OJ0Wj.js",
+      "_AppFooter-odJ5edum.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -868,7 +876,7 @@
     ]
   },
   "src/views/UniversePage.vue": {
-    "file": "assets/UniversePage-BShvBvQI.js",
+    "file": "assets/UniversePage-rK3mMs0R.js",
     "name": "UniversePage",
     "src": "src/views/UniversePage.vue",
     "isDynamicEntry": true,
@@ -886,54 +894,56 @@
       "assets/UniversePage-Egjm0hNm.css"
     ],
     "assets": [
-      "assets/demo-01-B9Y9KWh4.webp",
-      "assets/demo-01-C7ieOZ2l.webp",
-      "assets/demo-02-DZq46vXQ.webp",
-      "assets/demo-02-D4P8FYxe.webp",
-      "assets/demo-03-DLkqTZXr.webp",
-      "assets/demo-03-Mp5zconF.webp",
-      "assets/demo-04-LJiTnLJB.webp",
-      "assets/demo-04-CmrGvJf9.webp",
-      "assets/demo-05-CVnnX6qH.webp",
-      "assets/demo-05-CPRGKygx.webp",
-      "assets/demo-06-DBI3EuaU.webp",
-      "assets/demo-06-CaMYxP1f.webp",
-      "assets/demo-07-BeWAs748.webp",
-      "assets/demo-07-w58hjspP.webp",
-      "assets/demo-08-CHHoi3sA.webp",
-      "assets/demo-08-A_1ONdPn.webp",
-      "assets/demo-09-Bh6EKFUQ.webp",
-      "assets/demo-09-DDDKcTUl.webp",
-      "assets/demo-10-AC89PRUs.webp",
-      "assets/demo-10-CvpImQxr.webp",
-      "assets/demo-11-CQv9JVDc.webp",
-      "assets/demo-11-BaBB-M7z.webp",
-      "assets/demo-12-DD5Io-Ku.webp",
-      "assets/demo-12-qJ-gIvyr.webp",
-      "assets/demo-13-Co87tP4r.webp",
-      "assets/demo-13-BPTI79zQ.webp",
-      "assets/demo-14-DxzpqDo1.webp",
-      "assets/demo-14-DUqM_Jcn.webp",
-      "assets/demo-15-Bjpot7WA.webp",
-      "assets/demo-15-BBjGu_9f.webp",
-      "assets/demo-16-HvM_eygi.webp",
-      "assets/demo-16-gtipTqv3.webp",
-      "assets/demo-17-WASQweKJ.webp",
-      "assets/demo-17-BJkVekA1.webp",
-      "assets/demo-18-CvwurpLN.webp",
-      "assets/demo-18-DAKpKOIq.webp",
-      "assets/demo-19-DNoRHxKr.webp",
-      "assets/demo-19-BiUYf42r.webp",
-      "assets/demo-20-_2dL9U9V.webp",
-      "assets/demo-20-BMlJ0BMO.webp",
-      "assets/demo-21-Cc2mPI0h.webp",
-      "assets/demo-21-CSukuWl6.webp",
-      "assets/demo-22-CiPZlBJg.webp",
-      "assets/demo-22-B-KJzUy9.webp",
-      "assets/demo-23-PA93tI28.webp",
-      "assets/demo-23-BvqRAAHX.webp",
-      "assets/demo-24-DFYapHmV.webp",
-      "assets/demo-24-cp3eIUFX.webp"
+      "assets/memory-01-Dsj-T7L6.webp",
+      "assets/memory-01-sOq-PLWM.webp",
+      "assets/memory-02-CVtmFnyF.webp",
+      "assets/memory-02-3Ph4zofl.webp",
+      "assets/memory-03-CDKDq6Vq.webp",
+      "assets/memory-03-BMsXB5h4.webp",
+      "assets/memory-04-CbkJ3XBw.webp",
+      "assets/memory-04-ElJQbWKJ.webp",
+      "assets/memory-05-BIJb_9eF.webp",
+      "assets/memory-05-AjOk2AyZ.webp",
+      "assets/memory-06-C5rrz5XL.webp",
+      "assets/memory-06-Dsg2NVlW.webp",
+      "assets/memory-07-ZTI17MaR.webp",
+      "assets/memory-07-CF5hlCmx.webp",
+      "assets/memory-08-Dm9eL1b4.webp",
+      "assets/memory-08-Bcm5Xi1N.webp",
+      "assets/memory-09-DSSEw3wX.webp",
+      "assets/memory-09-D6etHq2v.webp",
+      "assets/memory-10-BojoWH6L.webp",
+      "assets/memory-10-C00Q-JhR.webp",
+      "assets/memory-11-xL72SN1N.webp",
+      "assets/memory-11-I7xwTBEt.webp",
+      "assets/memory-12-R97bcAZu.webp",
+      "assets/memory-12-DXL7xlbQ.webp",
+      "assets/memory-13-DLkByVvX.webp",
+      "assets/memory-13-DgpPYdYD.webp",
+      "assets/memory-14-DP27QEbX.webp",
+      "assets/memory-14-CFgPySlV.webp",
+      "assets/memory-15-BihWdw3T.webp",
+      "assets/memory-15-DLS6NA92.webp",
+      "assets/memory-16-CnIAy3wl.webp",
+      "assets/memory-16-BTS5IpbV.webp",
+      "assets/memory-17-DLGy1uFb.webp",
+      "assets/memory-17-Dq8yZMDE.webp",
+      "assets/memory-18-PIWbCPxh.webp",
+      "assets/memory-18-Cz_h80kR.webp",
+      "assets/memory-19-C5A8Rjkt.webp",
+      "assets/memory-19-64doeC31.webp",
+      "assets/memory-20-ChWKFtjH.webp",
+      "assets/memory-20-BJCYcMfc.webp",
+      "assets/memory-21-DlEX9J6k.webp",
+      "assets/memory-21-BuEhLbS3.webp",
+      "assets/memory-22-BzAq4nYI.webp",
+      "assets/memory-22-Dl1cKuPu.webp",
+      "assets/memory-23-CQ6LWhL0.webp",
+      "assets/memory-23-9chlJ8xQ.webp",
+      "assets/memory-24-DK-A1wWV.webp",
+      "assets/memory-24-BdDvUgOP.webp",
+      "assets/memory-25-Pu2apP8s.webp",
+      "assets/memory-25-BCeXW1xw.webp"
     ]
   },
   "_universe-worker/handWorker-Cnygodcv.js": {
