@@ -1,10 +1,202 @@
 {
-  "_AppFooter-!~{00a}~.js": {
-    "file": "assets/AppFooter-OboN0d6s.css",
-    "src": "_AppFooter-!~{00a}~.js"
+  ".generated/universe/photos/demo-01.webp": {
+    "file": "assets/demo-01-B9Y9KWh4.webp",
+    "src": ".generated/universe/photos/demo-01.webp"
   },
-  "_AppFooter-Dp5t2SCz.js": {
-    "file": "assets/AppFooter-Dp5t2SCz.js",
+  ".generated/universe/photos/demo-02.webp": {
+    "file": "assets/demo-02-DZq46vXQ.webp",
+    "src": ".generated/universe/photos/demo-02.webp"
+  },
+  ".generated/universe/photos/demo-03.webp": {
+    "file": "assets/demo-03-DLkqTZXr.webp",
+    "src": ".generated/universe/photos/demo-03.webp"
+  },
+  ".generated/universe/photos/demo-04.webp": {
+    "file": "assets/demo-04-LJiTnLJB.webp",
+    "src": ".generated/universe/photos/demo-04.webp"
+  },
+  ".generated/universe/photos/demo-05.webp": {
+    "file": "assets/demo-05-CVnnX6qH.webp",
+    "src": ".generated/universe/photos/demo-05.webp"
+  },
+  ".generated/universe/photos/demo-06.webp": {
+    "file": "assets/demo-06-DBI3EuaU.webp",
+    "src": ".generated/universe/photos/demo-06.webp"
+  },
+  ".generated/universe/photos/demo-07.webp": {
+    "file": "assets/demo-07-BeWAs748.webp",
+    "src": ".generated/universe/photos/demo-07.webp"
+  },
+  ".generated/universe/photos/demo-08.webp": {
+    "file": "assets/demo-08-CHHoi3sA.webp",
+    "src": ".generated/universe/photos/demo-08.webp"
+  },
+  ".generated/universe/photos/demo-09.webp": {
+    "file": "assets/demo-09-Bh6EKFUQ.webp",
+    "src": ".generated/universe/photos/demo-09.webp"
+  },
+  ".generated/universe/photos/demo-10.webp": {
+    "file": "assets/demo-10-AC89PRUs.webp",
+    "src": ".generated/universe/photos/demo-10.webp"
+  },
+  ".generated/universe/photos/demo-11.webp": {
+    "file": "assets/demo-11-CQv9JVDc.webp",
+    "src": ".generated/universe/photos/demo-11.webp"
+  },
+  ".generated/universe/photos/demo-12.webp": {
+    "file": "assets/demo-12-DD5Io-Ku.webp",
+    "src": ".generated/universe/photos/demo-12.webp"
+  },
+  ".generated/universe/photos/demo-13.webp": {
+    "file": "assets/demo-13-Co87tP4r.webp",
+    "src": ".generated/universe/photos/demo-13.webp"
+  },
+  ".generated/universe/photos/demo-14.webp": {
+    "file": "assets/demo-14-DxzpqDo1.webp",
+    "src": ".generated/universe/photos/demo-14.webp"
+  },
+  ".generated/universe/photos/demo-15.webp": {
+    "file": "assets/demo-15-Bjpot7WA.webp",
+    "src": ".generated/universe/photos/demo-15.webp"
+  },
+  ".generated/universe/photos/demo-16.webp": {
+    "file": "assets/demo-16-HvM_eygi.webp",
+    "src": ".generated/universe/photos/demo-16.webp"
+  },
+  ".generated/universe/photos/demo-17.webp": {
+    "file": "assets/demo-17-WASQweKJ.webp",
+    "src": ".generated/universe/photos/demo-17.webp"
+  },
+  ".generated/universe/photos/demo-18.webp": {
+    "file": "assets/demo-18-CvwurpLN.webp",
+    "src": ".generated/universe/photos/demo-18.webp"
+  },
+  ".generated/universe/photos/demo-19.webp": {
+    "file": "assets/demo-19-DNoRHxKr.webp",
+    "src": ".generated/universe/photos/demo-19.webp"
+  },
+  ".generated/universe/photos/demo-20.webp": {
+    "file": "assets/demo-20-_2dL9U9V.webp",
+    "src": ".generated/universe/photos/demo-20.webp"
+  },
+  ".generated/universe/photos/demo-21.webp": {
+    "file": "assets/demo-21-Cc2mPI0h.webp",
+    "src": ".generated/universe/photos/demo-21.webp"
+  },
+  ".generated/universe/photos/demo-22.webp": {
+    "file": "assets/demo-22-CiPZlBJg.webp",
+    "src": ".generated/universe/photos/demo-22.webp"
+  },
+  ".generated/universe/photos/demo-23.webp": {
+    "file": "assets/demo-23-PA93tI28.webp",
+    "src": ".generated/universe/photos/demo-23.webp"
+  },
+  ".generated/universe/photos/demo-24.webp": {
+    "file": "assets/demo-24-DFYapHmV.webp",
+    "src": ".generated/universe/photos/demo-24.webp"
+  },
+  ".generated/universe/thumbs/demo-01.webp": {
+    "file": "assets/demo-01-C7ieOZ2l.webp",
+    "src": ".generated/universe/thumbs/demo-01.webp"
+  },
+  ".generated/universe/thumbs/demo-02.webp": {
+    "file": "assets/demo-02-D4P8FYxe.webp",
+    "src": ".generated/universe/thumbs/demo-02.webp"
+  },
+  ".generated/universe/thumbs/demo-03.webp": {
+    "file": "assets/demo-03-Mp5zconF.webp",
+    "src": ".generated/universe/thumbs/demo-03.webp"
+  },
+  ".generated/universe/thumbs/demo-04.webp": {
+    "file": "assets/demo-04-CmrGvJf9.webp",
+    "src": ".generated/universe/thumbs/demo-04.webp"
+  },
+  ".generated/universe/thumbs/demo-05.webp": {
+    "file": "assets/demo-05-CPRGKygx.webp",
+    "src": ".generated/universe/thumbs/demo-05.webp"
+  },
+  ".generated/universe/thumbs/demo-06.webp": {
+    "file": "assets/demo-06-CaMYxP1f.webp",
+    "src": ".generated/universe/thumbs/demo-06.webp"
+  },
+  ".generated/universe/thumbs/demo-07.webp": {
+    "file": "assets/demo-07-w58hjspP.webp",
+    "src": ".generated/universe/thumbs/demo-07.webp"
+  },
+  ".generated/universe/thumbs/demo-08.webp": {
+    "file": "assets/demo-08-A_1ONdPn.webp",
+    "src": ".generated/universe/thumbs/demo-08.webp"
+  },
+  ".generated/universe/thumbs/demo-09.webp": {
+    "file": "assets/demo-09-DDDKcTUl.webp",
+    "src": ".generated/universe/thumbs/demo-09.webp"
+  },
+  ".generated/universe/thumbs/demo-10.webp": {
+    "file": "assets/demo-10-CvpImQxr.webp",
+    "src": ".generated/universe/thumbs/demo-10.webp"
+  },
+  ".generated/universe/thumbs/demo-11.webp": {
+    "file": "assets/demo-11-BaBB-M7z.webp",
+    "src": ".generated/universe/thumbs/demo-11.webp"
+  },
+  ".generated/universe/thumbs/demo-12.webp": {
+    "file": "assets/demo-12-qJ-gIvyr.webp",
+    "src": ".generated/universe/thumbs/demo-12.webp"
+  },
+  ".generated/universe/thumbs/demo-13.webp": {
+    "file": "assets/demo-13-BPTI79zQ.webp",
+    "src": ".generated/universe/thumbs/demo-13.webp"
+  },
+  ".generated/universe/thumbs/demo-14.webp": {
+    "file": "assets/demo-14-DUqM_Jcn.webp",
+    "src": ".generated/universe/thumbs/demo-14.webp"
+  },
+  ".generated/universe/thumbs/demo-15.webp": {
+    "file": "assets/demo-15-BBjGu_9f.webp",
+    "src": ".generated/universe/thumbs/demo-15.webp"
+  },
+  ".generated/universe/thumbs/demo-16.webp": {
+    "file": "assets/demo-16-gtipTqv3.webp",
+    "src": ".generated/universe/thumbs/demo-16.webp"
+  },
+  ".generated/universe/thumbs/demo-17.webp": {
+    "file": "assets/demo-17-BJkVekA1.webp",
+    "src": ".generated/universe/thumbs/demo-17.webp"
+  },
+  ".generated/universe/thumbs/demo-18.webp": {
+    "file": "assets/demo-18-DAKpKOIq.webp",
+    "src": ".generated/universe/thumbs/demo-18.webp"
+  },
+  ".generated/universe/thumbs/demo-19.webp": {
+    "file": "assets/demo-19-BiUYf42r.webp",
+    "src": ".generated/universe/thumbs/demo-19.webp"
+  },
+  ".generated/universe/thumbs/demo-20.webp": {
+    "file": "assets/demo-20-BMlJ0BMO.webp",
+    "src": ".generated/universe/thumbs/demo-20.webp"
+  },
+  ".generated/universe/thumbs/demo-21.webp": {
+    "file": "assets/demo-21-CSukuWl6.webp",
+    "src": ".generated/universe/thumbs/demo-21.webp"
+  },
+  ".generated/universe/thumbs/demo-22.webp": {
+    "file": "assets/demo-22-B-KJzUy9.webp",
+    "src": ".generated/universe/thumbs/demo-22.webp"
+  },
+  ".generated/universe/thumbs/demo-23.webp": {
+    "file": "assets/demo-23-BvqRAAHX.webp",
+    "src": ".generated/universe/thumbs/demo-23.webp"
+  },
+  ".generated/universe/thumbs/demo-24.webp": {
+    "file": "assets/demo-24-cp3eIUFX.webp",
+    "src": ".generated/universe/thumbs/demo-24.webp"
+  },
+  "_AppFooter-!~{00c}~.js": {
+    "file": "assets/AppFooter-OboN0d6s.css",
+    "src": "_AppFooter-!~{00c}~.js"
+  },
+  "_AppFooter-D5-OJ0Wj.js": {
+    "file": "assets/AppFooter-D5-OJ0Wj.js",
     "name": "AppFooter",
     "imports": [
       "index.html"
@@ -13,16 +205,25 @@
       "assets/AppFooter-OboN0d6s.css"
     ]
   },
+  "_http-client-DcNlVx-A.js": {
+    "file": "assets/http-client-DcNlVx-A.js",
+    "name": "http-client"
+  },
   "_liquid-glass-CuDciSUj.js": {
     "file": "assets/liquid-glass-CuDciSUj.js",
     "name": "liquid-glass"
   },
+  "content/universe-model/hand_landmarker-float16-v1.task": {
+    "file": "assets/hand_landmarker-float16-v1-BA8W11YW.task",
+    "src": "content/universe-model/hand_landmarker-float16-v1.task"
+  },
   "index.html": {
-    "file": "assets/index-DtNldNsP.js",
+    "file": "assets/index-AttLieMw.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
     "imports": [
+      "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "dynamicImports": [
@@ -31,11 +232,12 @@
       "src/views/ArchivePage.vue",
       "src/views/ProjectsPage.vue",
       "src/views/GardenPage.vue",
+      "src/views/UniversePage.vue",
       "src/views/NotFoundPage.vue",
       "src/utils/wallpaperPreview.js"
     ],
     "css": [
-      "assets/index-CaNbBQjV.css"
+      "assets/index-tkJY7NdW.css"
     ],
     "assets": [
       "assets/lxgwwenkaiscreen-subset-4-PatS3YHh.woff2",
@@ -136,6 +338,14 @@
       "assets/lxgwwenkaiscreen-subset-118-tzvs_H7j.woff2",
       "assets/lxgwwenkaiscreen-subset-119-J2DWuYDN.woff2"
     ]
+  },
+  "node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_module_internal.js": {
+    "file": "assets/vision_wasm_module_internal-BEiPKPmH.js",
+    "src": "node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_module_internal.js"
+  },
+  "node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_module_internal.wasm": {
+    "file": "assets/vision_wasm_module_internal-BtRONiFR.wasm",
+    "src": "node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_module_internal.wasm"
   },
   "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-100.woff2": {
     "file": "assets/lxgwwenkaiscreen-subset-100-DLPe7tEt.woff2",
@@ -525,6 +735,43 @@
     "file": "assets/lxgwwenkaiscreen-subset-99-ZUQZGVgH.woff2",
     "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-99.woff2"
   },
+  "src/features/universe/gestures/handController.js": {
+    "file": "assets/handController-DMdqJQYh.js",
+    "name": "handController",
+    "src": "src/features/universe/gestures/handController.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_http-client-DcNlVx-A.js",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "dynamicImports": [
+      "src/features/universe/gestures/workerClient.js"
+    ]
+  },
+  "src/features/universe/gestures/interpreter.js": {
+    "file": "assets/interpreter-DxhiuLJY.js",
+    "name": "interpreter",
+    "src": "src/features/universe/gestures/interpreter.js",
+    "isDynamicEntry": true
+  },
+  "src/features/universe/gestures/workerClient.js": {
+    "file": "assets/workerClient-SSCDonNJ.js",
+    "name": "workerClient",
+    "src": "src/features/universe/gestures/workerClient.js",
+    "isDynamicEntry": true,
+    "assets": [
+      "assets/hand_landmarker-float16-v1-BA8W11YW.task",
+      "assets/vision_wasm_module_internal-BEiPKPmH.js",
+      "assets/vision_wasm_module_internal-BtRONiFR.wasm"
+    ]
+  },
+  "src/features/universe/scene/index.js": {
+    "file": "assets/index-BzituMxB.js",
+    "name": "index",
+    "src": "src/features/universe/scene/index.js",
+    "isDynamicEntry": true
+  },
   "src/utils/wallpaperPreview.js": {
     "file": "assets/wallpaperPreview-DCQ61cOX.js",
     "name": "wallpaperPreview",
@@ -532,13 +779,14 @@
     "isDynamicEntry": true
   },
   "src/views/AboutPage.vue": {
-    "file": "assets/AboutPage-FyGo45u-.js",
+    "file": "assets/AboutPage-DZ4nWOT0.js",
     "name": "AboutPage",
     "src": "src/views/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-Dp5t2SCz.js",
+      "_AppFooter-D5-OJ0Wj.js",
+      "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
@@ -546,13 +794,14 @@
     ]
   },
   "src/views/ArchivePage.vue": {
-    "file": "assets/ArchivePage-BafY32nX.js",
+    "file": "assets/ArchivePage-DFJ1XjIg.js",
     "name": "ArchivePage",
     "src": "src/views/ArchivePage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-Dp5t2SCz.js",
+      "_AppFooter-D5-OJ0Wj.js",
+      "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
@@ -560,13 +809,14 @@
     ]
   },
   "src/views/GardenPage.vue": {
-    "file": "assets/GardenPage-NweVFWbE.js",
+    "file": "assets/GardenPage-TFYtaoPB.js",
     "name": "GardenPage",
     "src": "src/views/GardenPage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_AppFooter-Dp5t2SCz.js",
+      "_AppFooter-D5-OJ0Wj.js",
       "index.html",
+      "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
@@ -574,13 +824,14 @@
     ]
   },
   "src/views/LearningPage.vue": {
-    "file": "assets/LearningPage-Cz0xsu3E.js",
+    "file": "assets/LearningPage-ousahLka.js",
     "name": "LearningPage",
     "src": "src/views/LearningPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-Dp5t2SCz.js",
+      "_AppFooter-D5-OJ0Wj.js",
+      "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
@@ -588,12 +839,13 @@
     ]
   },
   "src/views/NotFoundPage.vue": {
-    "file": "assets/NotFoundPage-DlPVD7WY.js",
+    "file": "assets/NotFoundPage-CGDibrUW.js",
     "name": "NotFoundPage",
     "src": "src/views/NotFoundPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
+      "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
@@ -601,17 +853,91 @@
     ]
   },
   "src/views/ProjectsPage.vue": {
-    "file": "assets/ProjectsPage-59zFCeML.js",
+    "file": "assets/ProjectsPage-BmmqY0YZ.js",
     "name": "ProjectsPage",
     "src": "src/views/ProjectsPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-Dp5t2SCz.js",
+      "_AppFooter-D5-OJ0Wj.js",
+      "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
     "css": [
       "assets/ProjectsPage-HxHdYwGw.css"
     ]
+  },
+  "src/views/UniversePage.vue": {
+    "file": "assets/UniversePage-BShvBvQI.js",
+    "name": "UniversePage",
+    "src": "src/views/UniversePage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_http-client-DcNlVx-A.js",
+      "_liquid-glass-CuDciSUj.js"
+    ],
+    "dynamicImports": [
+      "src/features/universe/scene/index.js",
+      "src/features/universe/gestures/handController.js",
+      "src/features/universe/gestures/interpreter.js"
+    ],
+    "css": [
+      "assets/UniversePage-Egjm0hNm.css"
+    ],
+    "assets": [
+      "assets/demo-01-B9Y9KWh4.webp",
+      "assets/demo-01-C7ieOZ2l.webp",
+      "assets/demo-02-DZq46vXQ.webp",
+      "assets/demo-02-D4P8FYxe.webp",
+      "assets/demo-03-DLkqTZXr.webp",
+      "assets/demo-03-Mp5zconF.webp",
+      "assets/demo-04-LJiTnLJB.webp",
+      "assets/demo-04-CmrGvJf9.webp",
+      "assets/demo-05-CVnnX6qH.webp",
+      "assets/demo-05-CPRGKygx.webp",
+      "assets/demo-06-DBI3EuaU.webp",
+      "assets/demo-06-CaMYxP1f.webp",
+      "assets/demo-07-BeWAs748.webp",
+      "assets/demo-07-w58hjspP.webp",
+      "assets/demo-08-CHHoi3sA.webp",
+      "assets/demo-08-A_1ONdPn.webp",
+      "assets/demo-09-Bh6EKFUQ.webp",
+      "assets/demo-09-DDDKcTUl.webp",
+      "assets/demo-10-AC89PRUs.webp",
+      "assets/demo-10-CvpImQxr.webp",
+      "assets/demo-11-CQv9JVDc.webp",
+      "assets/demo-11-BaBB-M7z.webp",
+      "assets/demo-12-DD5Io-Ku.webp",
+      "assets/demo-12-qJ-gIvyr.webp",
+      "assets/demo-13-Co87tP4r.webp",
+      "assets/demo-13-BPTI79zQ.webp",
+      "assets/demo-14-DxzpqDo1.webp",
+      "assets/demo-14-DUqM_Jcn.webp",
+      "assets/demo-15-Bjpot7WA.webp",
+      "assets/demo-15-BBjGu_9f.webp",
+      "assets/demo-16-HvM_eygi.webp",
+      "assets/demo-16-gtipTqv3.webp",
+      "assets/demo-17-WASQweKJ.webp",
+      "assets/demo-17-BJkVekA1.webp",
+      "assets/demo-18-CvwurpLN.webp",
+      "assets/demo-18-DAKpKOIq.webp",
+      "assets/demo-19-DNoRHxKr.webp",
+      "assets/demo-19-BiUYf42r.webp",
+      "assets/demo-20-_2dL9U9V.webp",
+      "assets/demo-20-BMlJ0BMO.webp",
+      "assets/demo-21-Cc2mPI0h.webp",
+      "assets/demo-21-CSukuWl6.webp",
+      "assets/demo-22-CiPZlBJg.webp",
+      "assets/demo-22-B-KJzUy9.webp",
+      "assets/demo-23-PA93tI28.webp",
+      "assets/demo-23-BvqRAAHX.webp",
+      "assets/demo-24-DFYapHmV.webp",
+      "assets/demo-24-cp3eIUFX.webp"
+    ]
+  },
+  "_universe-worker/handWorker-Cnygodcv.js": {
+    "file": "assets/handWorker-Cnygodcv.js",
+    "name": "universe-hand-worker"
   }
 }

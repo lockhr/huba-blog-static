@@ -99,6 +99,7 @@
         var forceWelcome = /[?&]welcome=1/.test(qs);
         var skipWelcome = /[?&]nowelcome=1/.test(qs) || root.dataset.mobileCover === 'active';
         var route = location.hash.indexOf('#/') === 0 ? location.hash.slice(1).split(/[?#]/)[0] : location.pathname;
+        if (/(?:^|\/)universe\/?$/.test(route)) root.classList.add('universe-mode');
         var homePath = '/huba-blog-static/'.replace(/\/$/, '') || '/';
         var isHome = route === '/' || route.replace(/\/$/, '') === homePath;
         skipWelcome = skipWelcome || !isHome;
@@ -123,6 +124,10 @@
         }
       })();
     </script>
+    <style id="universe-first-paint">
+      html.universe-mode, html.universe-mode body { background: #02050d !important; overflow: hidden; }
+      html.universe-mode #wallpaper-root, html.universe-mode .chrome-tint { visibility: hidden; }
+    </style>
 
     <style>
       :root {
@@ -419,9 +424,10 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-DtNldNsP.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-AttLieMw.js"></script>
+    <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/http-client-DcNlVx-A.js">
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CaNbBQjV.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-tkJY7NdW.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
