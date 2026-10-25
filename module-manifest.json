@@ -203,8 +203,8 @@
     "file": "assets/AppFooter-OboN0d6s.css",
     "src": "_AppFooter-!~{00c}~.js"
   },
-  "_AppFooter-DaRSuXeC.js": {
-    "file": "assets/AppFooter-DaRSuXeC.js",
+  "_AppFooter-DdERo5yF.js": {
+    "file": "assets/AppFooter-DdERo5yF.js",
     "name": "AppFooter",
     "imports": [
       "index.html"
@@ -226,7 +226,7 @@
     "src": "content/universe-model/hand_landmarker-float16-v1.task"
   },
   "index.html": {
-    "file": "assets/index-By_kcV1n.js",
+    "file": "assets/index-VnkqoVmc.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -744,7 +744,7 @@
     "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-99.woff2"
   },
   "src/features/universe/gestures/handController.js": {
-    "file": "assets/handController-LZKejVsp.js",
+    "file": "assets/handController-BO8CYD_C.js",
     "name": "handController",
     "src": "src/features/universe/gestures/handController.js",
     "isDynamicEntry": true,
@@ -764,13 +764,13 @@
     "isDynamicEntry": true
   },
   "src/features/universe/gestures/landmarkerRuntime.js": {
-    "file": "assets/landmarkerRuntime-CK1zr8W2.js",
+    "file": "assets/landmarkerRuntime-CKnN1TdQ.js",
     "name": "landmarkerRuntime",
     "src": "src/features/universe/gestures/landmarkerRuntime.js",
     "isDynamicEntry": true
   },
   "src/features/universe/gestures/mainThreadClient.js": {
-    "file": "assets/mainThreadClient-BJzVAnEC.js",
+    "file": "assets/mainThreadClient-CMU1lK3d.js",
     "name": "mainThreadClient",
     "src": "src/features/universe/gestures/mainThreadClient.js",
     "isDynamicEntry": true,
@@ -784,7 +784,7 @@
     ]
   },
   "src/features/universe/gestures/workerClient.js": {
-    "file": "assets/workerClient-CHRX2O9E.js",
+    "file": "assets/workerClient-6ZJT2ejs.js",
     "name": "workerClient",
     "src": "src/features/universe/gestures/workerClient.js",
     "isDynamicEntry": true,
@@ -803,7 +803,7 @@
     ]
   },
   "src/features/universe/scene/index.js": {
-    "file": "assets/index-DRZuozr3.js",
+    "file": "assets/index-BiivoLP_.js",
     "name": "index",
     "src": "src/features/universe/scene/index.js",
     "isDynamicEntry": true
@@ -815,13 +815,13 @@
     "isDynamicEntry": true
   },
   "src/views/AboutPage.vue": {
-    "file": "assets/AboutPage-or9AQIth.js",
+    "file": "assets/AboutPage-ByGkJIDP.js",
     "name": "AboutPage",
     "src": "src/views/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-DaRSuXeC.js",
+      "_AppFooter-DdERo5yF.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -830,13 +830,13 @@
     ]
   },
   "src/views/ArchivePage.vue": {
-    "file": "assets/ArchivePage-uVYJY_7i.js",
+    "file": "assets/ArchivePage-ONR6UI5M.js",
     "name": "ArchivePage",
     "src": "src/views/ArchivePage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-DaRSuXeC.js",
+      "_AppFooter-DdERo5yF.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -845,12 +845,12 @@
     ]
   },
   "src/views/GardenPage.vue": {
-    "file": "assets/GardenPage-CPen5fb9.js",
+    "file": "assets/GardenPage-CYF-IKH8.js",
     "name": "GardenPage",
     "src": "src/views/GardenPage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_AppFooter-DaRSuXeC.js",
+      "_AppFooter-DdERo5yF.js",
       "index.html",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
@@ -860,13 +860,13 @@
     ]
   },
   "src/views/LearningPage.vue": {
-    "file": "assets/LearningPage-J_pkBXTA.js",
+    "file": "assets/LearningPage-BzNZkf3D.js",
     "name": "LearningPage",
     "src": "src/views/LearningPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-DaRSuXeC.js",
+      "_AppFooter-DdERo5yF.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -875,7 +875,7 @@
     ]
   },
   "src/views/NotFoundPage.vue": {
-    "file": "assets/NotFoundPage-BtvS-aRL.js",
+    "file": "assets/NotFoundPage-MMLzYfAV.js",
     "name": "NotFoundPage",
     "src": "src/views/NotFoundPage.vue",
     "isDynamicEntry": true,
@@ -889,13 +889,13 @@
     ]
   },
   "src/views/ProjectsPage.vue": {
-    "file": "assets/ProjectsPage-BjKYNh_e.js",
+    "file": "assets/ProjectsPage-Cnhrz3og.js",
     "name": "ProjectsPage",
     "src": "src/views/ProjectsPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-DaRSuXeC.js",
+      "_AppFooter-DdERo5yF.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -904,7 +904,7 @@
     ]
   },
   "src/views/UniversePage.vue": {
-    "file": "assets/UniversePage-ocFgRCB4.js",
+    "file": "assets/UniversePage-BDRM53a-.js",
     "name": "UniversePage",
     "src": "src/views/UniversePage.vue",
     "isDynamicEntry": true,
@@ -919,7 +919,7 @@
       "src/features/universe/gestures/interpreter.js"
     ],
     "css": [
-      "assets/UniversePage-DATP3kh-.css"
+      "assets/UniversePage-D7IeSI5N.css"
     ],
     "assets": [
       "assets/memory-01-Dsj-T7L6.webp",
@@ -974,8 +974,8 @@
       "assets/memory-25-BCeXW1xw.webp"
     ]
   },
-  "_universe-worker/handWorker-DBFxbbrL.js": {
-    "file": "assets/handWorker-DBFxbbrL.js",
+  "_universe-worker/handWorker-BEIBb38s.js": {
+    "file": "assets/handWorker-BEIBb38s.js",
     "name": "universe-hand-worker"
   }
 }
