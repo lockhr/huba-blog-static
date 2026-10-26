@@ -203,8 +203,8 @@
     "file": "assets/AppFooter-OboN0d6s.css",
     "src": "_AppFooter-!~{00c}~.js"
   },
-  "_AppFooter-DdERo5yF.js": {
-    "file": "assets/AppFooter-DdERo5yF.js",
+  "_AppFooter-D7gZcRni.js": {
+    "file": "assets/AppFooter-D7gZcRni.js",
     "name": "AppFooter",
     "imports": [
       "index.html"
@@ -221,12 +221,8 @@
     "file": "assets/liquid-glass-CuDciSUj.js",
     "name": "liquid-glass"
   },
-  "content/universe-model/hand_landmarker-float16-v1.task": {
-    "file": "assets/hand_landmarker-float16-v1-BA8W11YW.task",
-    "src": "content/universe-model/hand_landmarker-float16-v1.task"
-  },
   "index.html": {
-    "file": "assets/index-VnkqoVmc.js",
+    "file": "assets/index-MLzTjv7e.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -346,14 +342,6 @@
       "assets/lxgwwenkaiscreen-subset-118-tzvs_H7j.woff2",
       "assets/lxgwwenkaiscreen-subset-119-J2DWuYDN.woff2"
     ]
-  },
-  "node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_module_internal.js": {
-    "file": "assets/vision_wasm_module_internal-BEiPKPmH.js",
-    "src": "node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_module_internal.js"
-  },
-  "node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_module_internal.wasm": {
-    "file": "assets/vision_wasm_module_internal-BtRONiFR.wasm",
-    "src": "node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_module_internal.wasm"
   },
   "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-100.woff2": {
     "file": "assets/lxgwwenkaiscreen-subset-100-DLPe7tEt.woff2",
@@ -743,8 +731,14 @@
     "file": "assets/lxgwwenkaiscreen-subset-99-ZUQZGVgH.woff2",
     "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-99.woff2"
   },
+  "src/features/universe/gestures/basicInput.js": {
+    "file": "assets/basicInput-CB8PZ-3G.js",
+    "name": "basicInput",
+    "src": "src/features/universe/gestures/basicInput.js",
+    "isDynamicEntry": true
+  },
   "src/features/universe/gestures/handController.js": {
-    "file": "assets/handController-BO8CYD_C.js",
+    "file": "assets/handController-Dc3l-55l.js",
     "name": "handController",
     "src": "src/features/universe/gestures/handController.js",
     "isDynamicEntry": true,
@@ -757,50 +751,11 @@
       "src/features/universe/gestures/workerClient.js"
     ]
   },
-  "src/features/universe/gestures/interpreter.js": {
-    "file": "assets/interpreter-DwbqZV84.js",
-    "name": "interpreter",
-    "src": "src/features/universe/gestures/interpreter.js",
-    "isDynamicEntry": true
-  },
-  "src/features/universe/gestures/landmarkerRuntime.js": {
-    "file": "assets/landmarkerRuntime-CKnN1TdQ.js",
-    "name": "landmarkerRuntime",
-    "src": "src/features/universe/gestures/landmarkerRuntime.js",
-    "isDynamicEntry": true
-  },
-  "src/features/universe/gestures/mainThreadClient.js": {
-    "file": "assets/mainThreadClient-CMU1lK3d.js",
-    "name": "mainThreadClient",
-    "src": "src/features/universe/gestures/mainThreadClient.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "index.html",
-      "_http-client-DcNlVx-A.js",
-      "_liquid-glass-CuDciSUj.js"
-    ],
-    "dynamicImports": [
-      "src/features/universe/gestures/landmarkerRuntime.js"
-    ]
-  },
   "src/features/universe/gestures/workerClient.js": {
-    "file": "assets/workerClient-6ZJT2ejs.js",
+    "file": "assets/workerClient-BfPbyAr1.js",
     "name": "workerClient",
     "src": "src/features/universe/gestures/workerClient.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "index.html",
-      "_http-client-DcNlVx-A.js",
-      "_liquid-glass-CuDciSUj.js"
-    ],
-    "dynamicImports": [
-      "src/features/universe/gestures/mainThreadClient.js"
-    ],
-    "assets": [
-      "assets/hand_landmarker-float16-v1-BA8W11YW.task",
-      "assets/vision_wasm_module_internal-BEiPKPmH.js",
-      "assets/vision_wasm_module_internal-BtRONiFR.wasm"
-    ]
+    "isDynamicEntry": true
   },
   "src/features/universe/scene/index.js": {
     "file": "assets/index-BiivoLP_.js",
@@ -815,13 +770,13 @@
     "isDynamicEntry": true
   },
   "src/views/AboutPage.vue": {
-    "file": "assets/AboutPage-ByGkJIDP.js",
+    "file": "assets/AboutPage-DYEncAPG.js",
     "name": "AboutPage",
     "src": "src/views/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-DdERo5yF.js",
+      "_AppFooter-D7gZcRni.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -830,13 +785,13 @@
     ]
   },
   "src/views/ArchivePage.vue": {
-    "file": "assets/ArchivePage-ONR6UI5M.js",
+    "file": "assets/ArchivePage-jOjeCeVg.js",
     "name": "ArchivePage",
     "src": "src/views/ArchivePage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-DdERo5yF.js",
+      "_AppFooter-D7gZcRni.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -845,12 +800,12 @@
     ]
   },
   "src/views/GardenPage.vue": {
-    "file": "assets/GardenPage-CYF-IKH8.js",
+    "file": "assets/GardenPage-UKB3fkPg.js",
     "name": "GardenPage",
     "src": "src/views/GardenPage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_AppFooter-DdERo5yF.js",
+      "_AppFooter-D7gZcRni.js",
       "index.html",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
@@ -860,13 +815,13 @@
     ]
   },
   "src/views/LearningPage.vue": {
-    "file": "assets/LearningPage-BzNZkf3D.js",
+    "file": "assets/LearningPage-tcpFz1LE.js",
     "name": "LearningPage",
     "src": "src/views/LearningPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-DdERo5yF.js",
+      "_AppFooter-D7gZcRni.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -875,7 +830,7 @@
     ]
   },
   "src/views/NotFoundPage.vue": {
-    "file": "assets/NotFoundPage-MMLzYfAV.js",
+    "file": "assets/NotFoundPage-DbaZSSL-.js",
     "name": "NotFoundPage",
     "src": "src/views/NotFoundPage.vue",
     "isDynamicEntry": true,
@@ -889,13 +844,13 @@
     ]
   },
   "src/views/ProjectsPage.vue": {
-    "file": "assets/ProjectsPage-Cnhrz3og.js",
+    "file": "assets/ProjectsPage-B5JqZHct.js",
     "name": "ProjectsPage",
     "src": "src/views/ProjectsPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-DdERo5yF.js",
+      "_AppFooter-D7gZcRni.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -904,7 +859,7 @@
     ]
   },
   "src/views/UniversePage.vue": {
-    "file": "assets/UniversePage-BDRM53a-.js",
+    "file": "assets/UniversePage-B_BCPNot.js",
     "name": "UniversePage",
     "src": "src/views/UniversePage.vue",
     "isDynamicEntry": true,
@@ -916,10 +871,10 @@
     "dynamicImports": [
       "src/features/universe/scene/index.js",
       "src/features/universe/gestures/handController.js",
-      "src/features/universe/gestures/interpreter.js"
+      "src/features/universe/gestures/basicInput.js"
     ],
     "css": [
-      "assets/UniversePage-D7IeSI5N.css"
+      "assets/UniversePage-Dg6cKYin.css"
     ],
     "assets": [
       "assets/memory-01-Dsj-T7L6.webp",
@@ -974,8 +929,8 @@
       "assets/memory-25-BCeXW1xw.webp"
     ]
   },
-  "_universe-worker/handWorker-BEIBb38s.js": {
-    "file": "assets/handWorker-BEIBb38s.js",
-    "name": "universe-hand-worker"
+  "_universe-worker/motionWorker-tceSTUOk.js": {
+    "file": "assets/motionWorker-tceSTUOk.js",
+    "name": "universe-motion-worker"
   }
 }
