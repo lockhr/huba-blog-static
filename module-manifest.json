@@ -203,8 +203,8 @@
     "file": "assets/AppFooter-OboN0d6s.css",
     "src": "_AppFooter-!~{00c}~.js"
   },
-  "_AppFooter-D7gZcRni.js": {
-    "file": "assets/AppFooter-D7gZcRni.js",
+  "_AppFooter-DQ_vrUOq.js": {
+    "file": "assets/AppFooter-DQ_vrUOq.js",
     "name": "AppFooter",
     "imports": [
       "index.html"
@@ -222,7 +222,7 @@
     "name": "liquid-glass"
   },
   "index.html": {
-    "file": "assets/index-MLzTjv7e.js",
+    "file": "assets/index-D-RI0Jie.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -731,32 +731,6 @@
     "file": "assets/lxgwwenkaiscreen-subset-99-ZUQZGVgH.woff2",
     "src": "node_modules/lxgw-wenkai-screen-webfont/files/lxgwwenkaiscreen-subset-99.woff2"
   },
-  "src/features/universe/gestures/basicInput.js": {
-    "file": "assets/basicInput-CB8PZ-3G.js",
-    "name": "basicInput",
-    "src": "src/features/universe/gestures/basicInput.js",
-    "isDynamicEntry": true
-  },
-  "src/features/universe/gestures/handController.js": {
-    "file": "assets/handController-Dc3l-55l.js",
-    "name": "handController",
-    "src": "src/features/universe/gestures/handController.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "index.html",
-      "_http-client-DcNlVx-A.js",
-      "_liquid-glass-CuDciSUj.js"
-    ],
-    "dynamicImports": [
-      "src/features/universe/gestures/workerClient.js"
-    ]
-  },
-  "src/features/universe/gestures/workerClient.js": {
-    "file": "assets/workerClient-BfPbyAr1.js",
-    "name": "workerClient",
-    "src": "src/features/universe/gestures/workerClient.js",
-    "isDynamicEntry": true
-  },
   "src/features/universe/scene/index.js": {
     "file": "assets/index-BiivoLP_.js",
     "name": "index",
@@ -770,13 +744,13 @@
     "isDynamicEntry": true
   },
   "src/views/AboutPage.vue": {
-    "file": "assets/AboutPage-DYEncAPG.js",
+    "file": "assets/AboutPage-DoM1P8oH.js",
     "name": "AboutPage",
     "src": "src/views/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-D7gZcRni.js",
+      "_AppFooter-DQ_vrUOq.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -785,13 +759,13 @@
     ]
   },
   "src/views/ArchivePage.vue": {
-    "file": "assets/ArchivePage-jOjeCeVg.js",
+    "file": "assets/ArchivePage-Dhrhol8g.js",
     "name": "ArchivePage",
     "src": "src/views/ArchivePage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-D7gZcRni.js",
+      "_AppFooter-DQ_vrUOq.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -800,12 +774,12 @@
     ]
   },
   "src/views/GardenPage.vue": {
-    "file": "assets/GardenPage-UKB3fkPg.js",
+    "file": "assets/GardenPage-Cd0VdwRD.js",
     "name": "GardenPage",
     "src": "src/views/GardenPage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_AppFooter-D7gZcRni.js",
+      "_AppFooter-DQ_vrUOq.js",
       "index.html",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
@@ -815,13 +789,13 @@
     ]
   },
   "src/views/LearningPage.vue": {
-    "file": "assets/LearningPage-tcpFz1LE.js",
+    "file": "assets/LearningPage-C6XU-7XC.js",
     "name": "LearningPage",
     "src": "src/views/LearningPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-D7gZcRni.js",
+      "_AppFooter-DQ_vrUOq.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -830,7 +804,7 @@
     ]
   },
   "src/views/NotFoundPage.vue": {
-    "file": "assets/NotFoundPage-DbaZSSL-.js",
+    "file": "assets/NotFoundPage-CUT6o61H.js",
     "name": "NotFoundPage",
     "src": "src/views/NotFoundPage.vue",
     "isDynamicEntry": true,
@@ -844,13 +818,13 @@
     ]
   },
   "src/views/ProjectsPage.vue": {
-    "file": "assets/ProjectsPage-B5JqZHct.js",
+    "file": "assets/ProjectsPage-DyWCg9sZ.js",
     "name": "ProjectsPage",
     "src": "src/views/ProjectsPage.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_AppFooter-D7gZcRni.js",
+      "_AppFooter-DQ_vrUOq.js",
       "_http-client-DcNlVx-A.js",
       "_liquid-glass-CuDciSUj.js"
     ],
@@ -859,7 +833,7 @@
     ]
   },
   "src/views/UniversePage.vue": {
-    "file": "assets/UniversePage-B_BCPNot.js",
+    "file": "assets/UniversePage-CYzKLWCQ.js",
     "name": "UniversePage",
     "src": "src/views/UniversePage.vue",
     "isDynamicEntry": true,
@@ -869,12 +843,10 @@
       "_liquid-glass-CuDciSUj.js"
     ],
     "dynamicImports": [
-      "src/features/universe/scene/index.js",
-      "src/features/universe/gestures/handController.js",
-      "src/features/universe/gestures/basicInput.js"
+      "src/features/universe/scene/index.js"
     ],
     "css": [
-      "assets/UniversePage-Dg6cKYin.css"
+      "assets/UniversePage-uGwZ6zGc.css"
     ],
     "assets": [
       "assets/memory-01-Dsj-T7L6.webp",
@@ -928,9 +900,5 @@
       "assets/memory-25-Pu2apP8s.webp",
       "assets/memory-25-BCeXW1xw.webp"
     ]
-  },
-  "_universe-worker/motionWorker-tceSTUOk.js": {
-    "file": "assets/motionWorker-tceSTUOk.js",
-    "name": "universe-motion-worker"
   }
 }
