@@ -199,7 +199,8 @@
          v7 之前的探针正是踩了 visibility:hidden + z-index:-4 两个雷：
          顶栏颜色其实来自 html 底色兜底，底栏跟着变成顶边色（灰蓝）而不是草绿。
          所以探针必须是**正常可见、正常层级**的元素——
-         好在它的颜色就是壁纸对应边缘的采样色，贴在壁纸上毫无接缝。
+         颜色交给采样色，画面则直接画出同一张壁纸的切片（见下方 background-image），
+         这样它既不会在壁纸上留下色带，Safari 又能读到正确的 background-color。
          非 iOS 环境变量不会被写入，回退 transparent，等于不存在。 */
       .chrome-tint {
         position: fixed;
@@ -209,14 +210,23 @@
         z-index: 1;               /* 必须非负；1 = 盖过壁纸层(-2/-1)，但低于导航等 UI */
         pointer-events: none;     /* 已验证不影响采样 */
         background-color: transparent;
+        /* 只在 iOS 上生效：useWallpaperEdge 会写入 --tint-image。
+           非 iOS 时它是 none，探针保持完全透明，不会盖住页面边缘 6px 的内容。 */
+        /* 用清晰版：首屏可见的就是清晰壁纸（.hero-bg），这一段 6px 才能严丝合缝；
+           滚到正文后背后是模糊版，低频频段一致，只差一点点纹理，看不出来。 */
+        background-image: var(--tint-image, none);
+        background-size: var(--tint-size, 0 0);
+        background-repeat: no-repeat;
       }
       #chrome-tint-top {
         top: 0;                   /* 规范：距顶 4px 以内 */
         background-color: var(--bg-edge-top, transparent);
+        background-position: var(--tint-top-pos, 0 0);
       }
       #chrome-tint-bottom {
         bottom: 0;                /* 规范：距底 3px 以内 */
         background-color: var(--bg-edge-bottom, transparent);
+        background-position: var(--tint-bottom-pos, 0 0);
       }
 
       /* ====== Welcome — 首次进入的问候层 ======
@@ -424,7 +434,7 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-CfaETS80.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-Ba9TSUpR.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/http-client-DcNlVx-A.js">
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
     <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-C3DCU0D_.css">
