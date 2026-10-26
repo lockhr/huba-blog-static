@@ -229,6 +229,54 @@
         background-position: var(--tint-bottom-pos, 0 0);
       }
 
+      /* ====== 首屏加载层（回访 / 首次揭开问候层后的空窗） ======
+         首屏要下 500KB+ 的 JS 包，慢网下「只有壁纸、没有任何反应」最难受，
+         这里给一个环 + 站名。三个关键点：
+         1. 透明背景 —— 底下就是壁纸，不另铺一块纯色；
+         2. animation-delay 0.2s —— 200ms 内就绪的快速加载完全不会闪一下；
+         3. 兜底 —— main.js 打上 html.booted 才收，脚本挂了由 index.html 的
+            定时器兜底（见下方 boot-fallback）。
+         首次访问时它被 #apple-welcome 盖住（z-index 99999 > 9998），不冲突。 */
+      #boot-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        pointer-events: none;
+      }
+      html:not(.booted) #boot-loader {
+        display: flex;
+        animation: boot-in 0.4s ease 0.2s both;
+      }
+      .boot-ring {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 2px solid rgba(233, 187, 98, 0.20);
+        border-top-color: #E9BB62;
+        animation: boot-spin 0.9s linear infinite;
+      }
+      /* 底色永远是那张夜景壁纸（两种主题共用），所以加载层不能按主题翻文字色，
+         统一用浅色字 + 深色描边阴影，否则浅色模式下会糊在暗背景里。 */
+      .boot-name,
+      html.dark .boot-name {
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        color: rgba(243, 247, 255, 0.80);
+        text-shadow: 0 1px 8px rgba(0, 10, 30, 0.45);
+      }
+      @keyframes boot-spin { to { transform: rotate(360deg); } }
+      @keyframes boot-in {
+        from { opacity: 0; transform: translateY(4px); }
+        to   { opacity: 1; transform: none; }
+      }
+
       /* ====== Welcome — 首次进入的问候层 ======
          设计要点：它不是「另一个世界」，而是**同一张壁纸的虚焦版**。
          揭开时只做一次「对焦」动作（虚焦归零 + 遮罩掀开），不换场景、不换色调。 */
@@ -434,10 +482,10 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-D0WzVII6.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-CCeIvwxc.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/http-client-DcNlVx-A.js">
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CrzkwRUV.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CG8tf8Yg.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -483,7 +531,20 @@
       <p class="welcome-hint">或按 Enter</p>
     </div>
 
+    <!-- 首屏加载层：脚本还没跑起来时先转着，html.booted 之后立刻收掉 -->
+    <div id="boot-loader" aria-hidden="true">
+      <div class="boot-ring"></div>
+      <span class="boot-name">胡巴HB</span>
+    </div>
+
     <div id="app"></div>
+
+    <script id="boot-fallback">
+      // 兜底：JS 包加载失败或 mount 抛错时，别让加载层永远挂在屏幕上
+      setTimeout(function () {
+        document.documentElement.classList.add('booted');
+      }, 8000);
+    </script>
 
     <!-- 页面背景层（模糊壁纸）—— 真实元素，WebGL 液态玻璃才能采到它（见 head 说明） -->
     <div id="wallpaper-root" class="bg-wallpaper" aria-hidden="true"><img class="wallpaper-bootstrap-preview" src="/huba-blog-static/images/cover-blur.jpg" alt="" decoding="async"></div>
