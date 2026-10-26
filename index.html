@@ -434,10 +434,10 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-Ba9TSUpR.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-sEkblGti.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/http-client-DcNlVx-A.js">
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-C3DCU0D_.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-CwgtTEy_.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
@@ -708,8 +708,46 @@
                 } catch (e) { return '(读取失败)'; }
               })(),
             ],
+            // 首屏「清晰窗口」有没有把可视区域盖满 —— 底部露一条模糊壁纸就是这个数不对
+            [
+              '首屏窗口 --hero-height',
+              rootCS.getPropertyValue('--hero-height').trim() || '(未写入)',
+            ],
+            [
+              '首屏区块高度 / --hero-min-height',
+              (function () {
+                try {
+                  var el = document.querySelector('.hero-section');
+                  return (el ? Math.round(el.getBoundingClientRect().height) + 'px' : '(非首页)') +
+                    ' / ' + (rootCS.getPropertyValue('--hero-min-height').trim() || '(未写入)');
+                } catch (e) { return '(读取失败)'; }
+              })(),
+            ],
+            [
+              '窗口底 ↔ 视口底（缺口）',
+              (function () {
+                try {
+                  var el = document.querySelector('.hero-bg');
+                  if (!el) return '(非首页)';
+                  var bottom = Math.round(el.getBoundingClientRect().bottom);
+                  var gapPx = window.innerHeight - bottom;
+                  return bottom + 'px ↔ ' + window.innerHeight + 'px · 缺口 ' + gapPx + 'px' +
+                    (gapPx > 1 ? ' ✕ 这里会露出模糊壁纸' : ' ✓ 盖满');
+                } catch (e) { return '(读取失败)'; }
+              })(),
+            ],
             ['UA', navigator.userAgent],
           ];
+
+          // 把几个关键图层描边，一张截图就能看出是哪一层没盖满。
+          // 红=首屏区块 绿=清晰壁纸窗口 蓝=模糊壁纸层 粉=贴边取色探针
+          var outline = document.createElement('style');
+          outline.textContent =
+            '.hero-section{outline:2px solid #ff3b30;outline-offset:-2px}' +
+            '.hero-bg{outline:2px solid #34c759;outline-offset:-2px}' +
+            '.bg-wallpaper{outline:2px solid #0a84ff;outline-offset:-2px}' +
+            '.chrome-tint{outline:1px solid #ff2d92;outline-offset:0}';
+          document.head.appendChild(outline);
 
           var box = document.createElement('div');
           box.style.cssText =
@@ -722,7 +760,8 @@
             '<div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px">' +
             '<b style="font-size:13px">真机自检</b>' +
             '<span data-diag-close style="cursor:pointer;opacity:.7">关闭 ✕</span></div>' +
-            '<div style="opacity:.55;margin-bottom:6px">把这一屏截图发我</div>';
+            '<div style="opacity:.55;margin-bottom:6px">把这一屏截图发我</div>' +
+            '<div style="opacity:.55;margin-bottom:6px;color:#ffd1d1">描边：红=首屏区块 绿=清晰壁纸窗口 蓝=模糊壁纸层 粉=贴边探针</div>';
           rows.forEach(function (r) {
             html += '<div><span style="opacity:.55">' + r[0] + '：</span>' + r[1] + '</div>';
           });
