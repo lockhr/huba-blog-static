@@ -2,6 +2,23 @@
 <html lang="zh">
   <head>
     <meta charset="UTF-8" />
+    <!-- Native iPhone/iPad edges by default; safariEdge=baseline restores the old behavior. -->
+    <script id="safari-edge-bootstrap">
+      (function () {
+        var query = new URLSearchParams(location.search);
+        var path = location.hash.indexOf('#/') === 0 ? location.hash.slice(1) : location.pathname;
+        var ios = /iPhone|iPad|iPod/.test(navigator.userAgent)
+          || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        var excluded = /(?:^|\/)(?:admin|universe)(?:\/|$)/.test(path.split(/[?#]/)[0]);
+        var native = !query.has('safariEdge') || query.get('safariEdge') === 'native';
+        document.documentElement.dataset.safariEdge = ios && native
+          && !excluded && query.get('mobileCover') !== '1' && !query.has('wallpaperPreview')
+          ? 'native' : 'baseline';
+      })();
+    </script>
+    <style id="safari-edge-first-paint">
+      html[data-safari-edge="native"] .chrome-tint { display: none; }
+    </style>
     <!-- Retired experiment links fall back before first paint; normal visits are unchanged. -->
     <script id="wallpaper-preview-bootstrap">
       (function () {
@@ -135,9 +152,9 @@
         --app-base: #262835;
         --safari-top-color: #262835;
         --safari-bottom-color: #957055;
-        --bg-preview: url('/huba-blog-static/images/cover-blur.jpg');
-        --bg-image: url('/huba-blog-static/images/cover.jpg');
-        --bg-image-blur: url('/huba-blog-static/images/cover-blur.jpg');
+        --bg-preview: url('/huba-blog-static/assets/cover-blur-DSfybBKP.jpg');
+        --bg-image: url('/huba-blog-static/assets/cover-1hBRqNa8.jpg');
+        --bg-image-blur: url('/huba-blog-static/assets/cover-blur-DSfybBKP.jpg');
         --bg-offset: 6%;
       }
       /* 首帧就隐藏整页滚动条，避免刷新时先闪出白色侧栏。 */
@@ -482,10 +499,10 @@
         z-index: 1;
       }
     </style>
-    <script type="module" crossorigin src="/huba-blog-static/assets/index-DNpHVdgt.js"></script>
+    <script type="module" crossorigin src="/huba-blog-static/assets/index-B8kNWf-C.js"></script>
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/http-client-DcNlVx-A.js">
     <link rel="modulepreload" crossorigin href="/huba-blog-static/assets/liquid-glass-CuDciSUj.js">
-    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-B_RN9jWi.css">
+    <link rel="stylesheet" crossorigin href="/huba-blog-static/assets/index-BqEg0-GH.css">
   </head>
   <body>
     <!-- SVG 滤镜 — iOS 26 液态玻璃：feTurbulence 由 JS 实时驱动 -->
